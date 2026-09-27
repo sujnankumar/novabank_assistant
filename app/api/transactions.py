@@ -28,12 +28,14 @@ def get_transactions_summary(
     customer_id: str = Path(..., description="Unique customer ID (e.g., CUST001)"),
     start_date: Optional[str] = Query(None, description="Start date (YYYY-MM-DD)"),
     end_date: Optional[str] = Query(None, description="End date (YYYY-MM-DD)"),
+    category: Optional[str] = Query(None, description="Filter by spending category (e.g., Food)"),
 ) -> TransactionSummary:
     """Return transaction summary and spending analysis."""
     return transaction_service.get_transactions_summary(
         customer_id=customer_id,
         start_date=start_date,
         end_date=end_date,
+        category=category,
     )
 
 

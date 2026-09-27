@@ -37,8 +37,8 @@ BANKING_PRODUCTS: List[Tuple[str, str]] = [
 # Tool signal patterns and tool names
 TOOL_PATTERNS: List[Tuple[str, List[str]]] = [
     ("get_balance", ["balance", "account balance", "how much money", "funds available", "current balance"]),
-    ("get_transactions", ["recent transactions", "transaction history", "statement", "latest transactions", "past transactions", "transaction", "transactions"]),
-    ("get_transaction_summary", ["spending summary", "spent on", "spending analysis", "monthly spending", "expenses", "expense summary"]),
+    ("get_transactions", ["recent transactions", "transaction history", "statement", "latest transactions", "past transactions", "transaction", "transactions", "purchases", "payments"]),
+    ("get_transaction_summary", ["spending summary", "spending analysis", "spending breakdown", "monthly spending", "expense summary", "expense breakdown", "total spending", "overall spending", "how much did i spend", "money spent", "money i spent"]),
     ("get_account_info", ["account details", "my accounts", "account number", "account type"]),
     ("get_customer_profile", ["my profile", "customer profile", "who am i", "my details", "registered details"]),
 ]
@@ -100,7 +100,30 @@ class QueryDecomposer:
             if customer_id and target_cust != customer_id.upper():
                 return []
 
-        # Step 2: Try LLM-based decomposition if live client is active
+        # Step 2: Atomic single-intent check
+        # Queries without coordinating conjunctions or multi-clause punctuation
+        # and with at most one operational domain MUST NOT be decomposed.
+        has_conjunction = bool(
+            re.search(r"\b(?:and|also|as well as|along with|in addition to|plus)\b|;|\?.*?\?", q_lower)
+        )
+        found_prods = [
+            canon for prod_key, canon in BANKING_PRODUCTS
+            if re.search(rf"\b{re.escape(prod_key)}s?\b", q_lower)
+        ]
+        unique_prods = set(found_prods)
+
+        has_balance = any(w in q_lower for w in TOOL_PATTERNS[0][1])
+        has_transactions = any(w in q_lower for w in TOOL_PATTERNS[1][1])
+        has_summary = any(w in q_lower for w in TOOL_PATTERNS[2][1])
+        has_account_info = any(w in q_lower for w in TOOL_PATTERNS[3][1])
+        has_profile = any(w in q_lower for w in TOOL_PATTERNS[4][1])
+        tool_count = sum([has_balance, has_transactions, has_summary, has_account_info, has_profile])
+
+        # If no conjunction and at most one operational domain, it is strictly single-intent
+        if not has_conjunction and (tool_count + len(unique_prods) <= 1):
+            return []
+
+        # Step 3: Try LLM-based decomposition if live client is active
         # Otherwise, or on fallback, use deterministic rule-based decomposition
         from app.agents.llm import LangChainLLMClient
         if isinstance(self.llm_client, LangChainLLMClient) and getattr(self.llm_client, "_llm", None) is not None:
@@ -163,18 +186,22 @@ class QueryDecomposer:
                 "tool": "get_balance",
                 "tool_calls": [{"name": "get_balance", "args": {"customer_id": customer_id} if customer_id else {}}],
             })
-        if has_transactions and not has_summary:
+        if has_transactions:
             from app.agents.transaction_query_parser import parse_transaction_query
             # Split clauses by punctuation or coordinating conjunctions to isolate transaction query
             clauses = re.split(r"[,;]|\s+(?:and|also|as well as)\s+", query, flags=re.IGNORECASE)
             matching_clause = next(
-                (c.strip() for c in clauses if "transaction" in c.lower() or "statement" in c.lower()),
+                (c.strip() for c in clauses if any(w in c.lower() for w in ["transaction", "statement", "purchases", "payments"])),
                 "",
             )
             target_txn_text = matching_clause if matching_clause else query
 
             parsed = parse_transaction_query(target_txn_text, customer_id=customer_id)
-            txn_args: Dict[str, Any] = {"customer_id": customer_id, "limit": parsed["limit"]}
+            txn_args: Dict[str, Any] = {
+                "customer_id": customer_id,
+                "limit": parsed["limit"],
+                "sort": "desc",
+            }
             if parsed.get("category"):
                 txn_args["category"] = parsed["category"]
             if parsed.get("start_date"):
@@ -195,12 +222,22 @@ class QueryDecomposer:
                 "parameters": txn_args,
                 "tool_calls": [{"name": "get_transactions", "args": txn_args}],
             })
-        if has_summary:
+        if has_summary and (not has_transactions or "summary" in q_lower or "expense" in q_lower):
+            from app.agents.transaction_query_parser import extract_category, resolve_date_range
+            cat = extract_category(query)
+            s_d, e_d, _ = resolve_date_range(query)
+            sum_args: Dict[str, Any] = {"customer_id": customer_id}
+            if cat:
+                sum_args["category"] = cat
+            if s_d:
+                sum_args["start_date"] = s_d
+            if e_d:
+                sum_args["end_date"] = e_d
             sub_queries.append({
                 "query": "What is my transaction spending summary?",
                 "route": "TOOL",
                 "tool": "get_transaction_summary",
-                "tool_calls": [{"name": "get_transaction_summary", "args": {"customer_id": customer_id} if customer_id else {}}],
+                "tool_calls": [{"name": "get_transaction_summary", "args": sum_args}],
             })
         if has_account_info and not has_balance:
             sub_queries.append({
@@ -270,19 +307,22 @@ class QueryDecomposer:
         query: str,
         customer_id: Optional[str] = None,
     ) -> List[Dict[str, Any]]:
-        """Uses live LLM client to decompose complex queries when available."""
+        """Uses live LLM client to decompose complex queries when available with strict grounding verification."""
         from langchain_core.messages import SystemMessage, HumanMessage
         import json
 
+        q_lower = query.lower()
         prompt = (
             "You are a banking query analyzer. Decompose compound multi-topic queries into independent, "
             "self-contained sub-queries.\n"
-            "If the query asks for only a single topic, return JSON: {\"is_compound\": false, \"sub_queries\": []}\n"
-            "If the query asks for multiple independent topics, return JSON:\n"
+            "STRICT RULES:\n"
+            "- If the query asks for only a single topic or transaction query, return JSON: {\"is_compound\": false, \"sub_queries\": []}\n"
+            "- NEVER invent or hallucinate banking products or loan types that are NOT explicitly mentioned in the query.\n"
+            "- If the query asks for multiple independent topics, return JSON:\n"
             "{\n"
             "  \"is_compound\": true,\n"
             "  \"sub_queries\": [\n"
-            "    {\"query\": \"...standalone question...\", \"route\": \"TOOL|RAG\", \"tool\": \"get_balance|null\"}\n"
+            "    {\"query\": \"...standalone question...\", \"route\": \"TOOL|RAG\", \"tool\": \"get_balance|get_transactions|null\"}\n"
             "  ]\n"
             "}\n"
             f"Query: {query}"
@@ -304,6 +344,25 @@ class QueryDecomposer:
                 tool_name = item.get("tool")
                 if not q_text:
                     continue
+
+                # Strict grounding check:
+                # If sub-query mentions a banking product, that product must appear in the user's query
+                unsupported_product = False
+                for prod_key, canon_name in BANKING_PRODUCTS:
+                    if (prod_key in q_text.lower() or canon_name in q_text.lower()) and (prod_key not in q_lower and canon_name not in q_lower):
+                        unsupported_product = True
+                        break
+                if unsupported_product:
+                    continue
+
+                # If sub-query route is RAG, verify original query actually asked a policy/general question
+                if route == "RAG":
+                    has_policy_signal = any(
+                        p in q_lower for p in ["policy", "rules", "eligibility", "requirement", "interest", "terms", "document", "fee", "cibil", "score", "how do i"]
+                    ) or any(prod_key in q_lower for prod_key, _ in BANKING_PRODUCTS)
+                    if not has_policy_signal:
+                        continue
+
                 tc = []
                 params: Dict[str, Any] = {}
                 if route == "TOOL" and tool_name:
@@ -312,6 +371,7 @@ class QueryDecomposer:
                         from app.agents.transaction_query_parser import parse_transaction_query
                         parsed = parse_transaction_query(q_text, customer_id=customer_id)
                         args["limit"] = parsed["limit"]
+                        args["sort"] = "desc"
                         if parsed.get("category"):
                             args["category"] = parsed["category"]
                         if parsed.get("start_date"):
@@ -320,6 +380,16 @@ class QueryDecomposer:
                             args["end_date"] = parsed["end_date"]
                         if parsed.get("account_id"):
                             args["account_id"] = parsed["account_id"]
+                    elif tool_name == "get_transaction_summary":
+                        from app.agents.transaction_query_parser import extract_category, resolve_date_range
+                        cat = extract_category(q_text) or extract_category(query)
+                        s_d, e_d, _ = resolve_date_range(q_text)
+                        if cat:
+                            args["category"] = cat
+                        if s_d:
+                            args["start_date"] = s_d
+                        if e_d:
+                            args["end_date"] = e_d
                     params = args
                     tc = [{"name": tool_name, "args": args}]
                 sub_queries.append({

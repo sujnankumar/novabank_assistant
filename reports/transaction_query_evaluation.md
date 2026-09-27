@@ -1,7 +1,7 @@
 # NovaBank Transaction Query Evaluation Report
 
-**Evaluation Date:** 2026-09-28T02:25:14.133884  
-**Total Test Cases:** 22  
+**Evaluation Date:** 2026-09-28T02:50:12.848017  
+**Total Test Cases:** 27  
 
 ---
 
@@ -46,6 +46,11 @@
 | TXN-020 | Safety limit capping: 10,000 transactions capped to 100 | 100 | None | None to None | ✅ |
 | TXN-021 | Customer isolation enforcement | 5 | None | None to None | ✅ |
 | TXN-022 | Multi-intent: Balance + 8 transactions | 8 | None | None to None | ✅ |
+| TXN-023 | Exact case: recent 6 food transactions | 6 | Food | None to None | ✅ |
+| TXN-024 | Exact case: recent 7 transactions | 7 | None | None to None | ✅ |
+| TXN-025 | Exact case: transactions that i spent on food | 5 | Food | None to None | ✅ |
+| TXN-026 | Exact case: money spent on food summary | 5 | Food | None to None | ✅ |
+| TXN-027 | Exact case: 10 food transactions this month | 10 | Food | 2026-09-01 to 2026-09-28 | ✅ |
 
 ---
 

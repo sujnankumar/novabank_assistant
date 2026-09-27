@@ -45,3 +45,5 @@ class TransactionSummary(BaseModel):
     total_debits: float = Field(..., description="Sum of debit transactions in period")
     transaction_count: int = Field(..., description="Total transactions in period")
     category_spending: Dict[str, float] = Field(default_factory=dict, description="Debit spending breakdown by category")
+    category: Optional[str] = Field(default=None, description="Optional filtered category")
+    category_debits: Optional[float] = Field(default=None, description="Total debits in requested category")

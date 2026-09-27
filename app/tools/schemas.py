@@ -76,6 +76,7 @@ class TransactionSummaryInput(BaseModel):
     customer_id: str = Field(..., description="Unique customer ID (e.g. CUST001)")
     start_date: Optional[str] = Field(default=None, description="Start date YYYY-MM-DD")
     end_date: Optional[str] = Field(default=None, description="End date YYYY-MM-DD")
+    category: Optional[str] = Field(default=None, description="Filter by spending category (e.g. Food)")
 
 
 class ListLoansInput(BaseModel):

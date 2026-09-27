@@ -319,6 +319,7 @@ def get_transaction_summary(
     customer_id: str,
     start_date: Optional[str] = None,
     end_date: Optional[str] = None,
+    category: Optional[str] = None,
 ) -> Dict[str, Any]:
     """
     Retrieve financial summary of customer transactions over an optional period.
@@ -327,6 +328,7 @@ def get_transaction_summary(
         customer_id (str): Unique customer ID (e.g. 'CUST001')
         start_date (str, optional): Period start date (YYYY-MM-DD)
         end_date (str, optional): Period end date (YYYY-MM-DD)
+        category (str, optional): Filter by spending category (e.g. 'Food')
 
     Returns:
         dict: Structured tool result containing credits, debits, and category spending.
@@ -348,6 +350,7 @@ def get_transaction_summary(
     params = {
         "start_date": start_date,
         "end_date": end_date,
+        "category": category,
     }
 
     return _api_client.request(
@@ -641,6 +644,11 @@ TOOL_METADATA: Dict[str, Dict[str, Any]] = {
                 "type": "string",
                 "required": False,
                 "description": "End date YYYY-MM-DD",
+            },
+            "category": {
+                "type": "string",
+                "required": False,
+                "description": "Filter by spending category (e.g. Food)",
             },
         },
         "return_structure": {

@@ -183,6 +183,74 @@ MONTH_NAMES: Dict[str, int] = {
 }
 
 
+TRANSACTION_LIST_INDICATORS: List[str] = [
+    r"\btransactions?\b",
+    r"\bshow\s+(?:me\s+)?(?:my\s+)?transactions?\b",
+    r"\blist\s+(?:me\s+)?(?:my\s+)?transactions?\b",
+    r"\brecent\s+transactions?\b",
+    r"\blatest\s+transactions?\b",
+    r"\bpurchases?\b",
+    r"\bpayments?\b",
+    r"\btransactions?\s+(?:that|where|which)?\s*i\s+spent\s+on\b",
+    r"\btransactions?\s+(?:for|on|in)\s+\w+\b",
+]
+
+TRANSACTION_AGGREGATE_INDICATORS: List[str] = [
+    r"\bhow\s+much\b",
+    r"\btotal\s+spending\b",
+    r"\bamount\s+spent\b",
+    r"\bspending\s+summary\b",
+    r"\btotal\s+debits?\b",
+    r"\btotal\s+credits?\b",
+    r"\bnet\s+cash\s+flow\b",
+    r"\bmoney\s+(?:that\s+)?i\s+spent\b",
+    r"\bmoney\s+spent\b",
+    r"\bhow\s+much\s+(?:money\s+)?(?:did\s+i|have\s+i|i)\s+spent\b",
+    r"\bhow\s+much\s+(?:money\s+)?(?:did\s+i|have\s+i|i)\s+spend\b",
+    r"\btotal\s+spent\b",
+    r"\bmy\s+expenses\b",
+    r"\bexpense\s+summary\b",
+    r"\bexpense\s+breakdown\b",
+    r"\bspending\s+analysis\b",
+    r"\bspending\s+breakdown\b",
+    r"\btransaction\s+summary\b",
+    r"\bsummary\s+of\s+(?:my\s+)?transactions?\b",
+]
+
+
+def is_transaction_summary_query(query: str) -> bool:
+    """
+    Returns True if the query specifically requests aggregate/summary financial metrics
+    (e.g., how much, total spending, amount spent, spending summary, total debits/credits).
+    """
+    q_lower = query.lower()
+    return any(re.search(pat, q_lower) for pat in TRANSACTION_AGGREGATE_INDICATORS)
+
+
+def is_transaction_list_query(query: str) -> bool:
+    """
+    Returns True if the query requests transaction records/history (list format)
+    rather than an aggregate summary.
+    """
+    q_lower = query.lower()
+    has_list_indicator = any(re.search(pat, q_lower) for pat in TRANSACTION_LIST_INDICATORS)
+    has_summary_request = (
+        "summary" in q_lower or
+        "how much" in q_lower or
+        "total spending" in q_lower or
+        "net cash flow" in q_lower or
+        "money i spent" in q_lower or
+        "money spent" in q_lower
+    )
+    if has_list_indicator and not has_summary_request:
+        return True
+    if has_list_indicator and has_summary_request:
+        if "summary" in q_lower or "how much" in q_lower or "money i spent" in q_lower:
+            return False
+        return True
+    return False
+
+
 def extract_limit(query: str) -> Tuple[int, bool, Optional[int]]:
     """
     Extracts explicit transaction limit or falls back to DEFAULT_TRANSACTION_LIMIT.
@@ -195,10 +263,16 @@ def extract_limit(query: str) -> Tuple[int, bool, Optional[int]]:
 
     # 1. Digits followed by or near transaction patterns
     patterns = [
+        # recent 6 transactions / last 10 transactions / past 5 transactions / most recent 7 transactions
+        r"\b(?:most\s*)?(?:recent|latest|past|last)\s+(\d+)\s*(?:[\w\s]+\s+)?transactions?\b",
+        # 6 recent transactions / 8 past transactions / 10 transactions
         r"\b(\d+)\s*(?:most\s*)?(?:recent\s*)?(?:past\s*)?(?:latest\s*)?(?:[\w\s]+\s+)?transactions?\b",
-        r"(?:show|give|display|fetch|get|list|see)(?:\s+me)?(?:\s+my)?\s+(\d+)\b",
-        r"\blast\s+(\d+)\b",
-        r"\b(\d+)\s+transactions?\b",
+        # show 10 food transactions / get 6 transactions
+        r"(?:show|give|display|fetch|get|list|see)(?:\s+me)?(?:\s+my)?(?:\s+(?:most\s*)?(?:recent|latest|past|last))?\s+(\d+)\b",
+        # last 10 / past 5 / recent 7
+        r"\b(?:last|past|recent|latest)\s+(\d+)\b",
+        # 10 food transactions / 5 transactions
+        r"\b(\d+)\s+(?:[\w\s]+\s+)?transactions?\b",
     ]
     for pat in patterns:
         m = re.search(pat, q_lower)
@@ -210,14 +284,20 @@ def extract_limit(query: str) -> Tuple[int, bool, Optional[int]]:
 
     # 2. Check written number words
     for word, num in sorted(WORD_NUMBERS.items(), key=lambda x: -len(x[0])):
-        pat = rf"\b{word}\s*(?:most\s*)?(?:recent\s*)?(?:past\s*)?(?:latest\s*)?(?:[\w\s]+\s+)?transactions?\b"
+        pat = rf"\b(?:most\s*)?(?:recent|latest|past|last)\s+{word}\s*(?:[\w\s]+\s+)?transactions?\b"
         if re.search(pat, q_lower):
             if num > MAX_TRANSACTION_LIMIT:
                 return MAX_TRANSACTION_LIMIT, True, num
             return max(1, num), False, num
 
-        pat2 = rf"(?:show|give|display|fetch|get|list)(?:\s+me)?(?:\s+my)?\s+{word}\b"
+        pat2 = rf"\b{word}\s*(?:most\s*)?(?:recent\s*)?(?:past\s*)?(?:latest\s*)?(?:[\w\s]+\s+)?transactions?\b"
         if re.search(pat2, q_lower):
+            if num > MAX_TRANSACTION_LIMIT:
+                return MAX_TRANSACTION_LIMIT, True, num
+            return max(1, num), False, num
+
+        pat3 = rf"(?:show|give|display|fetch|get|list)(?:\s+me)?(?:\s+my)?(?:\s+(?:most\s*)?(?:recent|latest|past|last))?\s+{word}\b"
+        if re.search(pat3, q_lower):
             if num > MAX_TRANSACTION_LIMIT:
                 return MAX_TRANSACTION_LIMIT, True, num
             return max(1, num), False, num

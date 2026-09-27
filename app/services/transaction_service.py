@@ -92,7 +92,7 @@ class TransactionService:
             filtered.append(t)
 
         # Order by date, then transaction_id
-        reverse_sort = (sort.lower() != "asc")
+        reverse_sort = (sort.lower() not in ("asc", "date_asc"))
         filtered.sort(key=lambda x: (x.get("date", ""), x.get("transaction_id", "")), reverse=reverse_sort)
 
         total_matching = len(filtered)
@@ -111,10 +111,12 @@ class TransactionService:
         customer_id: str,
         start_date: Optional[str] = None,
         end_date: Optional[str] = None,
+        category: Optional[str] = None,
     ) -> TransactionSummary:
         """
         Generate financial summary for customer transactions over a given period.
-        Calculates total credits, total debits, count, and category spending (debits).
+        Calculates total credits, total debits, count, category spending (debits),
+        and optional specific category debit spending.
         """
         if not self.repo.customer_exists(customer_id):
             raise HTTPException(
@@ -142,19 +144,33 @@ class TransactionService:
         for t in filtered:
             amount = float(t.get("amount", 0.0))
             txn_type = t.get("type", "").upper()
-            category = t.get("category", "Other")
+            cat = t.get("category", "Other")
 
             if txn_type == "CREDIT":
                 total_credits += amount
             elif txn_type == "DEBIT":
                 total_debits += amount
-                category_spending[category] = category_spending.get(category, 0.0) + amount
+                category_spending[cat] = category_spending.get(cat, 0.0) + amount
 
         # Round all monetary sums
         total_credits = round(total_credits, 2)
         total_debits = round(total_debits, 2)
         for cat in list(category_spending.keys()):
             category_spending[cat] = round(category_spending[cat], 2)
+
+        # Calculate category filter metrics if requested
+        norm_category = None
+        category_debits = None
+        if category:
+            for cat_name, amt in category_spending.items():
+                if cat_name.lower() == category.lower():
+                    norm_category = cat_name
+                    category_debits = amt
+                    break
+            if norm_category is None:
+                from app.agents.transaction_query_parser import extract_category
+                norm_category = extract_category(category) or category.capitalize()
+                category_debits = 0.0
 
         # Determine period bounds
         if start_date or end_date:
@@ -177,6 +193,8 @@ class TransactionService:
             total_debits=total_debits,
             transaction_count=len(filtered),
             category_spending=category_spending,
+            category=norm_category,
+            category_debits=category_debits,
         )
 
 

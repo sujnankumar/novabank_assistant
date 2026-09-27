@@ -334,6 +334,71 @@ EVALUATION_CASES: List[Dict[str, Any]] = [
         "is_isolation_test": False,
         "is_multi_intent": True,
     },
+    {
+        "id": "TXN-023",
+        "name": "Exact case: recent 6 food transactions",
+        "query": "can you get my recent 6 transactions where i spent on food",
+        "customer_id": "CUST001",
+        "expected_limit": 6,
+        "expected_category": "Food",
+        "expected_start_date": None,
+        "expected_end_date": None,
+        "expect_tool": "get_transactions",
+        "expect_empty": False,
+        "is_isolation_test": False,
+    },
+    {
+        "id": "TXN-024",
+        "name": "Exact case: recent 7 transactions",
+        "query": "can you get my recent 7 transactions",
+        "customer_id": "CUST001",
+        "expected_limit": 7,
+        "expected_category": None,
+        "expected_start_date": None,
+        "expected_end_date": None,
+        "expect_tool": "get_transactions",
+        "expect_empty": False,
+        "is_isolation_test": False,
+    },
+    {
+        "id": "TXN-025",
+        "name": "Exact case: transactions that i spent on food",
+        "query": "transactions that i spent on food",
+        "customer_id": "CUST001",
+        "expected_limit": 5,
+        "expected_category": "Food",
+        "expected_start_date": None,
+        "expected_end_date": None,
+        "expect_tool": "get_transactions",
+        "expect_empty": False,
+        "is_isolation_test": False,
+    },
+    {
+        "id": "TXN-026",
+        "name": "Exact case: money spent on food summary",
+        "query": "i want to know the money i spent on food",
+        "customer_id": "CUST001",
+        "expected_limit": 5,
+        "expected_category": "Food",
+        "expected_start_date": None,
+        "expected_end_date": None,
+        "expect_tool": "get_transaction_summary",
+        "expect_empty": False,
+        "is_isolation_test": False,
+    },
+    {
+        "id": "TXN-027",
+        "name": "Exact case: 10 food transactions this month",
+        "query": "show 10 food transactions this month",
+        "customer_id": "CUST001",
+        "expected_limit": 10,
+        "expected_category": "Food",
+        "expected_start_date": "2026-09-01",
+        "expected_end_date": "2026-09-28",
+        "expect_tool": "get_transactions",
+        "expect_empty": False,
+        "is_isolation_test": False,
+    },
 ]
 
 
@@ -390,6 +455,7 @@ def run_evaluation() -> Dict[str, Any]:
 
         # Check tool execution
         tool_sources = [s.get("name") for s in sources if s.get("type") == "tool"]
+        expected_tool = case.get("expect_tool")
         if case["is_isolation_test"]:
             # Isolation test: must NOT execute transactions for CUST002
             t_ok = ("get_transactions" not in tool_sources) or (route == "UNSUPPORTED")
@@ -401,8 +467,13 @@ def run_evaluation() -> Dict[str, Any]:
             iso_ok = True
             filt_ok = True
             empty_ok = True
+        elif expected_tool == "get_transaction_summary":
+            t_ok = ("get_transaction_summary" in tool_sources)
+            iso_ok = True
+            empty_ok = True
+            filt_ok = ("Total Spent on Food:" in response_text or "Total Debits:" in response_text)
         else:
-            t_ok = ("get_transactions" in tool_sources)
+            t_ok = (expected_tool in tool_sources) if expected_tool else True
             iso_ok = True
 
             # Check filtering correctness from actual records in tool results

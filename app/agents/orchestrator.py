@@ -478,6 +478,9 @@ class BankingOrchestrator:
             "response": final_state.get("response"),
             "sources": final_state.get("sources", []),
             "thought_process": final_state.get("thought_steps", []),
+            "sub_queries": final_state.get("sub_queries", []),
+            "selected_tools": final_state.get("selected_tools", []),
+            "context": final_state.get("context", []),
         }
 
         if final_state.get("error"):

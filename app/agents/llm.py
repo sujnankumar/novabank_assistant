@@ -109,14 +109,23 @@ class RuleBasedLLMClient(BaseLLMClient):
             "my info", "personal details", "about me", "my city", "my occupation",
             "my income", "my salary", "my credit score", "my age", "how old am i",
             "where do i live", "my job", "what is my job", "tell me about me",
-            "tell me about myself", "who is logged in", "logged in user", "who am i logged in as"
+            "tell me about myself", "who is logged in", "logged in user", "who am i logged in as",
+            # Aggregate & spending indicators
+            "money i spent", "money spent", "how much i spent", "how much did i spend",
+            "how much have i spent", "what did i spend", "what have i spent", "my spending",
+            "total spending", "amount spent", "spending summary", "spending analysis",
+            "spending breakdown", "my expenses", "expense summary", "expense breakdown",
+            "total debits", "total credits", "net cash flow", "how much did i spend on",
+            "money i spent on"
         ]
+        from app.agents.transaction_query_parser import is_transaction_list_query, is_transaction_summary_query
+        is_fraud_or_dispute = any(w in q_lower for w in ["fraud", "report", "dispute", "reversal rule", "unauthorized transaction"])
         is_txn_query = (
-            not any(w in q_lower for w in ["fraud", "report", "dispute process", "reversal rule"])
+            not is_fraud_or_dispute
             and (
-                any(w in q_lower for w in ["statement", "account activity"])
-                or bool(re.search(r"\b(?:show|get|give|display|fetch|view|list|see|what are|my)\b.*?\btransactions?\b", q_lower))
-                or bool(re.search(r"\btransactions?\s+(?:this|last|in|for|of|from|between)\b", q_lower))
+                is_transaction_list_query(q_lower)
+                or is_transaction_summary_query(q_lower)
+                or any(w in q_lower for w in ["transaction", "transactions", "statement", "purchases", "payments"])
             )
         )
         is_customer_specific = any(s in q_lower for s in customer_specific_signals) or is_txn_query
@@ -209,23 +218,46 @@ class RuleBasedLLMClient(BaseLLMClient):
         if "balance" in q_lower:
             tools.append({"name": "get_balance", "args": {"customer_id": customer_id}})
 
-        # Transactions
-        if "transaction" in q_lower or "statement" in q_lower:
-            if "summary" in q_lower or "spent on" in q_lower:
-                tools.append({"name": "get_transaction_summary", "args": {"customer_id": customer_id}})
-            else:
-                from app.agents.transaction_query_parser import parse_transaction_query
-                parsed = parse_transaction_query(q_lower, customer_id=customer_id)
-                txn_args: Dict[str, Any] = {"customer_id": customer_id, "limit": parsed["limit"]}
-                if parsed.get("category"):
-                    txn_args["category"] = parsed["category"]
-                if parsed.get("start_date"):
-                    txn_args["start_date"] = parsed["start_date"]
-                if parsed.get("end_date"):
-                    txn_args["end_date"] = parsed["end_date"]
-                if parsed.get("account_id"):
-                    txn_args["account_id"] = parsed["account_id"]
-                tools.append({"name": "get_transactions", "args": txn_args})
+        # Transactions and Spending
+        from app.agents.transaction_query_parser import (
+            is_transaction_list_query,
+            is_transaction_summary_query,
+            parse_transaction_query,
+            extract_category,
+            resolve_date_range,
+        )
+
+        is_summary = is_transaction_summary_query(q_lower)
+        is_list = is_transaction_list_query(q_lower)
+
+        # Distinguish aggregate-summary from transaction-list
+        if is_summary and not is_list:
+            cat = extract_category(q_lower)
+            s_d, e_d, _ = resolve_date_range(q_lower)
+            summary_args: Dict[str, Any] = {"customer_id": customer_id}
+            if cat:
+                summary_args["category"] = cat
+            if s_d:
+                summary_args["start_date"] = s_d
+            if e_d:
+                summary_args["end_date"] = e_d
+            tools.append({"name": "get_transaction_summary", "args": summary_args})
+        elif is_list or any(w in q_lower for w in ["transaction", "transactions", "statement", "purchases", "payments"]):
+            parsed = parse_transaction_query(q_lower, customer_id=customer_id)
+            txn_args: Dict[str, Any] = {
+                "customer_id": customer_id,
+                "limit": parsed["limit"],
+                "sort": "desc",
+            }
+            if parsed.get("category"):
+                txn_args["category"] = parsed["category"]
+            if parsed.get("start_date"):
+                txn_args["start_date"] = parsed["start_date"]
+            if parsed.get("end_date"):
+                txn_args["end_date"] = parsed["end_date"]
+            if parsed.get("account_id"):
+                txn_args["account_id"] = parsed["account_id"]
+            tools.append({"name": "get_transactions", "args": txn_args})
 
         # Accounts list
         if "account" in q_lower and "balance" not in q_lower:
@@ -550,12 +582,32 @@ class RuleBasedLLMClient(BaseLLMClient):
                     total_spent = data.get("total_debits", 0.0)
                     total_credited = data.get("total_credits", 0.0)
                     net = total_credited - total_spent
-                    tool_sections.append(
-                        f"Here is a summary of your recent transaction activity:\n"
-                        f"- **Total Debits:** INR {total_spent:,.2f}\n"
-                        f"- **Total Credits:** INR {total_credited:,.2f}\n"
-                        f"- **Net Cash Flow:** {'+' if net >= 0 else '-'}INR {abs(net):,.2f}."
-                    )
+                    from app.agents.transaction_query_parser import extract_category
+                    cat = data.get("category") or extract_category(query)
+                    cat_spending = data.get("category_spending", {})
+                    cat_debit = data.get("category_debits")
+                    if cat and cat_debit is None:
+                        for k, v in cat_spending.items():
+                            if k.lower() == str(cat).lower():
+                                cat_debit = v
+                                cat = k
+                                break
+
+                    if cat and cat_debit is not None:
+                        tool_sections.append(
+                            f"Here is your spending summary for **{cat}**:\n"
+                            f"- **Total Spent on {cat}:** INR {cat_debit:,.2f}\n"
+                            f"- **Total Debits:** INR {total_spent:,.2f}\n"
+                            f"- **Total Credits:** INR {total_credited:,.2f}\n"
+                            f"- **Net Cash Flow:** {'+' if net >= 0 else '-'}INR {abs(net):,.2f}."
+                        )
+                    else:
+                        tool_sections.append(
+                            f"Here is a summary of your recent transaction activity:\n"
+                            f"- **Total Debits:** INR {total_spent:,.2f}\n"
+                            f"- **Total Credits:** INR {total_credited:,.2f}\n"
+                            f"- **Net Cash Flow:** {'+' if net >= 0 else '-'}INR {abs(net):,.2f}."
+                        )
 
             elif tool_name == "check_loan_eligibility":
                 eligible = data.get("eligible", False)
