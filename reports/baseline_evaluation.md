@@ -1,6 +1,6 @@
 # NovaBank Phase 10 Evaluation Report - Baseline / Development
 
-**Generated:** 2026-09-27T21:42:30.248200
+**Generated:** 2026-09-27T22:54:30.850513
 **Dataset Version:** v1
 **Seed:** 42
 **Mode:** offline
@@ -51,10 +51,10 @@
 
 | Metric | Value |
 |--------|-------|
-| Hit@1 | 0.3699 |
-| Hit@3 | 0.4932 |
+| Hit@1 | 0.4247 |
+| Hit@3 | 0.5068 |
 | Hit@5 | 0.5068 |
-| MRR | 0.4326 |
+| MRR | 0.4635 |
 | RAG-Evaluable Cases | 73 |
 
 ## Response Quality
@@ -75,17 +75,17 @@
 
 | Metric | Value (ms) |
 |--------|-----------|
-| Min | 1.28 |
-| Mean | 12.37 |
-| Median | 1.89 |
-| p50 | 1.89 |
-| p95 | 19.31 |
-| Max | 737.88 |
+| Min | 1.60 |
+| Mean | 24.02 |
+| Median | 4.58 |
+| p50 | 4.58 |
+| p95 | 65.07 |
+| Max | 1076.30 |
 | Count | 158 |
 
 ## Failures
 
-Total failures: 109
+Total failures: 104
 
 ### EVAL-0097 (ACCOUNT_DETAILS)
 **Query:** What type of accounts do I have?
@@ -97,9 +97,9 @@ Total failures: 109
 - Route: expected=TOOL, got=UNSUPPORTED
 - Tools: expected=['get_accounts'], got=[]
 
-### EVAL-0078 (BANKING_POLICY)
-**Query:** What is the minimum balance requirement?
-- RAG: expected=['09_account_management_policy.md', '12_general_banking_faq.md'], got=['06_savings_account_policy.md', '12_general_banking_faq.md']
+### EVAL-0030 (BANKING_POLICY)
+**Query:** How do I report a lost debit card?
+- RAG: expected=['09_account_management_policy.md', '12_general_banking_faq.md'], got=['05_credit_card_policy.md', '10_fraud_and_security_policy.md', '12_general_banking_faq.md']
 
 ### EVAL-0020 (BANKING_POLICY)
 **Query:** What are the ATM withdrawal limits?
@@ -121,10 +121,6 @@ Total failures: 109
 - Route: expected=RAG, got=UNSUPPORTED
 - RAG: expected=['09_account_management_policy.md', '12_general_banking_faq.md'], got=[]
 
-### EVAL-0114 (BANKING_POLICY)
-**Query:** What is the minimum balance requirement?
-- RAG: expected=['09_account_management_policy.md', '12_general_banking_faq.md'], got=['06_savings_account_policy.md', '12_general_banking_faq.md']
-
 ### EVAL-0001 (BANKING_POLICY)
 **Query:** What is the process for linking Aadhaar with my account?
 - Route: expected=RAG, got=TOOL
@@ -134,10 +130,6 @@ Total failures: 109
 **Query:** What are the timings for RTGS transfers?
 - Route: expected=RAG, got=UNSUPPORTED
 - RAG: expected=['09_account_management_policy.md', '12_general_banking_faq.md'], got=[]
-
-### EVAL-0015 (BANKING_POLICY)
-**Query:** What is the minimum balance requirement?
-- RAG: expected=['09_account_management_policy.md', '12_general_banking_faq.md'], got=['06_savings_account_policy.md', '12_general_banking_faq.md']
 
 ### EVAL-0112 (CATEGORY_SPENDING)
 **Query:** How much did I spend on entertainment?
@@ -181,5 +173,15 @@ Total failures: 109
 
 ### EVAL-0177 (CHECK_BALANCE)
 **Query:** How much do I have in my savings account?
+- Route: expected=TOOL, got=UNSUPPORTED
+- Tools: expected=['get_balance'], got=[]
+
+### EVAL-0142 (CHECK_BALANCE)
+**Query:** Tell me my available balance.
+- Route: expected=TOOL, got=UNSUPPORTED
+- Tools: expected=['get_balance'], got=[]
+
+### EVAL-0153 (CHECK_BALANCE)
+**Query:** Please check how much balance I have.
 - Route: expected=TOOL, got=UNSUPPORTED
 - Tools: expected=['get_balance'], got=[]

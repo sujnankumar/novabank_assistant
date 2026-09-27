@@ -222,7 +222,14 @@ class BankingOrchestrator:
         query = state.get("query", "")
         rag_results = self.rag_executor.retrieve(query=query)
 
-        sources_found = list({r.get("source") for r in rag_results if r.get("source") and "error" not in r})
+        seen_sources = set()
+        sources_found = []
+        for r in rag_results:
+            src = r.get("source")
+            if src and "error" not in r and src not in seen_sources:
+                seen_sources.add(src)
+                sources_found.append(src)
+
         thought_step = {
             "node": "retrieve_rag",
             "title": f"Knowledge base search ({len(rag_results)} chunks found)",

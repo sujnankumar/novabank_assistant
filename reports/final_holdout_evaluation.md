@@ -1,6 +1,6 @@
 # NovaBank Phase 10 Evaluation Report - Optimized / Holdout
 
-**Generated:** 2026-09-27T21:47:16.298373
+**Generated:** 2026-09-27T22:54:36.324610
 **Dataset Version:** v1
 **Seed:** 42
 **Mode:** offline
@@ -51,10 +51,10 @@
 
 | Metric | Value |
 |--------|-------|
-| Hit@1 | 0.4500 |
+| Hit@1 | 0.5000 |
 | Hit@3 | 0.6000 |
 | Hit@5 | 0.6000 |
-| MRR | 0.5250 |
+| MRR | 0.5500 |
 | RAG-Evaluable Cases | 20 |
 
 ## Response Quality
@@ -75,21 +75,17 @@
 
 | Metric | Value (ms) |
 |--------|-----------|
-| Min | 1.86 |
-| Mean | 12.81 |
-| Median | 11.89 |
-| p50 | 11.89 |
-| p95 | 29.67 |
-| Max | 30.81 |
+| Min | 1.56 |
+| Mean | 22.60 |
+| Median | 16.25 |
+| p50 | 16.25 |
+| p95 | 53.92 |
+| Max | 106.61 |
 | Count | 42 |
 
 ## Failures
 
-Total failures: 24
-
-### EVAL-0123 (BANKING_POLICY)
-**Query:** What is the policy for closing an account?
-- RAG: expected=['09_account_management_policy.md', '12_general_banking_faq.md'], got=['06_savings_account_policy.md', '09_account_management_policy.md']
+Total failures: 23
 
 ### EVAL-0176 (BANKING_POLICY)
 **Query:** What are the charges for not maintaining minimum balance?
@@ -177,5 +173,10 @@ Total failures: 24
 
 ### EVAL-0088 (SAVINGS_INFORMATION)
 **Query:** What savings account options do you have?
+- Route: expected=RAG, got=UNSUPPORTED
+- RAG: expected=['06_savings_account_policy.md'], got=[]
+
+### EVAL-0039 (SAVINGS_INFORMATION)
+**Query:** What are the features of your savings accounts?
 - Route: expected=RAG, got=UNSUPPORTED
 - RAG: expected=['06_savings_account_policy.md'], got=[]

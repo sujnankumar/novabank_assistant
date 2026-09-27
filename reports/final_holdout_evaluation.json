@@ -6,7 +6,7 @@
     "dataset_version": "v1",
     "mode": "offline",
     "total_cases": 42,
-    "timestamp": "2026-09-27T21:47:16.298373",
+    "timestamp": "2026-09-27T22:54:36.324610",
     "llm_provider": "mock",
     "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
     "qdrant_collection": "novabank_knowledge",
@@ -59,10 +59,10 @@
     "f1": 0.5143
   },
   "rag": {
-    "hit_at_1": 0.45,
+    "hit_at_1": 0.5,
     "hit_at_3": 0.6,
     "hit_at_5": 0.6,
-    "mrr": 0.525,
+    "mrr": 0.55,
     "rag_evaluable_count": 20
   },
   "response": {
@@ -79,23 +79,15 @@
     "isolation_cases_passed": 22
   },
   "latency_ms": {
-    "min_ms": 1.86,
-    "mean_ms": 12.81,
-    "median_ms": 11.89,
-    "p50_ms": 11.89,
-    "p95_ms": 29.67,
-    "max_ms": 30.81,
+    "min_ms": 1.56,
+    "mean_ms": 22.6,
+    "median_ms": 16.25,
+    "p50_ms": 16.25,
+    "p95_ms": 53.92,
+    "max_ms": 106.61,
     "count": 42
   },
   "failures": [
-    {
-      "case_id": "EVAL-0123",
-      "query": "What is the policy for closing an account?",
-      "intent": "BANKING_POLICY",
-      "reasons": [
-        "RAG: expected=['09_account_management_policy.md', '12_general_banking_faq.md'], got=['06_savings_account_policy.md', '09_account_management_policy.md']"
-      ]
-    },
     {
       "case_id": "EVAL-0176",
       "query": "What are the charges for not maintaining minimum balance?",

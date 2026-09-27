@@ -6,7 +6,7 @@
     "dataset_version": "v1",
     "mode": "offline",
     "total_cases": 158,
-    "timestamp": "2026-09-27T21:42:30.248200",
+    "timestamp": "2026-09-27T22:54:30.850513",
     "llm_provider": "mock",
     "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
     "qdrant_collection": "novabank_knowledge",
@@ -59,10 +59,10 @@
     "f1": 0.3689
   },
   "rag": {
-    "hit_at_1": 0.3699,
-    "hit_at_3": 0.4932,
+    "hit_at_1": 0.4247,
+    "hit_at_3": 0.5068,
     "hit_at_5": 0.5068,
-    "mrr": 0.4326,
+    "mrr": 0.4635,
     "rag_evaluable_count": 73
   },
   "response": {
@@ -79,12 +79,12 @@
     "isolation_cases_passed": 82
   },
   "latency_ms": {
-    "min_ms": 1.28,
-    "mean_ms": 12.37,
-    "median_ms": 1.89,
-    "p50_ms": 1.89,
-    "p95_ms": 19.31,
-    "max_ms": 737.88,
+    "min_ms": 1.6,
+    "mean_ms": 24.02,
+    "median_ms": 4.58,
+    "p50_ms": 4.58,
+    "p95_ms": 65.07,
+    "max_ms": 1076.3,
     "count": 158
   },
   "failures": [
@@ -107,11 +107,11 @@
       ]
     },
     {
-      "case_id": "EVAL-0078",
-      "query": "What is the minimum balance requirement?",
+      "case_id": "EVAL-0030",
+      "query": "How do I report a lost debit card?",
       "intent": "BANKING_POLICY",
       "reasons": [
-        "RAG: expected=['09_account_management_policy.md', '12_general_banking_faq.md'], got=['06_savings_account_policy.md', '12_general_banking_faq.md']"
+        "RAG: expected=['09_account_management_policy.md', '12_general_banking_faq.md'], got=['05_credit_card_policy.md', '10_fraud_and_security_policy.md', '12_general_banking_faq.md']"
       ]
     },
     {
@@ -151,14 +151,6 @@
       ]
     },
     {
-      "case_id": "EVAL-0114",
-      "query": "What is the minimum balance requirement?",
-      "intent": "BANKING_POLICY",
-      "reasons": [
-        "RAG: expected=['09_account_management_policy.md', '12_general_banking_faq.md'], got=['06_savings_account_policy.md', '12_general_banking_faq.md']"
-      ]
-    },
-    {
       "case_id": "EVAL-0001",
       "query": "What is the process for linking Aadhaar with my account?",
       "intent": "BANKING_POLICY",
@@ -174,14 +166,6 @@
       "reasons": [
         "Route: expected=RAG, got=UNSUPPORTED",
         "RAG: expected=['09_account_management_policy.md', '12_general_banking_faq.md'], got=[]"
-      ]
-    },
-    {
-      "case_id": "EVAL-0015",
-      "query": "What is the minimum balance requirement?",
-      "intent": "BANKING_POLICY",
-      "reasons": [
-        "RAG: expected=['09_account_management_policy.md', '12_general_banking_faq.md'], got=['06_savings_account_policy.md', '12_general_banking_faq.md']"
       ]
     },
     {
@@ -446,28 +430,12 @@
       ]
     },
     {
-      "case_id": "EVAL-0002",
-      "query": "What is the interest rate on fixed deposits?",
-      "intent": "FD_INFORMATION",
-      "reasons": [
-        "RAG: expected=['07_fixed_deposit_policy.md'], got=['12_general_banking_faq.md', '07_fixed_deposit_policy.md']"
-      ]
-    },
-    {
       "case_id": "EVAL-0057",
       "query": "Tell me about the tax saver FD.",
       "intent": "FD_INFORMATION",
       "reasons": [
         "Route: expected=RAG, got=UNSUPPORTED",
         "RAG: expected=['07_fixed_deposit_policy.md'], got=[]"
-      ]
-    },
-    {
-      "case_id": "EVAL-0076",
-      "query": "What is the interest rate on fixed deposits?",
-      "intent": "FD_INFORMATION",
-      "reasons": [
-        "RAG: expected=['07_fixed_deposit_policy.md'], got=['12_general_banking_faq.md', '07_fixed_deposit_policy.md']"
       ]
     },
     {
@@ -579,22 +547,6 @@
       ]
     },
     {
-      "case_id": "EVAL-0200",
-      "query": "What documents are required for a personal loan?",
-      "intent": "LOAN_DOCUMENTS",
-      "reasons": [
-        "RAG: expected=['02_personal_loan_policy.md'], got=['03_education_loan_policy.md', '04_vehicle_loan_policy.md', '01_home_loan_policy.md', '02_personal_loan_policy.md']"
-      ]
-    },
-    {
-      "case_id": "EVAL-0060",
-      "query": "What documents do I need for a home loan?",
-      "intent": "LOAN_DOCUMENTS",
-      "reasons": [
-        "RAG: expected=['01_home_loan_policy.md'], got=['03_education_loan_policy.md', '04_vehicle_loan_policy.md', '01_home_loan_policy.md', '02_personal_loan_policy.md']"
-      ]
-    },
-    {
       "case_id": "EVAL-0024",
       "query": "Do I qualify for the instant personal loan?",
       "intent": "LOAN_ELIGIBILITY",
@@ -618,7 +570,8 @@
       "intent": "LOAN_ELIGIBILITY",
       "reasons": [
         "Route: expected=BOTH, got=RAG",
-        "Tools: expected=['check_loan_eligibility'], got=[]"
+        "Tools: expected=['check_loan_eligibility'], got=[]",
+        "RAG: expected=['01_home_loan_policy.md'], got=['12_general_banking_faq.md', '01_home_loan_policy.md']"
       ]
     },
     {
@@ -649,19 +602,27 @@
       ]
     },
     {
-      "case_id": "EVAL-0010",
-      "query": "What is the EMI for a 10 lakh home loan?",
-      "intent": "LOAN_INTEREST_RATE",
+      "case_id": "EVAL-0113",
+      "query": "What loan options are available?",
+      "intent": "LOAN_INFORMATION",
       "reasons": [
-        "RAG: expected=['01_home_loan_policy.md'], got=['11_customer_service_policy.md', '01_home_loan_policy.md', '02_personal_loan_policy.md', '12_general_banking_faq.md']"
+        "RAG: expected=['01_home_loan_policy.md', '02_personal_loan_policy.md', '03_education_loan_policy.md', '04_vehicle_loan_policy.md'], got=['12_general_banking_faq.md', '02_personal_loan_policy.md', '01_home_loan_policy.md']"
       ]
     },
     {
-      "case_id": "EVAL-0184",
-      "query": "How much interest will I pay on a personal loan of 5 lakhs?",
+      "case_id": "EVAL-0183",
+      "query": "Tell me about your personal loans.",
+      "intent": "LOAN_INFORMATION",
+      "reasons": [
+        "RAG: expected=['02_personal_loan_policy.md'], got=['12_general_banking_faq.md', '02_personal_loan_policy.md']"
+      ]
+    },
+    {
+      "case_id": "EVAL-0033",
+      "query": "What is the home loan interest rate?",
       "intent": "LOAN_INTEREST_RATE",
       "reasons": [
-        "RAG: expected=['02_personal_loan_policy.md'], got=['03_education_loan_policy.md', '02_personal_loan_policy.md']"
+        "RAG: expected=['01_home_loan_policy.md'], got=['12_general_banking_faq.md', '01_home_loan_policy.md']"
       ]
     },
     {
@@ -809,6 +770,14 @@
       ]
     },
     {
+      "case_id": "EVAL-0155",
+      "query": "What is the minimum balance for a savings account?",
+      "intent": "SAVINGS_INFORMATION",
+      "reasons": [
+        "RAG: expected=['06_savings_account_policy.md'], got=['12_general_banking_faq.md', '06_savings_account_policy.md']"
+      ]
+    },
+    {
       "case_id": "EVAL-0121",
       "query": "Tell me about your premium savings account.",
       "intent": "SAVINGS_INFORMATION",
@@ -833,14 +802,6 @@
       "reasons": [
         "Route: expected=RAG, got=UNSUPPORTED",
         "RAG: expected=['06_savings_account_policy.md'], got=[]"
-      ]
-    },
-    {
-      "case_id": "EVAL-0149",
-      "query": "What is the interest rate on your savings accounts?",
-      "intent": "SAVINGS_INFORMATION",
-      "reasons": [
-        "RAG: expected=['06_savings_account_policy.md'], got=['07_fixed_deposit_policy.md', '06_savings_account_policy.md', '12_general_banking_faq.md']"
       ]
     },
     {

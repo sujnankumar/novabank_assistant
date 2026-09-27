@@ -176,6 +176,58 @@ class ResponseEvaluator:
             "response_text": response_text,
         }
 
+    @staticmethod
+    def evaluate_completeness(
+        expected_items: List[Dict[str, Any]],
+        response_text: str,
+    ) -> Dict[str, Any]:
+        """
+        Evaluates answer completeness separately from grounding.
+        Checks whether each required information item is substantively answered.
+        """
+        if not response_text or not expected_items:
+            return {
+                "completeness_rate": 0.0,
+                "answered_count": 0,
+                "total_items": len(expected_items),
+                "item_results": {},
+            }
+
+        results = {}
+        answered_count = 0
+        response_lower = response_text.lower()
+
+        for item in expected_items:
+            item_name = item.get("name", "unknown")
+            keywords = item.get("keywords", [])
+            # Check presence of keywords indicating the topic is answered
+            has_keywords = any(kw.lower() in response_lower for kw in keywords) if keywords else False
+            # Check if mentioned only as unavailable / not found
+            negatives = item.get("negative_indicators", [
+                "unavailable", "don't have access", "unable to provide",
+                "not available", "no home loan policy", "no credit card policy",
+                "unable to answer", "not found"
+            ])
+            has_negative = any(neg in response_lower for neg in negatives if any(kw.lower() in neg for kw in keywords))
+
+            # Specifically, if response says "unfortunately, i don't have access to novabank's credit card policy"
+            if item_name == "credit_card_requirements" and ("credit card" in response_lower and any(n in response_lower for n in ["don't have access", "unable to provide", "unavailable"])):
+                has_keywords = False
+            if item_name == "home_loan_credit_score" and ("home loan" in response_lower and any(n in response_lower for n in ["no home loan policy", "unable to provide", "unavailable"])):
+                has_keywords = False
+
+            results[item_name] = has_keywords
+            if has_keywords:
+                answered_count += 1
+
+        rate = round(answered_count / len(expected_items), 4) if expected_items else 0.0
+        return {
+            "completeness_rate": rate,
+            "answered_count": answered_count,
+            "total_items": len(expected_items),
+            "item_results": results,
+        }
+
 
 class SafetyEvaluator:
     """Evaluates safety, prompt injection handling, and customer isolation."""
