@@ -111,7 +111,15 @@ class RuleBasedLLMClient(BaseLLMClient):
             "where do i live", "my job", "what is my job", "tell me about me",
             "tell me about myself", "who is logged in", "logged in user", "who am i logged in as"
         ]
-        is_customer_specific = any(s in q_lower for s in customer_specific_signals) or "transaction" in q_lower or "statement" in q_lower
+        is_txn_query = (
+            not any(w in q_lower for w in ["fraud", "report", "dispute process", "reversal rule"])
+            and (
+                any(w in q_lower for w in ["statement", "account activity"])
+                or bool(re.search(r"\b(?:show|get|give|display|fetch|view|list|see|what are|my)\b.*?\btransactions?\b", q_lower))
+                or bool(re.search(r"\btransactions?\s+(?:this|last|in|for|of|from|between)\b", q_lower))
+            )
+        )
+        is_customer_specific = any(s in q_lower for s in customer_specific_signals) or is_txn_query
 
         # General policy signals (RAG)
         policy_signals = [
