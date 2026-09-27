@@ -1,0 +1,25 @@
+{
+  "version": "v1",
+  "description": "Explicit mapping of Phase 1 intent labels to Phase 6 routing routes. Based on existing RuleBasedLLMClient classify_route logic and query_labels.json expected_data_source/expected_agent metadata.",
+  "mapping": {
+    "ACCOUNT_DETAILS":         {"route": "TOOL",        "tools": ["get_accounts"],                "category": "customer_specific"},
+    "BANKING_POLICY":          {"route": "RAG",         "tools": [],                              "category": "general_policy"},
+    "CATEGORY_SPENDING":       {"route": "TOOL",        "tools": ["get_transaction_summary"],      "category": "customer_specific"},
+    "CHECK_BALANCE":           {"route": "TOOL",        "tools": ["get_balance"],                  "category": "customer_specific"},
+    "CREDIT_CARD_INFORMATION": {"route": "RAG",         "tools": [],                              "category": "general_policy"},
+    "CUSTOMER_PROFILE":        {"route": "TOOL",        "tools": ["get_customer_details"],         "category": "customer_specific"},
+    "FD_INFORMATION":          {"route": "RAG",         "tools": [],                              "category": "general_policy"},
+    "GENERAL_BANKING_QUERY":   {"route": "UNSUPPORTED", "tools": [],                              "category": "general_or_unsupported"},
+    "LOAN_DOCUMENTS":          {"route": "RAG",         "tools": [],                              "category": "general_policy"},
+    "LOAN_ELIGIBILITY":        {"route": "BOTH",        "tools": ["check_loan_eligibility"],       "category": "customer_and_policy"},
+    "LOAN_INFORMATION":        {"route": "RAG",         "tools": [],                              "category": "general_policy"},
+    "LOAN_INTEREST_RATE":      {"route": "RAG",         "tools": [],                              "category": "general_policy"},
+    "MERCHANT_SPENDING":       {"route": "TOOL",        "tools": ["get_transactions"],             "category": "customer_specific"},
+    "MONTHLY_SPENDING":        {"route": "TOOL",        "tools": ["get_transaction_summary"],      "category": "customer_specific"},
+    "SAVINGS_INFORMATION":     {"route": "RAG",         "tools": [],                              "category": "general_policy"},
+    "SPENDING_ANALYSIS":       {"route": "TOOL",        "tools": ["get_transaction_summary"],      "category": "customer_specific"},
+    "TRANSACTION_HISTORY":     {"route": "TOOL",        "tools": ["get_transactions"],             "category": "customer_specific"},
+    "TRANSACTION_SEARCH":      {"route": "TOOL",        "tools": ["get_transactions"],             "category": "customer_specific"},
+    "UNKNOWN_QUERY":           {"route": "UNSUPPORTED", "tools": [],                              "category": "unsupported"}
+  }
+}

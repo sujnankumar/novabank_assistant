@@ -1,0 +1,301 @@
+{
+  "metadata": {
+    "phase": 10,
+    "label": "Optimized / Holdout",
+    "seed": 42,
+    "dataset_version": "v1",
+    "mode": "offline",
+    "total_cases": 42,
+    "timestamp": "2026-09-27T21:47:16.298373",
+    "llm_provider": "mock",
+    "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+    "qdrant_collection": "novabank_knowledge",
+    "retrieval_top_k": 4,
+    "platform": "Windows-11-10.0.26200-SP0"
+  },
+  "routing": {
+    "accuracy": 0.619,
+    "total_evaluated": 42,
+    "correct": 26,
+    "confusion_matrix": {
+      "BOTH": {
+        "BOTH": 0,
+        "RAG": 2,
+        "TOOL": 0,
+        "UNSUPPORTED": 0
+      },
+      "RAG": {
+        "BOTH": 0,
+        "RAG": 10,
+        "TOOL": 0,
+        "UNSUPPORTED": 5
+      },
+      "TOOL": {
+        "BOTH": 0,
+        "RAG": 0,
+        "TOOL": 11,
+        "UNSUPPORTED": 9
+      },
+      "UNSUPPORTED": {
+        "BOTH": 0,
+        "RAG": 0,
+        "TOOL": 0,
+        "UNSUPPORTED": 5
+      }
+    },
+    "per_route_accuracy": {
+      "BOTH": 0.0,
+      "RAG": 0.6667,
+      "TOOL": 0.55,
+      "UNSUPPORTED": 1.0
+    }
+  },
+  "tools": {
+    "selection_accuracy": 0.4091,
+    "execution_success_rate": 0.4091,
+    "tool_evaluable_count": 22,
+    "precision": 0.6923,
+    "recall": 0.4091,
+    "f1": 0.5143
+  },
+  "rag": {
+    "hit_at_1": 0.45,
+    "hit_at_3": 0.6,
+    "hit_at_5": 0.6,
+    "mrr": 0.525,
+    "rag_evaluable_count": 20
+  },
+  "response": {
+    "grounding_rate": 1.0,
+    "evaluable_count": 37,
+    "grounded_count": 37
+  },
+  "safety": {
+    "safety_success_rate": 1.0,
+    "safety_cases_total": 5,
+    "safety_cases_passed": 5,
+    "customer_isolation_rate": 1.0,
+    "isolation_cases_total": 22,
+    "isolation_cases_passed": 22
+  },
+  "latency_ms": {
+    "min_ms": 1.86,
+    "mean_ms": 12.81,
+    "median_ms": 11.89,
+    "p50_ms": 11.89,
+    "p95_ms": 29.67,
+    "max_ms": 30.81,
+    "count": 42
+  },
+  "failures": [
+    {
+      "case_id": "EVAL-0123",
+      "query": "What is the policy for closing an account?",
+      "intent": "BANKING_POLICY",
+      "reasons": [
+        "RAG: expected=['09_account_management_policy.md', '12_general_banking_faq.md'], got=['06_savings_account_policy.md', '09_account_management_policy.md']"
+      ]
+    },
+    {
+      "case_id": "EVAL-0176",
+      "query": "What are the charges for not maintaining minimum balance?",
+      "intent": "BANKING_POLICY",
+      "reasons": [
+        "RAG: expected=['09_account_management_policy.md', '12_general_banking_faq.md'], got=['06_savings_account_policy.md', '12_general_banking_faq.md']"
+      ]
+    },
+    {
+      "case_id": "EVAL-0146",
+      "query": "What are the rules for fixed deposits?",
+      "intent": "BANKING_POLICY",
+      "reasons": [
+        "RAG: expected=['09_account_management_policy.md', '12_general_banking_faq.md'], got=['07_fixed_deposit_policy.md', '12_general_banking_faq.md']"
+      ]
+    },
+    {
+      "case_id": "EVAL-0074",
+      "query": "How much went to bills this month?",
+      "intent": "CATEGORY_SPENDING",
+      "reasons": [
+        "Route: expected=TOOL, got=UNSUPPORTED",
+        "Tools: expected=['get_transaction_summary'], got=[]"
+      ]
+    },
+    {
+      "case_id": "EVAL-0161",
+      "query": "What is my total food delivery expenditure?",
+      "intent": "CATEGORY_SPENDING",
+      "reasons": [
+        "Route: expected=TOOL, got=UNSUPPORTED",
+        "Tools: expected=['get_transaction_summary'], got=[]"
+      ]
+    },
+    {
+      "case_id": "EVAL-0157",
+      "query": "How much money is in my account?",
+      "intent": "CHECK_BALANCE",
+      "reasons": [
+        "Tools: expected=['get_balance'], got=['get_accounts']"
+      ]
+    },
+    {
+      "case_id": "EVAL-0109",
+      "query": "What are the eligibility criteria for your credit cards?",
+      "intent": "CREDIT_CARD_INFORMATION",
+      "reasons": [
+        "Route: expected=RAG, got=UNSUPPORTED",
+        "RAG: expected=['05_credit_card_policy.md'], got=[]"
+      ]
+    },
+    {
+      "case_id": "EVAL-0014",
+      "query": "What credit cards do you offer?",
+      "intent": "CREDIT_CARD_INFORMATION",
+      "reasons": [
+        "Route: expected=RAG, got=UNSUPPORTED",
+        "RAG: expected=['05_credit_card_policy.md'], got=[]"
+      ]
+    },
+    {
+      "case_id": "EVAL-0095",
+      "query": "Update my communication preference to WhatsApp.",
+      "intent": "CUSTOMER_PROFILE",
+      "reasons": [
+        "Route: expected=TOOL, got=UNSUPPORTED",
+        "Tools: expected=['get_customer_details'], got=[]"
+      ]
+    },
+    {
+      "case_id": "EVAL-0037",
+      "query": "What FD options are available?",
+      "intent": "FD_INFORMATION",
+      "reasons": [
+        "Route: expected=RAG, got=UNSUPPORTED",
+        "RAG: expected=['07_fixed_deposit_policy.md'], got=[]"
+      ]
+    },
+    {
+      "case_id": "EVAL-0042",
+      "query": "What services does NovaBank provide?",
+      "intent": "GENERAL_BANKING_QUERY",
+      "reasons": [
+        "RAG: expected=['12_general_banking_faq.md'], got=[]"
+      ]
+    },
+    {
+      "case_id": "EVAL-0174",
+      "query": "Good morning, can I speak to someone?",
+      "intent": "GENERAL_BANKING_QUERY",
+      "reasons": [
+        "RAG: expected=['12_general_banking_faq.md'], got=[]"
+      ]
+    },
+    {
+      "case_id": "EVAL-0041",
+      "query": "Tell me something about banking.",
+      "intent": "GENERAL_BANKING_QUERY",
+      "reasons": [
+        "RAG: expected=['12_general_banking_faq.md'], got=[]"
+      ]
+    },
+    {
+      "case_id": "EVAL-0151",
+      "query": "Check if I can get a two-wheeler loan.",
+      "intent": "LOAN_ELIGIBILITY",
+      "reasons": [
+        "Route: expected=BOTH, got=RAG",
+        "Tools: expected=['check_loan_eligibility'], got=[]"
+      ]
+    },
+    {
+      "case_id": "EVAL-0066",
+      "query": "Would I qualify for an education loan?",
+      "intent": "LOAN_ELIGIBILITY",
+      "reasons": [
+        "Route: expected=BOTH, got=RAG",
+        "Tools: expected=['check_loan_eligibility'], got=[]"
+      ]
+    },
+    {
+      "case_id": "EVAL-0048",
+      "query": "Show me my IRCTC transactions.",
+      "intent": "MERCHANT_SPENDING",
+      "reasons": [
+        "Route: expected=TOOL, got=UNSUPPORTED",
+        "Tools: expected=['get_transactions'], got=[]"
+      ]
+    },
+    {
+      "case_id": "EVAL-0031",
+      "query": "Show me all my Flipkart purchases.",
+      "intent": "MERCHANT_SPENDING",
+      "reasons": [
+        "Route: expected=TOOL, got=UNSUPPORTED",
+        "Tools: expected=['get_transactions'], got=[]"
+      ]
+    },
+    {
+      "case_id": "EVAL-0025",
+      "query": "Show me month-wise spending for the last 3 months.",
+      "intent": "MONTHLY_SPENDING",
+      "reasons": [
+        "Route: expected=TOOL, got=UNSUPPORTED",
+        "Tools: expected=['get_transaction_summary'], got=[]"
+      ]
+    },
+    {
+      "case_id": "EVAL-0193",
+      "query": "What was my total spending in August?",
+      "intent": "MONTHLY_SPENDING",
+      "reasons": [
+        "Route: expected=TOOL, got=UNSUPPORTED",
+        "Tools: expected=['get_transaction_summary'], got=[]"
+      ]
+    },
+    {
+      "case_id": "EVAL-0088",
+      "query": "What savings account options do you have?",
+      "intent": "SAVINGS_INFORMATION",
+      "reasons": [
+        "Route: expected=RAG, got=UNSUPPORTED",
+        "RAG: expected=['06_savings_account_policy.md'], got=[]"
+      ]
+    },
+    {
+      "case_id": "EVAL-0039",
+      "query": "What are the features of your savings accounts?",
+      "intent": "SAVINGS_INFORMATION",
+      "reasons": [
+        "Route: expected=RAG, got=UNSUPPORTED",
+        "RAG: expected=['06_savings_account_policy.md'], got=[]"
+      ]
+    },
+    {
+      "case_id": "EVAL-0063",
+      "query": "Can you analyze my spending patterns?",
+      "intent": "SPENDING_ANALYSIS",
+      "reasons": [
+        "Route: expected=TOOL, got=UNSUPPORTED",
+        "Tools: expected=['get_transaction_summary'], got=[]"
+      ]
+    },
+    {
+      "case_id": "EVAL-0192",
+      "query": "What is my total expenditure this month?",
+      "intent": "SPENDING_ANALYSIS",
+      "reasons": [
+        "Route: expected=TOOL, got=UNSUPPORTED",
+        "Tools: expected=['get_transaction_summary'], got=[]"
+      ]
+    },
+    {
+      "case_id": "EVAL-0029",
+      "query": "Did I receive my salary this month?",
+      "intent": "TRANSACTION_SEARCH",
+      "reasons": [
+        "Tools: expected=['get_transactions'], got=['get_customer_details']"
+      ]
+    }
+  ],
+  "total_results": 42
+}

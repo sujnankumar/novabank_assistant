@@ -1,0 +1,32 @@
+{
+  "benchmark_conditions": {
+    "num_queries": 20,
+    "warmup_runs": 1,
+    "benchmark_runs": 3,
+    "total_measurements": 60,
+    "llm_mode": "mock",
+    "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+    "qdrant_mode": "local_persistent",
+    "retrieval_top_k": 4,
+    "platform": "Windows-11-10.0.26200-SP0",
+    "timestamp": "2026-09-27T21:47:49.858065"
+  },
+  "warm_run": {
+    "min_ms": 1.36,
+    "mean_ms": 19.04,
+    "median_ms": 8.62,
+    "p50_ms": 8.62,
+    "p95_ms": 24.54,
+    "max_ms": 510.54,
+    "count": 60
+  },
+  "cold_start": {
+    "min_ms": 5.78,
+    "mean_ms": 5.78,
+    "median_ms": 5.78,
+    "p50_ms": 5.78,
+    "p95_ms": 5.78,
+    "max_ms": 5.78,
+    "count": 1
+  }
+}

@@ -1,0 +1,189 @@
+[
+  {
+    "product_id": "PROD001",
+    "product_name": "NovaBank Basic Savings Account",
+    "product_type": "Savings Account",
+    "interest_rate": 3.0,
+    "minimum_balance": 1000,
+    "annual_fee": 0,
+    "transaction_limit": 50,
+    "eligibility": "Indian resident, age 18+, valid KYC",
+    "tenure": "No fixed tenure"
+  },
+  {
+    "product_id": "PROD002",
+    "product_name": "NovaBank Premium Savings Account",
+    "product_type": "Savings Account",
+    "interest_rate": 4.0,
+    "minimum_balance": 25000,
+    "annual_fee": 0,
+    "transaction_limit": 100,
+    "eligibility": "Indian resident, age 18+, valid KYC, minimum monthly income INR 30000",
+    "tenure": "No fixed tenure"
+  },
+  {
+    "product_id": "PROD003",
+    "product_name": "NovaBank Zero Balance Savings Account",
+    "product_type": "Savings Account",
+    "interest_rate": 2.5,
+    "minimum_balance": 0,
+    "annual_fee": 0,
+    "transaction_limit": 30,
+    "eligibility": "Indian resident, age 18+, valid KYC",
+    "tenure": "No fixed tenure"
+  },
+  {
+    "product_id": "PROD004",
+    "product_name": "NovaBank Business Current Account",
+    "product_type": "Current Account",
+    "interest_rate": 0.0,
+    "minimum_balance": 10000,
+    "annual_fee": 500,
+    "transaction_limit": 500,
+    "eligibility": "Business registration, GST certificate, valid KYC",
+    "tenure": "No fixed tenure"
+  },
+  {
+    "product_id": "PROD005",
+    "product_name": "NovaBank Premium Current Account",
+    "product_type": "Current Account",
+    "interest_rate": 0.0,
+    "minimum_balance": 50000,
+    "annual_fee": 0,
+    "transaction_limit": 1000,
+    "eligibility": "Business registration, GST certificate, minimum turnover INR 50 lakhs",
+    "tenure": "No fixed tenure"
+  },
+  {
+    "product_id": "PROD006",
+    "product_name": "NovaBank Regular Fixed Deposit",
+    "product_type": "Fixed Deposit",
+    "interest_rate": 6.5,
+    "minimum_balance": 10000,
+    "annual_fee": 0,
+    "transaction_limit": null,
+    "eligibility": "Indian resident, age 18+, valid KYC",
+    "tenure": "6 months to 10 years"
+  },
+  {
+    "product_id": "PROD007",
+    "product_name": "NovaBank Tax Saver Fixed Deposit",
+    "product_type": "Fixed Deposit",
+    "interest_rate": 6.8,
+    "minimum_balance": 10000,
+    "annual_fee": 0,
+    "transaction_limit": null,
+    "eligibility": "Indian resident, age 18+, valid KYC, max INR 1.5 lakh per year under 80C",
+    "tenure": "5 years (lock-in)"
+  },
+  {
+    "product_id": "PROD008",
+    "product_name": "NovaBank Senior Citizen Fixed Deposit",
+    "product_type": "Fixed Deposit",
+    "interest_rate": 7.25,
+    "minimum_balance": 10000,
+    "annual_fee": 0,
+    "transaction_limit": null,
+    "eligibility": "Indian resident, age 60+, valid KYC",
+    "tenure": "6 months to 10 years"
+  },
+  {
+    "product_id": "PROD009",
+    "product_name": "NovaBank Flexi Fixed Deposit",
+    "product_type": "Fixed Deposit",
+    "interest_rate": 6.25,
+    "minimum_balance": 25000,
+    "annual_fee": 0,
+    "transaction_limit": null,
+    "eligibility": "Indian resident, age 18+, valid KYC, linked savings account required",
+    "tenure": "1 year to 5 years"
+  },
+  {
+    "product_id": "PROD010",
+    "product_name": "NovaBank Classic Credit Card",
+    "product_type": "Credit Card",
+    "interest_rate": 42.0,
+    "minimum_balance": null,
+    "annual_fee": 500,
+    "transaction_limit": 200000,
+    "eligibility": "Age 21+, minimum annual income INR 3 lakhs, credit score 650+",
+    "tenure": "Lifetime (subject to renewal)"
+  },
+  {
+    "product_id": "PROD011",
+    "product_name": "NovaBank Gold Credit Card",
+    "product_type": "Credit Card",
+    "interest_rate": 39.6,
+    "minimum_balance": null,
+    "annual_fee": 1500,
+    "transaction_limit": 500000,
+    "eligibility": "Age 21+, minimum annual income INR 6 lakhs, credit score 700+",
+    "tenure": "Lifetime (subject to renewal)"
+  },
+  {
+    "product_id": "PROD012",
+    "product_name": "NovaBank Platinum Credit Card",
+    "product_type": "Credit Card",
+    "interest_rate": 36.0,
+    "minimum_balance": null,
+    "annual_fee": 5000,
+    "transaction_limit": 1500000,
+    "eligibility": "Age 21+, minimum annual income INR 12 lakhs, credit score 750+",
+    "tenure": "Lifetime (subject to renewal)"
+  },
+  {
+    "product_id": "PROD013",
+    "product_name": "NovaBank Cashback Credit Card",
+    "product_type": "Credit Card",
+    "interest_rate": 40.8,
+    "minimum_balance": null,
+    "annual_fee": 999,
+    "transaction_limit": 300000,
+    "eligibility": "Age 21+, minimum annual income INR 4 lakhs, credit score 680+",
+    "tenure": "Lifetime (subject to renewal)"
+  },
+  {
+    "product_id": "PROD014",
+    "product_name": "NovaBank Home Loans",
+    "product_type": "Loan",
+    "interest_rate": 8.25,
+    "minimum_balance": null,
+    "annual_fee": null,
+    "transaction_limit": null,
+    "eligibility": "Age 21-60, minimum income INR 30000, credit score 700+",
+    "tenure": "Up to 30 years"
+  },
+  {
+    "product_id": "PROD015",
+    "product_name": "NovaBank Personal Loans",
+    "product_type": "Loan",
+    "interest_rate": 10.25,
+    "minimum_balance": null,
+    "annual_fee": null,
+    "transaction_limit": null,
+    "eligibility": "Age 21-60, minimum income INR 15000, credit score 630+",
+    "tenure": "Up to 7 years"
+  },
+  {
+    "product_id": "PROD016",
+    "product_name": "NovaBank Education Loans",
+    "product_type": "Loan",
+    "interest_rate": 9.5,
+    "minimum_balance": null,
+    "annual_fee": null,
+    "transaction_limit": null,
+    "eligibility": "Age 18-35, co-applicant required, valid admission letter",
+    "tenure": "Up to 15 years"
+  },
+  {
+    "product_id": "PROD017",
+    "product_name": "NovaBank Vehicle Loans",
+    "product_type": "Loan",
+    "interest_rate": 8.75,
+    "minimum_balance": null,
+    "annual_fee": null,
+    "transaction_limit": null,
+    "eligibility": "Age 21-60, minimum income INR 15000, credit score 650+",
+    "tenure": "Up to 7 years"
+  }
+]

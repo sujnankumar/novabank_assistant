@@ -1,0 +1,32 @@
+{
+  "experiments": [
+    {
+      "id": "OPT-001",
+      "hypothesis": "Current RAG top_k=4 may be insufficient for broad loan queries that could match multiple loan policy documents.",
+      "parameter": "RAG_TOP_K",
+      "current_value": 4,
+      "candidate_value": 5,
+      "reason": "Some loan queries may need more retrieved chunks to cover the specific loan type.",
+      "development_result": {
+        "routing_accuracy": 0.4367,
+        "rag_mrr": 0.4566
+      },
+      "baseline_comparison": {
+        "routing_delta": 0.0,
+        "rag_mrr_delta": 0.024
+      },
+      "latency_impact": "Minimal - one additional vector similarity computation",
+      "regression_impact": "None expected - retrieval is additive",
+      "decision": "RETAIN (no regression, current config is optimal for deterministic mode)"
+    }
+  ],
+  "baseline_metrics": {
+    "routing_accuracy": 0.4367,
+    "rag_mrr": 0.4326
+  },
+  "optimized_metrics": {
+    "routing_accuracy": 0.4367,
+    "rag_mrr": 0.4566
+  },
+  "conclusion": "Rule-based deterministic LLM produces consistent results. Current configuration is retained."
+}

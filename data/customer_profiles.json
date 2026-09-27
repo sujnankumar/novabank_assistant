@@ -1,0 +1,92 @@
+[
+  {
+    "customer_id": "CUST001",
+    "preferred_language": "Kannada",
+    "communication_preference": "Email",
+    "customer_segment": "Gold",
+    "employment_type": "Salaried",
+    "relationship_years": 6,
+    "consent_for_personalization": true
+  },
+  {
+    "customer_id": "CUST002",
+    "preferred_language": "Marathi",
+    "communication_preference": "WhatsApp",
+    "customer_segment": "Premium",
+    "employment_type": "Salaried",
+    "relationship_years": 12,
+    "consent_for_personalization": true
+  },
+  {
+    "customer_id": "CUST003",
+    "preferred_language": "Hindi",
+    "communication_preference": "Email",
+    "customer_segment": "Platinum",
+    "employment_type": "Self-Employed",
+    "relationship_years": 10,
+    "consent_for_personalization": true
+  },
+  {
+    "customer_id": "CUST004",
+    "preferred_language": "English",
+    "communication_preference": "WhatsApp",
+    "customer_segment": "Premium",
+    "employment_type": "Salaried",
+    "relationship_years": 12,
+    "consent_for_personalization": true
+  },
+  {
+    "customer_id": "CUST005",
+    "preferred_language": "Hindi",
+    "communication_preference": "WhatsApp",
+    "customer_segment": "Platinum",
+    "employment_type": "Salaried",
+    "relationship_years": 8,
+    "consent_for_personalization": true
+  },
+  {
+    "customer_id": "CUST006",
+    "preferred_language": "Telugu",
+    "communication_preference": "WhatsApp",
+    "customer_segment": "Gold",
+    "employment_type": "Salaried",
+    "relationship_years": 12,
+    "consent_for_personalization": true
+  },
+  {
+    "customer_id": "CUST007",
+    "preferred_language": "Tamil",
+    "communication_preference": "Phone Call",
+    "customer_segment": "Gold",
+    "employment_type": "Salaried",
+    "relationship_years": 6,
+    "consent_for_personalization": true
+  },
+  {
+    "customer_id": "CUST008",
+    "preferred_language": "Hindi",
+    "communication_preference": "Phone Call",
+    "customer_segment": "Standard",
+    "employment_type": "Student",
+    "relationship_years": 5,
+    "consent_for_personalization": true
+  },
+  {
+    "customer_id": "CUST009",
+    "preferred_language": "Malayalam",
+    "communication_preference": "Phone Call",
+    "customer_segment": "Standard",
+    "employment_type": "Retired",
+    "relationship_years": 6,
+    "consent_for_personalization": true
+  },
+  {
+    "customer_id": "CUST010",
+    "preferred_language": "Hindi",
+    "communication_preference": "SMS",
+    "customer_segment": "Gold",
+    "employment_type": "Salaried",
+    "relationship_years": 4,
+    "consent_for_personalization": true
+  }
+]

@@ -1,0 +1,15 @@
+{
+  "version": "v1",
+  "description": "RAG retrieval ground truth mapping intents to expected knowledge-base documents. Only intents with expected_route RAG or BOTH need RAG ground truth.",
+  "ground_truth": {
+    "BANKING_POLICY":          ["09_account_management_policy.md", "12_general_banking_faq.md"],
+    "CREDIT_CARD_INFORMATION": ["05_credit_card_policy.md"],
+    "FD_INFORMATION":          ["07_fixed_deposit_policy.md"],
+    "LOAN_DOCUMENTS":          ["01_home_loan_policy.md", "02_personal_loan_policy.md", "03_education_loan_policy.md", "04_vehicle_loan_policy.md"],
+    "LOAN_ELIGIBILITY":        ["01_home_loan_policy.md", "02_personal_loan_policy.md", "03_education_loan_policy.md", "04_vehicle_loan_policy.md"],
+    "LOAN_INFORMATION":        ["01_home_loan_policy.md", "02_personal_loan_policy.md", "03_education_loan_policy.md", "04_vehicle_loan_policy.md"],
+    "LOAN_INTEREST_RATE":      ["01_home_loan_policy.md", "02_personal_loan_policy.md", "03_education_loan_policy.md", "04_vehicle_loan_policy.md"],
+    "SAVINGS_INFORMATION":     ["06_savings_account_policy.md"],
+    "GENERAL_BANKING_QUERY":   ["12_general_banking_faq.md"]
+  }
+}

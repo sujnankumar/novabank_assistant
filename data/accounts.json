@@ -1,0 +1,182 @@
+[
+  {
+    "account_id": "ACC001",
+    "customer_id": "CUST001",
+    "account_type": "Savings",
+    "balance": 192203.99,
+    "currency": "INR",
+    "status": "Active",
+    "opened_date": "2022-07-28"
+  },
+  {
+    "account_id": "ACC002",
+    "customer_id": "CUST002",
+    "account_type": "Savings",
+    "balance": 373459.11,
+    "currency": "INR",
+    "status": "Active",
+    "opened_date": "2025-12-12"
+  },
+  {
+    "account_id": "ACC003",
+    "customer_id": "CUST003",
+    "account_type": "Salary",
+    "balance": 272505.79,
+    "currency": "INR",
+    "status": "Active",
+    "opened_date": "2022-07-30"
+  },
+  {
+    "account_id": "ACC004",
+    "customer_id": "CUST004",
+    "account_type": "Savings",
+    "balance": 201542.75,
+    "currency": "INR",
+    "status": "Active",
+    "opened_date": "2023-06-02"
+  },
+  {
+    "account_id": "ACC005",
+    "customer_id": "CUST005",
+    "account_type": "Savings",
+    "balance": 256774.18,
+    "currency": "INR",
+    "status": "Active",
+    "opened_date": "2026-03-16"
+  },
+  {
+    "account_id": "ACC006",
+    "customer_id": "CUST006",
+    "account_type": "Salary",
+    "balance": 32785.56,
+    "currency": "INR",
+    "status": "Active",
+    "opened_date": "2023-05-10"
+  },
+  {
+    "account_id": "ACC007",
+    "customer_id": "CUST007",
+    "account_type": "Savings",
+    "balance": 456801.33,
+    "currency": "INR",
+    "status": "Active",
+    "opened_date": "2022-09-18"
+  },
+  {
+    "account_id": "ACC008",
+    "customer_id": "CUST008",
+    "account_type": "Salary",
+    "balance": 12145.48,
+    "currency": "INR",
+    "status": "Active",
+    "opened_date": "2024-05-17"
+  },
+  {
+    "account_id": "ACC009",
+    "customer_id": "CUST009",
+    "account_type": "Salary",
+    "balance": 58661.11,
+    "currency": "INR",
+    "status": "Active",
+    "opened_date": "2025-03-03"
+  },
+  {
+    "account_id": "ACC010",
+    "customer_id": "CUST010",
+    "account_type": "Savings",
+    "balance": 458055.11,
+    "currency": "INR",
+    "status": "Active",
+    "opened_date": "2022-06-22"
+  },
+  {
+    "account_id": "ACC011",
+    "customer_id": "CUST007",
+    "account_type": "Salary",
+    "balance": 47966.79,
+    "currency": "INR",
+    "status": "Dormant",
+    "opened_date": "2025-03-03"
+  },
+  {
+    "account_id": "ACC012",
+    "customer_id": "CUST006",
+    "account_type": "Savings",
+    "balance": 318198.2,
+    "currency": "INR",
+    "status": "Active",
+    "opened_date": "2026-03-18"
+  },
+  {
+    "account_id": "ACC013",
+    "customer_id": "CUST006",
+    "account_type": "Current",
+    "balance": 1065543.28,
+    "currency": "INR",
+    "status": "Active",
+    "opened_date": "2026-06-27"
+  },
+  {
+    "account_id": "ACC014",
+    "customer_id": "CUST007",
+    "account_type": "Current",
+    "balance": 1071991.55,
+    "currency": "INR",
+    "status": "Active",
+    "opened_date": "2025-01-31"
+  },
+  {
+    "account_id": "ACC015",
+    "customer_id": "CUST006",
+    "account_type": "Salary",
+    "balance": 142288.35,
+    "currency": "INR",
+    "status": "Active",
+    "opened_date": "2025-08-26"
+  },
+  {
+    "account_id": "ACC016",
+    "customer_id": "CUST004",
+    "account_type": "Salary",
+    "balance": 96472.21,
+    "currency": "INR",
+    "status": "Active",
+    "opened_date": "2026-04-13"
+  },
+  {
+    "account_id": "ACC017",
+    "customer_id": "CUST007",
+    "account_type": "Current",
+    "balance": 841464.49,
+    "currency": "INR",
+    "status": "Active",
+    "opened_date": "2024-03-09"
+  },
+  {
+    "account_id": "ACC018",
+    "customer_id": "CUST006",
+    "account_type": "Current",
+    "balance": 986332.98,
+    "currency": "INR",
+    "status": "Active",
+    "opened_date": "2025-07-21"
+  },
+  {
+    "account_id": "ACC019",
+    "customer_id": "CUST002",
+    "account_type": "Current",
+    "balance": 694882.06,
+    "currency": "INR",
+    "status": "Active",
+    "opened_date": "2023-09-26"
+  },
+  {
+    "account_id": "ACC020",
+    "customer_id": "CUST007",
+    "account_type": "Current",
+    "balance": 899690.96,
+    "currency": "INR",
+    "status": "Active",
+    "opened_date": "2025-07-01"
+  }
+]

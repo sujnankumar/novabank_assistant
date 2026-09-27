@@ -1,0 +1,112 @@
+[
+  {
+    "customer_id": "CUST001",
+    "name": "Arjun Nair",
+    "age": 28,
+    "gender": "Male",
+    "city": "Mangalore",
+    "occupation": "Software Engineer",
+    "monthly_income": 75000,
+    "credit_score": 765,
+    "consent": true
+  },
+  {
+    "customer_id": "CUST002",
+    "name": "Priya Sharma",
+    "age": 34,
+    "gender": "Female",
+    "city": "Pune",
+    "occupation": "Data Analyst",
+    "monthly_income": 62000,
+    "credit_score": 720,
+    "consent": true
+  },
+  {
+    "customer_id": "CUST003",
+    "name": "Rohit Verma",
+    "age": 45,
+    "gender": "Male",
+    "city": "Delhi",
+    "occupation": "Business Owner",
+    "monthly_income": 150000,
+    "credit_score": 810,
+    "consent": true
+  },
+  {
+    "customer_id": "CUST004",
+    "name": "Sneha Kulkarni",
+    "age": 26,
+    "gender": "Female",
+    "city": "Bengaluru",
+    "occupation": "UX Designer",
+    "monthly_income": 55000,
+    "credit_score": 690,
+    "consent": true
+  },
+  {
+    "customer_id": "CUST005",
+    "name": "Vikram Patil",
+    "age": 52,
+    "gender": "Male",
+    "city": "Mumbai",
+    "occupation": "Senior Manager",
+    "monthly_income": 120000,
+    "credit_score": 780,
+    "consent": true
+  },
+  {
+    "customer_id": "CUST006",
+    "name": "Ananya Reddy",
+    "age": 30,
+    "gender": "Female",
+    "city": "Hyderabad",
+    "occupation": "Doctor",
+    "monthly_income": 95000,
+    "credit_score": 750,
+    "consent": true
+  },
+  {
+    "customer_id": "CUST007",
+    "name": "Karthik Iyer",
+    "age": 38,
+    "gender": "Male",
+    "city": "Chennai",
+    "occupation": "Chartered Accountant",
+    "monthly_income": 85000,
+    "credit_score": 800,
+    "consent": true
+  },
+  {
+    "customer_id": "CUST008",
+    "name": "Meera Joshi",
+    "age": 24,
+    "gender": "Female",
+    "city": "Jaipur",
+    "occupation": "Graduate Student",
+    "monthly_income": 18000,
+    "credit_score": 640,
+    "consent": true
+  },
+  {
+    "customer_id": "CUST009",
+    "name": "Suresh Menon",
+    "age": 60,
+    "gender": "Male",
+    "city": "Kochi",
+    "occupation": "Retired Teacher",
+    "monthly_income": 35000,
+    "credit_score": 730,
+    "consent": true
+  },
+  {
+    "customer_id": "CUST010",
+    "name": "Divya Gupta",
+    "age": 32,
+    "gender": "Female",
+    "city": "Lucknow",
+    "occupation": "Marketing Manager",
+    "monthly_income": 70000,
+    "credit_score": 745,
+    "consent": true
+  }
+]

@@ -1,0 +1,3034 @@
+{
+  "version": "v1",
+  "total_cases": 200,
+  "cases": [
+    {
+      "case_id": "EVAL-0001",
+      "query_id": "Q001",
+      "query": "What is the process for linking Aadhaar with my account?",
+      "customer_id": "CUST002",
+      "intent": "BANKING_POLICY",
+      "expected_route": "RAG",
+      "expected_tools": [],
+      "expected_sources": [
+        "09_account_management_policy.md",
+        "12_general_banking_faq.md"
+      ],
+      "category": "general_policy",
+      "expected_agent": "PRODUCT_AGENT",
+      "expected_data_source": "PRODUCTS"
+    },
+    {
+      "case_id": "EVAL-0002",
+      "query_id": "Q002",
+      "query": "What is the interest rate on fixed deposits?",
+      "customer_id": "CUST004",
+      "intent": "FD_INFORMATION",
+      "expected_route": "RAG",
+      "expected_tools": [],
+      "expected_sources": [
+        "07_fixed_deposit_policy.md"
+      ],
+      "category": "general_policy",
+      "expected_agent": "PRODUCT_AGENT",
+      "expected_data_source": "PRODUCTS"
+    },
+    {
+      "case_id": "EVAL-0003",
+      "query_id": "Q003",
+      "query": "Can you recommend a good restaurant?",
+      "customer_id": "CUST008",
+      "intent": "UNKNOWN_QUERY",
+      "expected_route": "UNSUPPORTED",
+      "expected_tools": [],
+      "expected_sources": [],
+      "category": "unsupported",
+      "expected_agent": "GENERAL_AGENT",
+      "expected_data_source": "NONE"
+    },
+    {
+      "case_id": "EVAL-0004",
+      "query_id": "Q004",
+      "query": "How much did I spend on food?",
+      "customer_id": "CUST004",
+      "intent": "CATEGORY_SPENDING",
+      "expected_route": "TOOL",
+      "expected_tools": [
+        "get_transaction_summary"
+      ],
+      "expected_sources": [],
+      "category": "customer_specific",
+      "expected_agent": "BANKING_AGENT",
+      "expected_data_source": "TRANSACTIONS"
+    },
+    {
+      "case_id": "EVAL-0005",
+      "query_id": "Q005",
+      "query": "What paperwork is required for a car loan?",
+      "customer_id": "CUST007",
+      "intent": "LOAN_DOCUMENTS",
+      "expected_route": "RAG",
+      "expected_tools": [],
+      "expected_sources": [
+        "04_vehicle_loan_policy.md"
+      ],
+      "category": "general_policy",
+      "expected_agent": "LOAN_AGENT",
+      "expected_data_source": "LOANS"
+    },
+    {
+      "case_id": "EVAL-0006",
+      "query_id": "Q006",
+      "query": "Can you analyze my spending patterns?",
+      "customer_id": "CUST008",
+      "intent": "SPENDING_ANALYSIS",
+      "expected_route": "TOOL",
+      "expected_tools": [
+        "get_transaction_summary"
+      ],
+      "expected_sources": [],
+      "category": "customer_specific",
+      "expected_agent": "BANKING_AGENT",
+      "expected_data_source": "TRANSACTIONS"
+    },
+    {
+      "case_id": "EVAL-0007",
+      "query_id": "Q007",
+      "query": "Can you show me my account information?",
+      "customer_id": "CUST004",
+      "intent": "ACCOUNT_DETAILS",
+      "expected_route": "TOOL",
+      "expected_tools": [
+        "get_accounts"
+      ],
+      "expected_sources": [],
+      "category": "customer_specific",
+      "expected_agent": "BANKING_AGENT",
+      "expected_data_source": "ACCOUNTS"
+    },
+    {
+      "case_id": "EVAL-0008",
+      "query_id": "Q008",
+      "query": "Can you help me?",
+      "customer_id": "CUST007",
+      "intent": "GENERAL_BANKING_QUERY",
+      "expected_route": "UNSUPPORTED",
+      "expected_tools": [],
+      "expected_sources": [
+        "12_general_banking_faq.md"
+      ],
+      "category": "general_or_unsupported",
+      "expected_agent": "GENERAL_AGENT",
+      "expected_data_source": "KNOWLEDGE_BASE"
+    },
+    {
+      "case_id": "EVAL-0009",
+      "query_id": "Q009",
+      "query": "How does the flexi fixed deposit work?",
+      "customer_id": "CUST009",
+      "intent": "FD_INFORMATION",
+      "expected_route": "RAG",
+      "expected_tools": [],
+      "expected_sources": [
+        "07_fixed_deposit_policy.md"
+      ],
+      "category": "general_policy",
+      "expected_agent": "PRODUCT_AGENT",
+      "expected_data_source": "PRODUCTS"
+    },
+    {
+      "case_id": "EVAL-0010",
+      "query_id": "Q010",
+      "query": "What is the EMI for a 10 lakh home loan?",
+      "customer_id": "CUST009",
+      "intent": "LOAN_INTEREST_RATE",
+      "expected_route": "RAG",
+      "expected_tools": [],
+      "expected_sources": [
+        "01_home_loan_policy.md"
+      ],
+      "category": "general_policy",
+      "expected_agent": "LOAN_AGENT",
+      "expected_data_source": "LOANS"
+    },
+    {
+      "case_id": "EVAL-0011",
+      "query_id": "Q011",
+      "query": "Order food for me from Swiggy.",
+      "customer_id": "CUST005",
+      "intent": "UNKNOWN_QUERY",
+      "expected_route": "UNSUPPORTED",
+      "expected_tools": [],
+      "expected_sources": [],
+      "category": "unsupported",
+      "expected_agent": "GENERAL_AGENT",
+      "expected_data_source": "NONE"
+    },
+    {
+      "case_id": "EVAL-0012",
+      "query_id": "Q012",
+      "query": "I want to know about your loan products.",
+      "customer_id": "CUST007",
+      "intent": "LOAN_INFORMATION",
+      "expected_route": "RAG",
+      "expected_tools": [],
+      "expected_sources": [
+        "01_home_loan_policy.md",
+        "02_personal_loan_policy.md",
+        "03_education_loan_policy.md",
+        "04_vehicle_loan_policy.md"
+      ],
+      "category": "general_policy",
+      "expected_agent": "LOAN_AGENT",
+      "expected_data_source": "LOANS"
+    },
+    {
+      "case_id": "EVAL-0013",
+      "query_id": "Q013",
+      "query": "How much have I paid to Uber?",
+      "customer_id": "CUST001",
+      "intent": "MERCHANT_SPENDING",
+      "expected_route": "TOOL",
+      "expected_tools": [
+        "get_transactions"
+      ],
+      "expected_sources": [],
+      "category": "customer_specific",
+      "expected_agent": "BANKING_AGENT",
+      "expected_data_source": "TRANSACTIONS"
+    },
+    {
+      "case_id": "EVAL-0014",
+      "query_id": "Q014",
+      "query": "What credit cards do you offer?",
+      "customer_id": "CUST004",
+      "intent": "CREDIT_CARD_INFORMATION",
+      "expected_route": "RAG",
+      "expected_tools": [],
+      "expected_sources": [
+        "05_credit_card_policy.md"
+      ],
+      "category": "general_policy",
+      "expected_agent": "PRODUCT_AGENT",
+      "expected_data_source": "PRODUCTS"
+    },
+    {
+      "case_id": "EVAL-0015",
+      "query_id": "Q015",
+      "query": "What is the minimum balance requirement?",
+      "customer_id": "CUST007",
+      "intent": "BANKING_POLICY",
+      "expected_route": "RAG",
+      "expected_tools": [],
+      "expected_sources": [
+        "09_account_management_policy.md",
+        "12_general_banking_faq.md"
+      ],
+      "category": "general_policy",
+      "expected_agent": "PRODUCT_AGENT",
+      "expected_data_source": "PRODUCTS"
+    },
+    {
+      "case_id": "EVAL-0016",
+      "query_id": "Q016",
+      "query": "Give me details of all your loan products.",
+      "customer_id": "CUST010",
+      "intent": "LOAN_INFORMATION",
+      "expected_route": "RAG",
+      "expected_tools": [],
+      "expected_sources": [
+        "01_home_loan_policy.md",
+        "02_personal_loan_policy.md",
+        "03_education_loan_policy.md",
+        "04_vehicle_loan_policy.md"
+      ],
+      "category": "general_policy",
+      "expected_agent": "LOAN_AGENT",
+      "expected_data_source": "LOANS"
+    },
+    {
+      "case_id": "EVAL-0017",
+      "query_id": "Q017",
+      "query": "Order food for me from Swiggy.",
+      "customer_id": "CUST010",
+      "intent": "UNKNOWN_QUERY",
+      "expected_route": "UNSUPPORTED",
+      "expected_tools": [],
+      "expected_sources": [],
+      "category": "unsupported",
+      "expected_agent": "GENERAL_AGENT",
+      "expected_data_source": "NONE"
+    },
+    {
+      "case_id": "EVAL-0018",
+      "query_id": "Q018",
+      "query": "What savings account options do you have?",
+      "customer_id": "CUST009",
+      "intent": "SAVINGS_INFORMATION",
+      "expected_route": "RAG",
+      "expected_tools": [],
+      "expected_sources": [
+        "06_savings_account_policy.md"
+      ],
+      "category": "general_policy",
+      "expected_agent": "PRODUCT_AGENT",
+      "expected_data_source": "PRODUCTS"
+    },
+    {
+      "case_id": "EVAL-0019",
+      "query_id": "Q019",
+      "query": "What is the stock price of Reliance?",
+      "customer_id": "CUST001",
+      "intent": "UNKNOWN_QUERY",
+      "expected_route": "UNSUPPORTED",
+      "expected_tools": [],
+      "expected_sources": [],
+      "category": "unsupported",
+      "expected_agent": "GENERAL_AGENT",
+      "expected_data_source": "NONE"
+    },
+    {
+      "case_id": "EVAL-0020",
+      "query_id": "Q020",
+      "query": "What are the ATM withdrawal limits?",
+      "customer_id": "CUST001",
+      "intent": "BANKING_POLICY",
+      "expected_route": "RAG",
+      "expected_tools": [],
+      "expected_sources": [
+        "09_account_management_policy.md",
+        "12_general_banking_faq.md"
+      ],
+      "category": "general_policy",
+      "expected_agent": "PRODUCT_AGENT",
+      "expected_data_source": "PRODUCTS"
+    },
+    {
+      "case_id": "EVAL-0021",
+      "query_id": "Q021",
+      "query": "Do you have a senior citizen FD scheme?",
+      "customer_id": "CUST008",
+      "intent": "FD_INFORMATION",
+      "expected_route": "RAG",
+      "expected_tools": [],
+      "expected_sources": [
+        "07_fixed_deposit_policy.md"
+      ],
+      "category": "general_policy",
+      "expected_agent": "PRODUCT_AGENT",
+      "expected_data_source": "PRODUCTS"
+    },
+    {
+      "case_id": "EVAL-0022",
+      "query_id": "Q022",
+      "query": "I am interested in a home loan. What are the options?",
+      "customer_id": "CUST009",
+      "intent": "LOAN_INFORMATION",
+      "expected_route": "RAG",
+      "expected_tools": [],
+      "expected_sources": [
+        "01_home_loan_policy.md"
+      ],
+      "category": "general_policy",
+      "expected_agent": "LOAN_AGENT",
+      "expected_data_source": "LOANS"
+    },
+    {
+      "case_id": "EVAL-0023",
+      "query_id": "Q023",
+      "query": "Tell me the vehicle loan interest rate.",
+      "customer_id": "CUST004",
+      "intent": "LOAN_INTEREST_RATE",
+      "expected_route": "RAG",
+      "expected_tools": [],
+      "expected_sources": [
+        "04_vehicle_loan_policy.md"
+      ],
+      "category": "general_policy",
+      "expected_agent": "LOAN_AGENT",
+      "expected_data_source": "LOANS"
+    },
+    {
+      "case_id": "EVAL-0024",
+      "query_id": "Q024",
+      "query": "Do I qualify for the instant personal loan?",
+      "customer_id": "CUST009",
+      "intent": "LOAN_ELIGIBILITY",
+      "expected_route": "BOTH",
+      "expected_tools": [
+        "check_loan_eligibility"
+      ],
+      "expected_sources": [
+        "02_personal_loan_policy.md"
+      ],
+      "category": "customer_and_policy",
+      "expected_agent": "LOAN_AGENT",
+      "expected_data_source": "LOANS"
+    },
+    {
+      "case_id": "EVAL-0025",
+      "query_id": "Q025",
+      "query": "Show me month-wise spending for the last 3 months.",
+      "customer_id": "CUST002",
+      "intent": "MONTHLY_SPENDING",
+      "expected_route": "TOOL",
+      "expected_tools": [
+        "get_transaction_summary"
+      ],
+      "expected_sources": [],
+      "category": "customer_specific",
+      "expected_agent": "BANKING_AGENT",
+      "expected_data_source": "TRANSACTIONS"
+    },
+    {
+      "case_id": "EVAL-0026",
+      "query_id": "Q026",
+      "query": "Tell me the document requirements for the instant personal loan.",
+      "customer_id": "CUST007",
+      "intent": "LOAN_DOCUMENTS",
+      "expected_route": "RAG",
+      "expected_tools": [],
+      "expected_sources": [
+        "02_personal_loan_policy.md"
+      ],
+      "category": "general_policy",
+      "expected_agent": "LOAN_AGENT",
+      "expected_data_source": "LOANS"
+    },
+    {
+      "case_id": "EVAL-0027",
+      "query_id": "Q027",
+      "query": "Please check how much balance I have.",
+      "customer_id": "CUST008",
+      "intent": "CHECK_BALANCE",
+      "expected_route": "TOOL",
+      "expected_tools": [
+        "get_balance"
+      ],
+      "expected_sources": [],
+      "category": "customer_specific",
+      "expected_agent": "BANKING_AGENT",
+      "expected_data_source": "ACCOUNTS"
+    },
+    {
+      "case_id": "EVAL-0028",
+      "query_id": "Q028",
+      "query": "How long have I been with NovaBank?",
+      "customer_id": "CUST006",
+      "intent": "CUSTOMER_PROFILE",
+      "expected_route": "TOOL",
+      "expected_tools": [
+        "get_customer_details"
+      ],
+      "expected_sources": [],
+      "category": "customer_specific",
+      "expected_agent": "BANKING_AGENT",
+      "expected_data_source": "CUSTOMER_PROFILES"
+    },
+    {
+      "case_id": "EVAL-0029",
+      "query_id": "Q029",
+      "query": "Did I receive my salary this month?",
+      "customer_id": "CUST003",
+      "intent": "TRANSACTION_SEARCH",
+      "expected_route": "TOOL",
+      "expected_tools": [
+        "get_transactions"
+      ],
+      "expected_sources": [],
+      "category": "customer_specific",
+      "expected_agent": "BANKING_AGENT",
+      "expected_data_source": "TRANSACTIONS"
+    },
+    {
+      "case_id": "EVAL-0030",
+      "query_id": "Q030",
+      "query": "How do I report a lost debit card?",
+      "customer_id": "CUST004",
+      "intent": "BANKING_POLICY",
+      "expected_route": "RAG",
+      "expected_tools": [],
+      "expected_sources": [
+        "09_account_management_policy.md",
+        "12_general_banking_faq.md"
+      ],
+      "category": "general_policy",
+      "expected_agent": "PRODUCT_AGENT",
+      "expected_data_source": "PRODUCTS"
+    },
+    {
+      "case_id": "EVAL-0031",
+      "query_id": "Q031",
+      "query": "Show me all my Flipkart purchases.",
+      "customer_id": "CUST007",
+      "intent": "MERCHANT_SPENDING",
+      "expected_route": "TOOL",
+      "expected_tools": [
+        "get_transactions"
+      ],
+      "expected_sources": [],
+      "category": "customer_specific",
+      "expected_agent": "BANKING_AGENT",
+      "expected_data_source": "TRANSACTIONS"
+    },
+    {
+      "case_id": "EVAL-0032",
+      "query_id": "Q032",
+      "query": "Tell me about the NovaBank Platinum Credit Card.",
+      "customer_id": "CUST006",
+      "intent": "CREDIT_CARD_INFORMATION",
+      "expected_route": "RAG",
+      "expected_tools": [],
+      "expected_sources": [
+        "05_credit_card_policy.md"
+      ],
+      "category": "general_policy",
+      "expected_agent": "PRODUCT_AGENT",
+      "expected_data_source": "PRODUCTS"
+    },
+    {
+      "case_id": "EVAL-0033",
+      "query_id": "Q033",
+      "query": "What is the home loan interest rate?",
+      "customer_id": "CUST003",
+      "intent": "LOAN_INTEREST_RATE",
+      "expected_route": "RAG",
+      "expected_tools": [],
+      "expected_sources": [
+        "01_home_loan_policy.md"
+      ],
+      "category": "general_policy",
+      "expected_agent": "LOAN_AGENT",
+      "expected_data_source": "LOANS"
+    },
+    {
+      "case_id": "EVAL-0034",
+      "query_id": "Q034",
+      "query": "Check my eligibility for a vehicle loan.",
+      "customer_id": "CUST004",
+      "intent": "LOAN_ELIGIBILITY",
+      "expected_route": "BOTH",
+      "expected_tools": [
+        "check_loan_eligibility"
+      ],
+      "expected_sources": [
+        "04_vehicle_loan_policy.md"
+      ],
+      "category": "customer_and_policy",
+      "expected_agent": "LOAN_AGENT",
+      "expected_data_source": "LOANS"
+    },
+    {
+      "case_id": "EVAL-0035",
+      "query_id": "Q035",
+      "query": "Show all my transactions from this month.",
+      "customer_id": "CUST005",
+      "intent": "TRANSACTION_HISTORY",
+      "expected_route": "TOOL",
+      "expected_tools": [
+        "get_transactions"
+      ],
+      "expected_sources": [],
+      "category": "customer_specific",
+      "expected_agent": "BANKING_AGENT",
+      "expected_data_source": "TRANSACTIONS"
+    },
+    {
+      "case_id": "EVAL-0036",
+      "query_id": "Q036",
+      "query": "Show me a breakdown of my expenses.",
+      "customer_id": "CUST009",
+      "intent": "SPENDING_ANALYSIS",
+      "expected_route": "TOOL",
+      "expected_tools": [
+        "get_transaction_summary"
+      ],
+      "expected_sources": [],
+      "category": "customer_specific",
+      "expected_agent": "BANKING_AGENT",
+      "expected_data_source": "TRANSACTIONS"
+    },
+    {
+      "case_id": "EVAL-0037",
+      "query_id": "Q037",
+      "query": "What FD options are available?",
+      "customer_id": "CUST007",
+      "intent": "FD_INFORMATION",
+      "expected_route": "RAG",
+      "expected_tools": [],
+      "expected_sources": [
+        "07_fixed_deposit_policy.md"
+      ],
+      "category": "general_policy",
+      "expected_agent": "PRODUCT_AGENT",
+      "expected_data_source": "PRODUCTS"
+    },
+    {
+      "case_id": "EVAL-0038",
+      "query_id": "Q038",
+      "query": "Hello, I need some help.",
+      "customer_id": "CUST001",
+      "intent": "GENERAL_BANKING_QUERY",
+      "expected_route": "UNSUPPORTED",
+      "expected_tools": [],
+      "expected_sources": [
+        "12_general_banking_faq.md"
+      ],
+      "category": "general_or_unsupported",
+      "expected_agent": "GENERAL_AGENT",
+      "expected_data_source": "KNOWLEDGE_BASE"
+    },
+    {
+      "case_id": "EVAL-0039",
+      "query_id": "Q039",
+      "query": "What are the features of your savings accounts?",
+      "customer_id": "CUST003",
+      "intent": "SAVINGS_INFORMATION",
+      "expected_route": "RAG",
+      "expected_tools": [],
+      "expected_sources": [
+        "06_savings_account_policy.md"
+      ],
+      "category": "general_policy",
+      "expected_agent": "PRODUCT_AGENT",
+      "expected_data_source": "PRODUCTS"
+    },
+    {
+      "case_id": "EVAL-0040",
+      "query_id": "Q040",
+      "query": "Can you help me?",
+      "customer_id": "CUST005",
+      "intent": "GENERAL_BANKING_QUERY",
+      "expected_route": "UNSUPPORTED",
+      "expected_tools": [],
+      "expected_sources": [
+        "12_general_banking_faq.md"
+      ],
+      "category": "general_or_unsupported",
+      "expected_agent": "GENERAL_AGENT",
+      "expected_data_source": "KNOWLEDGE_BASE"
+    },
+    {
+      "case_id": "EVAL-0041",
+      "query_id": "Q041",
+      "query": "Tell me something about banking.",
+      "customer_id": "CUST001",
+      "intent": "GENERAL_BANKING_QUERY",
+      "expected_route": "UNSUPPORTED",
+      "expected_tools": [],
+      "expected_sources": [
+        "12_general_banking_faq.md"
+      ],
+      "category": "general_or_unsupported",
+      "expected_agent": "GENERAL_AGENT",
+      "expected_data_source": "KNOWLEDGE_BASE"
+    },
+    {
+      "case_id": "EVAL-0042",
+      "query_id": "Q042",
+      "query": "What services does NovaBank provide?",
+      "customer_id": "CUST004",
+      "intent": "GENERAL_BANKING_QUERY",
+      "expected_route": "UNSUPPORTED",
+      "expected_tools": [],
+      "expected_sources": [
+        "12_general_banking_faq.md"
+      ],
+      "category": "general_or_unsupported",
+      "expected_agent": "GENERAL_AGENT",
+      "expected_data_source": "KNOWLEDGE_BASE"
+    },
+    {
+      "case_id": "EVAL-0043",
+      "query_id": "Q043",
+      "query": "What are my utility bill payments this month?",
+      "customer_id": "CUST004",
+      "intent": "CATEGORY_SPENDING",
+      "expected_route": "TOOL",
+      "expected_tools": [
+        "get_transaction_summary"
+      ],
+      "expected_sources": [],
+      "category": "customer_specific",
+      "expected_agent": "BANKING_AGENT",
+      "expected_data_source": "TRANSACTIONS"
+    },
+    {
+      "case_id": "EVAL-0044",
+      "query_id": "Q044",
+      "query": "What is my current account balance?",
+      "customer_id": "CUST005",
+      "intent": "CHECK_BALANCE",
+      "expected_route": "TOOL",
+      "expected_tools": [
+        "get_balance"
+      ],
+      "expected_sources": [],
+      "category": "customer_specific",
+      "expected_agent": "BANKING_AGENT",
+      "expected_data_source": "ACCOUNTS"
+    },
+    {
+      "case_id": "EVAL-0045",
+      "query_id": "Q045",
+      "query": "What home loans do you offer?",
+      "customer_id": "CUST001",
+      "intent": "LOAN_INFORMATION",
+      "expected_route": "RAG",
+      "expected_tools": [],
+      "expected_sources": [
+        "01_home_loan_policy.md"
+      ],
+      "category": "general_policy",
+      "expected_agent": "LOAN_AGENT",
+      "expected_data_source": "LOANS"
+    },
+    {
+      "case_id": "EVAL-0046",
+      "query_id": "Q046",
+      "query": "Did I make any payment to Amazon?",
+      "customer_id": "CUST006",
+      "intent": "TRANSACTION_SEARCH",
+      "expected_route": "TOOL",
+      "expected_tools": [
+        "get_transactions"
+      ],
+      "expected_sources": [],
+      "category": "customer_specific",
+      "expected_agent": "BANKING_AGENT",
+      "expected_data_source": "TRANSACTIONS"
+    },
+    {
+      "case_id": "EVAL-0047",
+      "query_id": "Q047",
+      "query": "What savings account options do you have?",
+      "customer_id": "CUST001",
+      "intent": "SAVINGS_INFORMATION",
+      "expected_route": "RAG",
+      "expected_tools": [],
+      "expected_sources": [
+        "06_savings_account_policy.md"
+      ],
+      "category": "general_policy",
+      "expected_agent": "PRODUCT_AGENT",
+      "expected_data_source": "PRODUCTS"
+    },
+    {
+      "case_id": "EVAL-0048",
+      "query_id": "Q048",
+      "query": "Show me my IRCTC transactions.",
+      "customer_id": "CUST003",
+      "intent": "MERCHANT_SPENDING",
+      "expected_route": "TOOL",
+      "expected_tools": [
+        "get_transactions"
+      ],
+      "expected_sources": [],
+      "category": "customer_specific",
+      "expected_agent": "BANKING_AGENT",
+      "expected_data_source": "TRANSACTIONS"
+    },
+    {
+      "case_id": "EVAL-0049",
+      "query_id": "Q049",
+      "query": "Can I get a statement of my recent transactions?",
+      "customer_id": "CUST002",
+      "intent": "TRANSACTION_HISTORY",
+      "expected_route": "TOOL",
+      "expected_tools": [
+        "get_transactions"
+      ],
+      "expected_sources": [],
+      "category": "customer_specific",
+      "expected_agent": "BANKING_AGENT",
+      "expected_data_source": "TRANSACTIONS"
+    },
+    {
+      "case_id": "EVAL-0050",
+      "query_id": "Q050",
+      "query": "What's my transaction history for this month?",
+      "customer_id": "CUST005",
+      "intent": "TRANSACTION_HISTORY",
+      "expected_route": "TOOL",
+      "expected_tools": [
+        "get_transactions"
+      ],
+      "expected_sources": [],
+      "category": "customer_specific",
+      "expected_agent": "BANKING_AGENT",
+      "expected_data_source": "TRANSACTIONS"
+    },
+    {
+      "case_id": "EVAL-0051",
+      "query_id": "Q051",
+      "query": "What's my balance right now?",
+      "customer_id": "CUST001",
+      "intent": "CHECK_BALANCE",
+      "expected_route": "TOOL",
+      "expected_tools": [
+        "get_balance"
+      ],
+      "expected_sources": [],
+      "category": "customer_specific",
+      "expected_agent": "BANKING_AGENT",
+      "expected_data_source": "ACCOUNTS"
+    },
+    {
+      "case_id": "EVAL-0052",
+      "query_id": "Q052",
+      "query": "Can I get a home loan?",
+      "customer_id": "CUST002",
+      "intent": "LOAN_ELIGIBILITY",
+      "expected_route": "BOTH",
+      "expected_tools": [
+        "check_loan_eligibility"
+      ],
+      "expected_sources": [
+        "01_home_loan_policy.md"
+      ],
+      "category": "customer_and_policy",
+      "expected_agent": "LOAN_AGENT",
+      "expected_data_source": "LOANS"
+    },
+    {
+      "case_id": "EVAL-0053",
+      "query_id": "Q053",
+      "query": "What did I spend at Swiggy last month?",
+      "customer_id": "CUST004",
+      "intent": "MERCHANT_SPENDING",
+      "expected_route": "TOOL",
+      "expected_tools": [
+        "get_transactions"
+      ],
+      "expected_sources": [],
+      "category": "customer_specific",
+      "expected_agent": "BANKING_AGENT",
+      "expected_data_source": "TRANSACTIONS"
+    },
+    {
+      "case_id": "EVAL-0054",
+      "query_id": "Q054",
+      "query": "Update my communication preference to WhatsApp.",
+      "customer_id": "CUST008",
+      "intent": "CUSTOMER_PROFILE",
+      "expected_route": "TOOL",
+      "expected_tools": [
+        "get_customer_details"
+      ],
+      "expected_sources": [],
+      "category": "customer_specific",
+      "expected_agent": "BANKING_AGENT",
+      "expected_data_source": "CUSTOMER_PROFILES"
+    },
+    {
+      "case_id": "EVAL-0055",
+      "query_id": "Q055",
+      "query": "Tell me the document requirements for the instant personal loan.",
+      "customer_id": "CUST009",
+      "intent": "LOAN_DOCUMENTS",
+      "expected_route": "RAG",
+      "expected_tools": [],
+      "expected_sources": [
+        "02_personal_loan_policy.md"
+      ],
+      "category": "general_policy",
+      "expected_agent": "LOAN_AGENT",
+      "expected_data_source": "LOANS"
+    },
+    {
+      "case_id": "EVAL-0056",
+      "query_id": "Q056",
+      "query": "How much did I pay to Netflix?",
+      "customer_id": "CUST008",
+      "intent": "MERCHANT_SPENDING",
+      "expected_route": "TOOL",
+      "expected_tools": [
+        "get_transactions"
+      ],
+      "expected_sources": [],
+      "category": "customer_specific",
+      "expected_agent": "BANKING_AGENT",
+      "expected_data_source": "TRANSACTIONS"
+    },
+    {
+      "case_id": "EVAL-0057",
+      "query_id": "Q057",
+      "query": "Tell me about the tax saver FD.",
+      "customer_id": "CUST005",
+      "intent": "FD_INFORMATION",
+      "expected_route": "RAG",
+      "expected_tools": [],
+      "expected_sources": [
+        "07_fixed_deposit_policy.md"
+      ],
+      "category": "general_policy",
+      "expected_agent": "PRODUCT_AGENT",
+      "expected_data_source": "PRODUCTS"
+    },
+    {
+      "case_id": "EVAL-0058",
+      "query_id": "Q058",
+      "query": "How much money do I currently have?",
+      "customer_id": "CUST003",
+      "intent": "CHECK_BALANCE",
+      "expected_route": "TOOL",
+      "expected_tools": [
+        "get_balance"
+      ],
+      "expected_sources": [],
+      "category": "customer_specific",
+      "expected_agent": "BANKING_AGENT",
+      "expected_data_source": "ACCOUNTS"
+    },
+    {
+      "case_id": "EVAL-0059",
+      "query_id": "Q059",
+      "query": "Which credit card is best for cashback?",
+      "customer_id": "CUST004",
+      "intent": "CREDIT_CARD_INFORMATION",
+      "expected_route": "RAG",
+      "expected_tools": [],
+      "expected_sources": [
+        "05_credit_card_policy.md"
+      ],
+      "category": "general_policy",
+      "expected_agent": "PRODUCT_AGENT",
+      "expected_data_source": "PRODUCTS"
+    },
+    {
+      "case_id": "EVAL-0060",
+      "query_id": "Q060",
+      "query": "What documents do I need for a home loan?",
+      "customer_id": "CUST004",
+      "intent": "LOAN_DOCUMENTS",
+      "expected_route": "RAG",
+      "expected_tools": [],
+      "expected_sources": [
+        "01_home_loan_policy.md"
+      ],
+      "category": "general_policy",
+      "expected_agent": "LOAN_AGENT",
+      "expected_data_source": "LOANS"
+    },
+    {
+      "case_id": "EVAL-0061",
+      "query_id": "Q061",
+      "query": "What is my total spending at Zomato?",
+      "customer_id": "CUST007",
+      "intent": "MERCHANT_SPENDING",
+      "expected_route": "TOOL",
+      "expected_tools": [
+        "get_transactions"
+      ],
+      "expected_sources": [],
+      "category": "customer_specific",
+      "expected_agent": "BANKING_AGENT",
+      "expected_data_source": "TRANSACTIONS"
+    },
+    {
+      "case_id": "EVAL-0062",
+      "query_id": "Q062",
+      "query": "I need my account details.",
+      "customer_id": "CUST007",
+      "intent": "ACCOUNT_DETAILS",
+      "expected_route": "TOOL",
+      "expected_tools": [
+        "get_accounts"
+      ],
+      "expected_sources": [],
+      "category": "customer_specific",
+      "expected_agent": "BANKING_AGENT",
+      "expected_data_source": "ACCOUNTS"
+    },
+    {
+      "case_id": "EVAL-0063",
+      "query_id": "Q063",
+      "query": "Can you analyze my spending patterns?",
+      "customer_id": "CUST009",
+      "intent": "SPENDING_ANALYSIS",
+      "expected_route": "TOOL",
+      "expected_tools": [
+        "get_transaction_summary"
+      ],
+      "expected_sources": [],
+      "category": "customer_specific",
+      "expected_agent": "BANKING_AGENT",
+      "expected_data_source": "TRANSACTIONS"
+    },
+    {
+      "case_id": "EVAL-0064",
+      "query_id": "Q064",
+      "query": "Change my preferred language to Hindi.",
+      "customer_id": "CUST007",
+      "intent": "CUSTOMER_PROFILE",
+      "expected_route": "TOOL",
+      "expected_tools": [
+        "get_customer_details"
+      ],
+      "expected_sources": [],
+      "category": "customer_specific",
+      "expected_agent": "BANKING_AGENT",
+      "expected_data_source": "CUSTOMER_PROFILES"
+    },
+    {
+      "case_id": "EVAL-0065",
+      "query_id": "Q065",
+      "query": "Compare your Classic and Gold credit cards.",
+      "customer_id": "CUST007",
+      "intent": "CREDIT_CARD_INFORMATION",
+      "expected_route": "RAG",
+      "expected_tools": [],
+      "expected_sources": [
+        "05_credit_card_policy.md"
+      ],
+      "category": "general_policy",
+      "expected_agent": "PRODUCT_AGENT",
+      "expected_data_source": "PRODUCTS"
+    },
+    {
+      "case_id": "EVAL-0066",
+      "query_id": "Q066",
+      "query": "Would I qualify for an education loan?",
+      "customer_id": "CUST002",
+      "intent": "LOAN_ELIGIBILITY",
+      "expected_route": "BOTH",
+      "expected_tools": [
+        "check_loan_eligibility"
+      ],
+      "expected_sources": [
+        "03_education_loan_policy.md"
+      ],
+      "category": "customer_and_policy",
+      "expected_agent": "LOAN_AGENT",
+      "expected_data_source": "LOANS"
+    },
+    {
+      "case_id": "EVAL-0067",
+      "query_id": "Q067",
+      "query": "What paperwork is required for a car loan?",
+      "customer_id": "CUST008",
+      "intent": "LOAN_DOCUMENTS",
+      "expected_route": "RAG",
+      "expected_tools": [],
+      "expected_sources": [
+        "04_vehicle_loan_policy.md"
+      ],
+      "category": "general_policy",
+      "expected_agent": "LOAN_AGENT",
+      "expected_data_source": "LOANS"
+    },
+    {
+      "case_id": "EVAL-0068",
+      "query_id": "Q068",
+      "query": "What is the annual fee for the Gold Credit Card?",
+      "customer_id": "CUST006",
+      "intent": "CREDIT_CARD_INFORMATION",
+      "expected_route": "RAG",
+      "expected_tools": [],
+      "expected_sources": [
+        "05_credit_card_policy.md"
+      ],
+      "category": "general_policy",
+      "expected_agent": "PRODUCT_AGENT",
+      "expected_data_source": "PRODUCTS"
+    },
+    {
+      "case_id": "EVAL-0069",
+      "query_id": "Q069",
+      "query": "How can I update my KYC details?",
+      "customer_id": "CUST010",
+      "intent": "BANKING_POLICY",
+      "expected_route": "RAG",
+      "expected_tools": [],
+      "expected_sources": [
+        "09_account_management_policy.md",
+        "12_general_banking_faq.md"
+      ],
+      "category": "general_policy",
+      "expected_agent": "PRODUCT_AGENT",
+      "expected_data_source": "PRODUCTS"
+    },
+    {
+      "case_id": "EVAL-0070",
+      "query_id": "Q070",
+      "query": "What is my current account balance?",
+      "customer_id": "CUST010",
+      "intent": "CHECK_BALANCE",
+      "expected_route": "TOOL",
+      "expected_tools": [
+        "get_balance"
+      ],
+      "expected_sources": [],
+      "category": "customer_specific",
+      "expected_agent": "BANKING_AGENT",
+      "expected_data_source": "ACCOUNTS"
+    },
+    {
+      "case_id": "EVAL-0071",
+      "query_id": "Q071",
+      "query": "What time is it?",
+      "customer_id": "CUST005",
+      "intent": "UNKNOWN_QUERY",
+      "expected_route": "UNSUPPORTED",
+      "expected_tools": [],
+      "expected_sources": [],
+      "category": "unsupported",
+      "expected_agent": "GENERAL_AGENT",
+      "expected_data_source": "NONE"
+    },
+    {
+      "case_id": "EVAL-0072",
+      "query_id": "Q072",
+      "query": "What is my total food delivery expenditure?",
+      "customer_id": "CUST002",
+      "intent": "CATEGORY_SPENDING",
+      "expected_route": "TOOL",
+      "expected_tools": [
+        "get_transaction_summary"
+      ],
+      "expected_sources": [],
+      "category": "customer_specific",
+      "expected_agent": "BANKING_AGENT",
+      "expected_data_source": "TRANSACTIONS"
+    },
+    {
+      "case_id": "EVAL-0073",
+      "query_id": "Q073",
+      "query": "How much did I spend this month?",
+      "customer_id": "CUST006",
+      "intent": "SPENDING_ANALYSIS",
+      "expected_route": "TOOL",
+      "expected_tools": [
+        "get_transaction_summary"
+      ],
+      "expected_sources": [],
+      "category": "customer_specific",
+      "expected_agent": "BANKING_AGENT",
+      "expected_data_source": "TRANSACTIONS"
+    },
+    {
+      "case_id": "EVAL-0074",
+      "query_id": "Q074",
+      "query": "How much went to bills this month?",
+      "customer_id": "CUST001",
+      "intent": "CATEGORY_SPENDING",
+      "expected_route": "TOOL",
+      "expected_tools": [
+        "get_transaction_summary"
+      ],
+      "expected_sources": [],
+      "category": "customer_specific",
+      "expected_agent": "BANKING_AGENT",
+      "expected_data_source": "TRANSACTIONS"
+    },
+    {
+      "case_id": "EVAL-0075",
+      "query_id": "Q075",
+      "query": "Show me my healthcare expenses.",
+      "customer_id": "CUST009",
+      "intent": "CATEGORY_SPENDING",
+      "expected_route": "TOOL",
+      "expected_tools": [
+        "get_transaction_summary"
+      ],
+      "expected_sources": [],
+      "category": "customer_specific",
+      "expected_agent": "BANKING_AGENT",
+      "expected_data_source": "TRANSACTIONS"
+    },
+    {
+      "case_id": "EVAL-0076",
+      "query_id": "Q076",
+      "query": "What is the interest rate on fixed deposits?",
+      "customer_id": "CUST004",
+      "intent": "FD_INFORMATION",
+      "expected_route": "RAG",
+      "expected_tools": [],
+      "expected_sources": [
+        "07_fixed_deposit_policy.md"
+      ],
+      "category": "general_policy",
+      "expected_agent": "PRODUCT_AGENT",
+      "expected_data_source": "PRODUCTS"
+    },
+    {
+      "case_id": "EVAL-0077",
+      "query_id": "Q077",
+      "query": "What's the weather today?",
+      "customer_id": "CUST003",
+      "intent": "UNKNOWN_QUERY",
+      "expected_route": "UNSUPPORTED",
+      "expected_tools": [],
+      "expected_sources": [],
+      "category": "unsupported",
+      "expected_agent": "GENERAL_AGENT",
+      "expected_data_source": "NONE"
+    },
+    {
+      "case_id": "EVAL-0078",
+      "query_id": "Q078",
+      "query": "What is the minimum balance requirement?",
+      "customer_id": "CUST001",
+      "intent": "BANKING_POLICY",
+      "expected_route": "RAG",
+      "expected_tools": [],
+      "expected_sources": [
+        "09_account_management_policy.md",
+        "12_general_banking_faq.md"
+      ],
+      "category": "general_policy",
+      "expected_agent": "PRODUCT_AGENT",
+      "expected_data_source": "PRODUCTS"
+    },
+    {
+      "case_id": "EVAL-0079",
+      "query_id": "Q079",
+      "query": "Could you tell me my balance?",
+      "customer_id": "CUST003",
+      "intent": "CHECK_BALANCE",
+      "expected_route": "TOOL",
+      "expected_tools": [
+        "get_balance"
+      ],
+      "expected_sources": [],
+      "category": "customer_specific",
+      "expected_agent": "BANKING_AGENT",
+      "expected_data_source": "ACCOUNTS"
+    },
+    {
+      "case_id": "EVAL-0080",
+      "query_id": "Q080",
+      "query": "What is the cheapest loan rate you offer?",
+      "customer_id": "CUST001",
+      "intent": "LOAN_INTEREST_RATE",
+      "expected_route": "RAG",
+      "expected_tools": [],
+      "expected_sources": [
+        "01_home_loan_policy.md",
+        "02_personal_loan_policy.md",
+        "03_education_loan_policy.md",
+        "04_vehicle_loan_policy.md"
+      ],
+      "category": "general_policy",
+      "expected_agent": "LOAN_AGENT",
+      "expected_data_source": "LOANS"
+    },
+    {
+      "case_id": "EVAL-0081",
+      "query_id": "Q081",
+      "query": "What are the features of your savings accounts?",
+      "customer_id": "CUST002",
+      "intent": "SAVINGS_INFORMATION",
+      "expected_route": "RAG",
+      "expected_tools": [],
+      "expected_sources": [
+        "06_savings_account_policy.md"
+      ],
+      "category": "general_policy",
+      "expected_agent": "PRODUCT_AGENT",
+      "expected_data_source": "PRODUCTS"
+    },
+    {
+      "case_id": "EVAL-0082",
+      "query_id": "Q082",
+      "query": "Give me a summary of my spending.",
+      "customer_id": "CUST010",
+      "intent": "SPENDING_ANALYSIS",
+      "expected_route": "TOOL",
+      "expected_tools": [
+        "get_transaction_summary"
+      ],
+      "expected_sources": [],
+      "category": "customer_specific",
+      "expected_agent": "BANKING_AGENT",
+      "expected_data_source": "TRANSACTIONS"
+    },
+    {
+      "case_id": "EVAL-0083",
+      "query_id": "Q083",
+      "query": "Show me all UPI transactions.",
+      "customer_id": "CUST006",
+      "intent": "TRANSACTION_SEARCH",
+      "expected_route": "TOOL",
+      "expected_tools": [
+        "get_transactions"
+      ],
+      "expected_sources": [],
+      "category": "customer_specific",
+      "expected_agent": "BANKING_AGENT",
+      "expected_data_source": "TRANSACTIONS"
+    },
+    {
+      "case_id": "EVAL-0084",
+      "query_id": "Q084",
+      "query": "How much have I spent in the last 30 days?",
+      "customer_id": "CUST010",
+      "intent": "SPENDING_ANALYSIS",
+      "expected_route": "TOOL",
+      "expected_tools": [
+        "get_transaction_summary"
+      ],
+      "expected_sources": [],
+      "category": "customer_specific",
+      "expected_agent": "BANKING_AGENT",
+      "expected_data_source": "TRANSACTIONS"
+    },
+    {
+      "case_id": "EVAL-0085",
+      "query_id": "Q085",
+      "query": "Was there a failed transaction on my account?",
+      "customer_id": "CUST007",
+      "intent": "TRANSACTION_SEARCH",
+      "expected_route": "TOOL",
+      "expected_tools": [
+        "get_transactions"
+      ],
+      "expected_sources": [],
+      "category": "customer_specific",
+      "expected_agent": "BANKING_AGENT",
+      "expected_data_source": "TRANSACTIONS"
+    },
+    {
+      "case_id": "EVAL-0086",
+      "query_id": "Q086",
+      "query": "What are your current FD interest rates?",
+      "customer_id": "CUST004",
+      "intent": "FD_INFORMATION",
+      "expected_route": "RAG",
+      "expected_tools": [],
+      "expected_sources": [
+        "07_fixed_deposit_policy.md"
+      ],
+      "category": "general_policy",
+      "expected_agent": "PRODUCT_AGENT",
+      "expected_data_source": "PRODUCTS"
+    },
+    {
+      "case_id": "EVAL-0087",
+      "query_id": "Q087",
+      "query": "Show me all UPI transactions.",
+      "customer_id": "CUST001",
+      "intent": "TRANSACTION_SEARCH",
+      "expected_route": "TOOL",
+      "expected_tools": [
+        "get_transactions"
+      ],
+      "expected_sources": [],
+      "category": "customer_specific",
+      "expected_agent": "BANKING_AGENT",
+      "expected_data_source": "TRANSACTIONS"
+    },
+    {
+      "case_id": "EVAL-0088",
+      "query_id": "Q088",
+      "query": "What savings account options do you have?",
+      "customer_id": "CUST004",
+      "intent": "SAVINGS_INFORMATION",
+      "expected_route": "RAG",
+      "expected_tools": [],
+      "expected_sources": [
+        "06_savings_account_policy.md"
+      ],
+      "category": "general_policy",
+      "expected_agent": "PRODUCT_AGENT",
+      "expected_data_source": "PRODUCTS"
+    },
+    {
+      "case_id": "EVAL-0089",
+      "query_id": "Q089",
+      "query": "What is the current interest rate for education loans?",
+      "customer_id": "CUST002",
+      "intent": "LOAN_INTEREST_RATE",
+      "expected_route": "RAG",
+      "expected_tools": [],
+      "expected_sources": [
+        "03_education_loan_policy.md"
+      ],
+      "category": "general_policy",
+      "expected_agent": "LOAN_AGENT",
+      "expected_data_source": "LOANS"
+    },
+    {
+      "case_id": "EVAL-0090",
+      "query_id": "Q090",
+      "query": "I have a question.",
+      "customer_id": "CUST003",
+      "intent": "GENERAL_BANKING_QUERY",
+      "expected_route": "UNSUPPORTED",
+      "expected_tools": [],
+      "expected_sources": [
+        "12_general_banking_faq.md"
+      ],
+      "category": "general_or_unsupported",
+      "expected_agent": "GENERAL_AGENT",
+      "expected_data_source": "KNOWLEDGE_BASE"
+    },
+    {
+      "case_id": "EVAL-0091",
+      "query_id": "Q091",
+      "query": "How much did I spend last month?",
+      "customer_id": "CUST010",
+      "intent": "MONTHLY_SPENDING",
+      "expected_route": "TOOL",
+      "expected_tools": [
+        "get_transaction_summary"
+      ],
+      "expected_sources": [],
+      "category": "customer_specific",
+      "expected_agent": "BANKING_AGENT",
+      "expected_data_source": "TRANSACTIONS"
+    },
+    {
+      "case_id": "EVAL-0092",
+      "query_id": "Q092",
+      "query": "What accounts do I have with NovaBank?",
+      "customer_id": "CUST003",
+      "intent": "ACCOUNT_DETAILS",
+      "expected_route": "TOOL",
+      "expected_tools": [
+        "get_accounts"
+      ],
+      "expected_sources": [],
+      "category": "customer_specific",
+      "expected_agent": "BANKING_AGENT",
+      "expected_data_source": "ACCOUNTS"
+    },
+    {
+      "case_id": "EVAL-0093",
+      "query_id": "Q093",
+      "query": "How much have I spent on travel?",
+      "customer_id": "CUST003",
+      "intent": "CATEGORY_SPENDING",
+      "expected_route": "TOOL",
+      "expected_tools": [
+        "get_transaction_summary"
+      ],
+      "expected_sources": [],
+      "category": "customer_specific",
+      "expected_agent": "BANKING_AGENT",
+      "expected_data_source": "TRANSACTIONS"
+    },
+    {
+      "case_id": "EVAL-0094",
+      "query_id": "Q094",
+      "query": "Is there a branch near my location?",
+      "customer_id": "CUST010",
+      "intent": "GENERAL_BANKING_QUERY",
+      "expected_route": "UNSUPPORTED",
+      "expected_tools": [],
+      "expected_sources": [
+        "12_general_banking_faq.md"
+      ],
+      "category": "general_or_unsupported",
+      "expected_agent": "GENERAL_AGENT",
+      "expected_data_source": "KNOWLEDGE_BASE"
+    },
+    {
+      "case_id": "EVAL-0095",
+      "query_id": "Q095",
+      "query": "Update my communication preference to WhatsApp.",
+      "customer_id": "CUST001",
+      "intent": "CUSTOMER_PROFILE",
+      "expected_route": "TOOL",
+      "expected_tools": [
+        "get_customer_details"
+      ],
+      "expected_sources": [],
+      "category": "customer_specific",
+      "expected_agent": "BANKING_AGENT",
+      "expected_data_source": "CUSTOMER_PROFILES"
+    },
+    {
+      "case_id": "EVAL-0096",
+      "query_id": "Q096",
+      "query": "What were my expenses in July 2026?",
+      "customer_id": "CUST004",
+      "intent": "MONTHLY_SPENDING",
+      "expected_route": "TOOL",
+      "expected_tools": [
+        "get_transaction_summary"
+      ],
+      "expected_sources": [],
+      "category": "customer_specific",
+      "expected_agent": "BANKING_AGENT",
+      "expected_data_source": "TRANSACTIONS"
+    },
+    {
+      "case_id": "EVAL-0097",
+      "query_id": "Q097",
+      "query": "What type of accounts do I have?",
+      "customer_id": "CUST009",
+      "intent": "ACCOUNT_DETAILS",
+      "expected_route": "TOOL",
+      "expected_tools": [
+        "get_accounts"
+      ],
+      "expected_sources": [],
+      "category": "customer_specific",
+      "expected_agent": "BANKING_AGENT",
+      "expected_data_source": "ACCOUNTS"
+    },
+    {
+      "case_id": "EVAL-0098",
+      "query_id": "Q098",
+      "query": "Play some music.",
+      "customer_id": "CUST002",
+      "intent": "UNKNOWN_QUERY",
+      "expected_route": "UNSUPPORTED",
+      "expected_tools": [],
+      "expected_sources": [],
+      "category": "unsupported",
+      "expected_agent": "GENERAL_AGENT",
+      "expected_data_source": "NONE"
+    },
+    {
+      "case_id": "EVAL-0099",
+      "query_id": "Q099",
+      "query": "What are the eligibility criteria for your credit cards?",
+      "customer_id": "CUST001",
+      "intent": "CREDIT_CARD_INFORMATION",
+      "expected_route": "RAG",
+      "expected_tools": [],
+      "expected_sources": [
+        "05_credit_card_policy.md"
+      ],
+      "category": "general_policy",
+      "expected_agent": "PRODUCT_AGENT",
+      "expected_data_source": "PRODUCTS"
+    },
+    {
+      "case_id": "EVAL-0100",
+      "query_id": "Q100",
+      "query": "Show me my education-related spending.",
+      "customer_id": "CUST009",
+      "intent": "CATEGORY_SPENDING",
+      "expected_route": "TOOL",
+      "expected_tools": [
+        "get_transaction_summary"
+      ],
+      "expected_sources": [],
+      "category": "customer_specific",
+      "expected_agent": "BANKING_AGENT",
+      "expected_data_source": "TRANSACTIONS"
+    },
+    {
+      "case_id": "EVAL-0101",
+      "query_id": "Q101",
+      "query": "What vehicle loan schemes do you have?",
+      "customer_id": "CUST001",
+      "intent": "LOAN_INFORMATION",
+      "expected_route": "RAG",
+      "expected_tools": [],
+      "expected_sources": [
+        "04_vehicle_loan_policy.md"
+      ],
+      "category": "general_policy",
+      "expected_agent": "LOAN_AGENT",
+      "expected_data_source": "LOANS"
+    },
+    {
+      "case_id": "EVAL-0102",
+      "query_id": "Q102",
+      "query": "What are the timings for RTGS transfers?",
+      "customer_id": "CUST010",
+      "intent": "BANKING_POLICY",
+      "expected_route": "RAG",
+      "expected_tools": [],
+      "expected_sources": [
+        "09_account_management_policy.md",
+        "12_general_banking_faq.md"
+      ],
+      "category": "general_policy",
+      "expected_agent": "PRODUCT_AGENT",
+      "expected_data_source": "PRODUCTS"
+    },
+    {
+      "case_id": "EVAL-0103",
+      "query_id": "Q103",
+      "query": "What transactions happened recently?",
+      "customer_id": "CUST008",
+      "intent": "TRANSACTION_HISTORY",
+      "expected_route": "TOOL",
+      "expected_tools": [
+        "get_transactions"
+      ],
+      "expected_sources": [],
+      "category": "customer_specific",
+      "expected_agent": "BANKING_AGENT",
+      "expected_data_source": "TRANSACTIONS"
+    },
+    {
+      "case_id": "EVAL-0104",
+      "query_id": "Q104",
+      "query": "How much did I spend on Amazon?",
+      "customer_id": "CUST001",
+      "intent": "MERCHANT_SPENDING",
+      "expected_route": "TOOL",
+      "expected_tools": [
+        "get_transactions"
+      ],
+      "expected_sources": [],
+      "category": "customer_specific",
+      "expected_agent": "BANKING_AGENT",
+      "expected_data_source": "TRANSACTIONS"
+    },
+    {
+      "case_id": "EVAL-0105",
+      "query_id": "Q105",
+      "query": "Tell me about the tax saver FD.",
+      "customer_id": "CUST010",
+      "intent": "FD_INFORMATION",
+      "expected_route": "RAG",
+      "expected_tools": [],
+      "expected_sources": [
+        "07_fixed_deposit_policy.md"
+      ],
+      "category": "general_policy",
+      "expected_agent": "PRODUCT_AGENT",
+      "expected_data_source": "PRODUCTS"
+    },
+    {
+      "case_id": "EVAL-0106",
+      "query_id": "Q106",
+      "query": "What credit cards do you offer?",
+      "customer_id": "CUST010",
+      "intent": "CREDIT_CARD_INFORMATION",
+      "expected_route": "RAG",
+      "expected_tools": [],
+      "expected_sources": [
+        "05_credit_card_policy.md"
+      ],
+      "category": "general_policy",
+      "expected_agent": "PRODUCT_AGENT",
+      "expected_data_source": "PRODUCTS"
+    },
+    {
+      "case_id": "EVAL-0107",
+      "query_id": "Q107",
+      "query": "What is the minimum amount for a fixed deposit?",
+      "customer_id": "CUST004",
+      "intent": "FD_INFORMATION",
+      "expected_route": "RAG",
+      "expected_tools": [],
+      "expected_sources": [
+        "07_fixed_deposit_policy.md"
+      ],
+      "category": "general_policy",
+      "expected_agent": "PRODUCT_AGENT",
+      "expected_data_source": "PRODUCTS"
+    },
+    {
+      "case_id": "EVAL-0108",
+      "query_id": "Q108",
+      "query": "What is my customer segment?",
+      "customer_id": "CUST001",
+      "intent": "CUSTOMER_PROFILE",
+      "expected_route": "TOOL",
+      "expected_tools": [
+        "get_customer_details"
+      ],
+      "expected_sources": [],
+      "category": "customer_specific",
+      "expected_agent": "BANKING_AGENT",
+      "expected_data_source": "CUSTOMER_PROFILES"
+    },
+    {
+      "case_id": "EVAL-0109",
+      "query_id": "Q109",
+      "query": "What are the eligibility criteria for your credit cards?",
+      "customer_id": "CUST004",
+      "intent": "CREDIT_CARD_INFORMATION",
+      "expected_route": "RAG",
+      "expected_tools": [],
+      "expected_sources": [
+        "05_credit_card_policy.md"
+      ],
+      "category": "general_policy",
+      "expected_agent": "PRODUCT_AGENT",
+      "expected_data_source": "PRODUCTS"
+    },
+    {
+      "case_id": "EVAL-0110",
+      "query_id": "Q110",
+      "query": "List my last 10 transactions.",
+      "customer_id": "CUST001",
+      "intent": "TRANSACTION_HISTORY",
+      "expected_route": "TOOL",
+      "expected_tools": [
+        "get_transactions"
+      ],
+      "expected_sources": [],
+      "category": "customer_specific",
+      "expected_agent": "BANKING_AGENT",
+      "expected_data_source": "TRANSACTIONS"
+    },
+    {
+      "case_id": "EVAL-0111",
+      "query_id": "Q111",
+      "query": "Show me my transactions with Myntra.",
+      "customer_id": "CUST008",
+      "intent": "MERCHANT_SPENDING",
+      "expected_route": "TOOL",
+      "expected_tools": [
+        "get_transactions"
+      ],
+      "expected_sources": [],
+      "category": "customer_specific",
+      "expected_agent": "BANKING_AGENT",
+      "expected_data_source": "TRANSACTIONS"
+    },
+    {
+      "case_id": "EVAL-0112",
+      "query_id": "Q112",
+      "query": "How much did I spend on entertainment?",
+      "customer_id": "CUST008",
+      "intent": "CATEGORY_SPENDING",
+      "expected_route": "TOOL",
+      "expected_tools": [
+        "get_transaction_summary"
+      ],
+      "expected_sources": [],
+      "category": "customer_specific",
+      "expected_agent": "BANKING_AGENT",
+      "expected_data_source": "TRANSACTIONS"
+    },
+    {
+      "case_id": "EVAL-0113",
+      "query_id": "Q113",
+      "query": "What loan options are available?",
+      "customer_id": "CUST003",
+      "intent": "LOAN_INFORMATION",
+      "expected_route": "RAG",
+      "expected_tools": [],
+      "expected_sources": [
+        "01_home_loan_policy.md",
+        "02_personal_loan_policy.md",
+        "03_education_loan_policy.md",
+        "04_vehicle_loan_policy.md"
+      ],
+      "category": "general_policy",
+      "expected_agent": "LOAN_AGENT",
+      "expected_data_source": "LOANS"
+    },
+    {
+      "case_id": "EVAL-0114",
+      "query_id": "Q114",
+      "query": "What is the minimum balance requirement?",
+      "customer_id": "CUST008",
+      "intent": "BANKING_POLICY",
+      "expected_route": "RAG",
+      "expected_tools": [],
+      "expected_sources": [
+        "09_account_management_policy.md",
+        "12_general_banking_faq.md"
+      ],
+      "category": "general_policy",
+      "expected_agent": "PRODUCT_AGENT",
+      "expected_data_source": "PRODUCTS"
+    },
+    {
+      "case_id": "EVAL-0115",
+      "query_id": "Q115",
+      "query": "What are my top spending categories?",
+      "customer_id": "CUST003",
+      "intent": "SPENDING_ANALYSIS",
+      "expected_route": "TOOL",
+      "expected_tools": [
+        "get_transaction_summary"
+      ],
+      "expected_sources": [],
+      "category": "customer_specific",
+      "expected_agent": "BANKING_AGENT",
+      "expected_data_source": "TRANSACTIONS"
+    },
+    {
+      "case_id": "EVAL-0116",
+      "query_id": "Q116",
+      "query": "Where am I spending most of my money?",
+      "customer_id": "CUST003",
+      "intent": "SPENDING_ANALYSIS",
+      "expected_route": "TOOL",
+      "expected_tools": [
+        "get_transaction_summary"
+      ],
+      "expected_sources": [],
+      "category": "customer_specific",
+      "expected_agent": "BANKING_AGENT",
+      "expected_data_source": "TRANSACTIONS"
+    },
+    {
+      "case_id": "EVAL-0117",
+      "query_id": "Q117",
+      "query": "Can I see my last five transactions?",
+      "customer_id": "CUST002",
+      "intent": "TRANSACTION_HISTORY",
+      "expected_route": "TOOL",
+      "expected_tools": [
+        "get_transactions"
+      ],
+      "expected_sources": [],
+      "category": "customer_specific",
+      "expected_agent": "BANKING_AGENT",
+      "expected_data_source": "TRANSACTIONS"
+    },
+    {
+      "case_id": "EVAL-0118",
+      "query_id": "Q118",
+      "query": "What types of loans does NovaBank offer?",
+      "customer_id": "CUST007",
+      "intent": "LOAN_INFORMATION",
+      "expected_route": "RAG",
+      "expected_tools": [],
+      "expected_sources": [
+        "01_home_loan_policy.md",
+        "02_personal_loan_policy.md",
+        "03_education_loan_policy.md",
+        "04_vehicle_loan_policy.md"
+      ],
+      "category": "general_policy",
+      "expected_agent": "LOAN_AGENT",
+      "expected_data_source": "LOANS"
+    },
+    {
+      "case_id": "EVAL-0119",
+      "query_id": "Q119",
+      "query": "Can you check my current balance?",
+      "customer_id": "CUST008",
+      "intent": "CHECK_BALANCE",
+      "expected_route": "TOOL",
+      "expected_tools": [
+        "get_balance"
+      ],
+      "expected_sources": [],
+      "category": "customer_specific",
+      "expected_agent": "BANKING_AGENT",
+      "expected_data_source": "ACCOUNTS"
+    },
+    {
+      "case_id": "EVAL-0120",
+      "query_id": "Q120",
+      "query": "Can you tell me about education loans?",
+      "customer_id": "CUST003",
+      "intent": "LOAN_INFORMATION",
+      "expected_route": "RAG",
+      "expected_tools": [],
+      "expected_sources": [
+        "03_education_loan_policy.md"
+      ],
+      "category": "general_policy",
+      "expected_agent": "LOAN_AGENT",
+      "expected_data_source": "LOANS"
+    },
+    {
+      "case_id": "EVAL-0121",
+      "query_id": "Q121",
+      "query": "Tell me about your premium savings account.",
+      "customer_id": "CUST004",
+      "intent": "SAVINGS_INFORMATION",
+      "expected_route": "RAG",
+      "expected_tools": [],
+      "expected_sources": [
+        "06_savings_account_policy.md"
+      ],
+      "category": "general_policy",
+      "expected_agent": "PRODUCT_AGENT",
+      "expected_data_source": "PRODUCTS"
+    },
+    {
+      "case_id": "EVAL-0122",
+      "query_id": "Q122",
+      "query": "What was my total spending in August?",
+      "customer_id": "CUST005",
+      "intent": "MONTHLY_SPENDING",
+      "expected_route": "TOOL",
+      "expected_tools": [
+        "get_transaction_summary"
+      ],
+      "expected_sources": [],
+      "category": "customer_specific",
+      "expected_agent": "BANKING_AGENT",
+      "expected_data_source": "TRANSACTIONS"
+    },
+    {
+      "case_id": "EVAL-0123",
+      "query_id": "Q123",
+      "query": "What is the policy for closing an account?",
+      "customer_id": "CUST003",
+      "intent": "BANKING_POLICY",
+      "expected_route": "RAG",
+      "expected_tools": [],
+      "expected_sources": [
+        "09_account_management_policy.md",
+        "12_general_banking_faq.md"
+      ],
+      "category": "general_policy",
+      "expected_agent": "PRODUCT_AGENT",
+      "expected_data_source": "PRODUCTS"
+    },
+    {
+      "case_id": "EVAL-0124",
+      "query_id": "Q124",
+      "query": "I have a question.",
+      "customer_id": "CUST004",
+      "intent": "GENERAL_BANKING_QUERY",
+      "expected_route": "UNSUPPORTED",
+      "expected_tools": [],
+      "expected_sources": [
+        "12_general_banking_faq.md"
+      ],
+      "category": "general_or_unsupported",
+      "expected_agent": "GENERAL_AGENT",
+      "expected_data_source": "KNOWLEDGE_BASE"
+    },
+    {
+      "case_id": "EVAL-0125",
+      "query_id": "Q125",
+      "query": "What were my recent debit transactions?",
+      "customer_id": "CUST003",
+      "intent": "TRANSACTION_HISTORY",
+      "expected_route": "TOOL",
+      "expected_tools": [
+        "get_transactions"
+      ],
+      "expected_sources": [],
+      "category": "customer_specific",
+      "expected_agent": "BANKING_AGENT",
+      "expected_data_source": "TRANSACTIONS"
+    },
+    {
+      "case_id": "EVAL-0126",
+      "query_id": "Q126",
+      "query": "Find any transactions above 10000 rupees.",
+      "customer_id": "CUST005",
+      "intent": "TRANSACTION_SEARCH",
+      "expected_route": "TOOL",
+      "expected_tools": [
+        "get_transactions"
+      ],
+      "expected_sources": [],
+      "category": "customer_specific",
+      "expected_agent": "BANKING_AGENT",
+      "expected_data_source": "TRANSACTIONS"
+    },
+    {
+      "case_id": "EVAL-0127",
+      "query_id": "Q127",
+      "query": "What's my transaction history for this month?",
+      "customer_id": "CUST005",
+      "intent": "TRANSACTION_HISTORY",
+      "expected_route": "TOOL",
+      "expected_tools": [
+        "get_transactions"
+      ],
+      "expected_sources": [],
+      "category": "customer_specific",
+      "expected_agent": "BANKING_AGENT",
+      "expected_data_source": "TRANSACTIONS"
+    },
+    {
+      "case_id": "EVAL-0128",
+      "query_id": "Q128",
+      "query": "I have a question.",
+      "customer_id": "CUST001",
+      "intent": "GENERAL_BANKING_QUERY",
+      "expected_route": "UNSUPPORTED",
+      "expected_tools": [],
+      "expected_sources": [
+        "12_general_banking_faq.md"
+      ],
+      "category": "general_or_unsupported",
+      "expected_agent": "GENERAL_AGENT",
+      "expected_data_source": "KNOWLEDGE_BASE"
+    },
+    {
+      "case_id": "EVAL-0129",
+      "query_id": "Q129",
+      "query": "Tell me something about banking.",
+      "customer_id": "CUST007",
+      "intent": "GENERAL_BANKING_QUERY",
+      "expected_route": "UNSUPPORTED",
+      "expected_tools": [],
+      "expected_sources": [
+        "12_general_banking_faq.md"
+      ],
+      "category": "general_or_unsupported",
+      "expected_agent": "GENERAL_AGENT",
+      "expected_data_source": "KNOWLEDGE_BASE"
+    },
+    {
+      "case_id": "EVAL-0130",
+      "query_id": "Q130",
+      "query": "What is the annual fee for the Gold Credit Card?",
+      "customer_id": "CUST010",
+      "intent": "CREDIT_CARD_INFORMATION",
+      "expected_route": "RAG",
+      "expected_tools": [],
+      "expected_sources": [
+        "05_credit_card_policy.md"
+      ],
+      "category": "general_policy",
+      "expected_agent": "PRODUCT_AGENT",
+      "expected_data_source": "PRODUCTS"
+    },
+    {
+      "case_id": "EVAL-0131",
+      "query_id": "Q131",
+      "query": "Show my recent transactions.",
+      "customer_id": "CUST001",
+      "intent": "TRANSACTION_HISTORY",
+      "expected_route": "TOOL",
+      "expected_tools": [
+        "get_transactions"
+      ],
+      "expected_sources": [],
+      "category": "customer_specific",
+      "expected_agent": "BANKING_AGENT",
+      "expected_data_source": "TRANSACTIONS"
+    },
+    {
+      "case_id": "EVAL-0132",
+      "query_id": "Q132",
+      "query": "Am I eligible for the NovaBank Home Loan Premium?",
+      "customer_id": "CUST006",
+      "intent": "LOAN_ELIGIBILITY",
+      "expected_route": "BOTH",
+      "expected_tools": [
+        "check_loan_eligibility"
+      ],
+      "expected_sources": [
+        "01_home_loan_policy.md"
+      ],
+      "category": "customer_and_policy",
+      "expected_agent": "LOAN_AGENT",
+      "expected_data_source": "LOANS"
+    },
+    {
+      "case_id": "EVAL-0133",
+      "query_id": "Q133",
+      "query": "What FD options are available?",
+      "customer_id": "CUST007",
+      "intent": "FD_INFORMATION",
+      "expected_route": "RAG",
+      "expected_tools": [],
+      "expected_sources": [
+        "07_fixed_deposit_policy.md"
+      ],
+      "category": "general_policy",
+      "expected_agent": "PRODUCT_AGENT",
+      "expected_data_source": "PRODUCTS"
+    },
+    {
+      "case_id": "EVAL-0134",
+      "query_id": "Q134",
+      "query": "What is the process for linking Aadhaar with my account?",
+      "customer_id": "CUST007",
+      "intent": "BANKING_POLICY",
+      "expected_route": "RAG",
+      "expected_tools": [],
+      "expected_sources": [
+        "09_account_management_policy.md",
+        "12_general_banking_faq.md"
+      ],
+      "category": "general_policy",
+      "expected_agent": "PRODUCT_AGENT",
+      "expected_data_source": "PRODUCTS"
+    },
+    {
+      "case_id": "EVAL-0135",
+      "query_id": "Q135",
+      "query": "Compare my spending this month versus last month.",
+      "customer_id": "CUST003",
+      "intent": "MONTHLY_SPENDING",
+      "expected_route": "TOOL",
+      "expected_tools": [
+        "get_transaction_summary"
+      ],
+      "expected_sources": [],
+      "category": "customer_specific",
+      "expected_agent": "BANKING_AGENT",
+      "expected_data_source": "TRANSACTIONS"
+    },
+    {
+      "case_id": "EVAL-0136",
+      "query_id": "Q136",
+      "query": "How much did I spend on Amazon?",
+      "customer_id": "CUST005",
+      "intent": "MERCHANT_SPENDING",
+      "expected_route": "TOOL",
+      "expected_tools": [
+        "get_transactions"
+      ],
+      "expected_sources": [],
+      "category": "customer_specific",
+      "expected_agent": "BANKING_AGENT",
+      "expected_data_source": "TRANSACTIONS"
+    },
+    {
+      "case_id": "EVAL-0137",
+      "query_id": "Q137",
+      "query": "What details do you have about me?",
+      "customer_id": "CUST001",
+      "intent": "CUSTOMER_PROFILE",
+      "expected_route": "TOOL",
+      "expected_tools": [
+        "get_customer_details"
+      ],
+      "expected_sources": [],
+      "category": "customer_specific",
+      "expected_agent": "BANKING_AGENT",
+      "expected_data_source": "CUSTOMER_PROFILES"
+    },
+    {
+      "case_id": "EVAL-0138",
+      "query_id": "Q138",
+      "query": "I want to apply for a credit card. What options do I have?",
+      "customer_id": "CUST009",
+      "intent": "CREDIT_CARD_INFORMATION",
+      "expected_route": "RAG",
+      "expected_tools": [],
+      "expected_sources": [
+        "05_credit_card_policy.md"
+      ],
+      "category": "general_policy",
+      "expected_agent": "PRODUCT_AGENT",
+      "expected_data_source": "PRODUCTS"
+    },
+    {
+      "case_id": "EVAL-0139",
+      "query_id": "Q139",
+      "query": "I want to change my password.",
+      "customer_id": "CUST007",
+      "intent": "UNKNOWN_QUERY",
+      "expected_route": "UNSUPPORTED",
+      "expected_tools": [],
+      "expected_sources": [],
+      "category": "unsupported",
+      "expected_agent": "GENERAL_AGENT",
+      "expected_data_source": "NONE"
+    },
+    {
+      "case_id": "EVAL-0140",
+      "query_id": "Q140",
+      "query": "What did I spend at Swiggy last month?",
+      "customer_id": "CUST008",
+      "intent": "MERCHANT_SPENDING",
+      "expected_route": "TOOL",
+      "expected_tools": [
+        "get_transactions"
+      ],
+      "expected_sources": [],
+      "category": "customer_specific",
+      "expected_agent": "BANKING_AGENT",
+      "expected_data_source": "TRANSACTIONS"
+    },
+    {
+      "case_id": "EVAL-0141",
+      "query_id": "Q141",
+      "query": "I want to know my account balance.",
+      "customer_id": "CUST006",
+      "intent": "CHECK_BALANCE",
+      "expected_route": "TOOL",
+      "expected_tools": [
+        "get_balance"
+      ],
+      "expected_sources": [],
+      "category": "customer_specific",
+      "expected_agent": "BANKING_AGENT",
+      "expected_data_source": "ACCOUNTS"
+    },
+    {
+      "case_id": "EVAL-0142",
+      "query_id": "Q142",
+      "query": "Tell me my available balance.",
+      "customer_id": "CUST008",
+      "intent": "CHECK_BALANCE",
+      "expected_route": "TOOL",
+      "expected_tools": [
+        "get_balance"
+      ],
+      "expected_sources": [],
+      "category": "customer_specific",
+      "expected_agent": "BANKING_AGENT",
+      "expected_data_source": "ACCOUNTS"
+    },
+    {
+      "case_id": "EVAL-0143",
+      "query_id": "Q143",
+      "query": "Show me my account balance.",
+      "customer_id": "CUST003",
+      "intent": "CHECK_BALANCE",
+      "expected_route": "TOOL",
+      "expected_tools": [
+        "get_balance"
+      ],
+      "expected_sources": [],
+      "category": "customer_specific",
+      "expected_agent": "BANKING_AGENT",
+      "expected_data_source": "ACCOUNTS"
+    },
+    {
+      "case_id": "EVAL-0144",
+      "query_id": "Q144",
+      "query": "List the documents needed for an education loan.",
+      "customer_id": "CUST006",
+      "intent": "LOAN_DOCUMENTS",
+      "expected_route": "RAG",
+      "expected_tools": [],
+      "expected_sources": [
+        "03_education_loan_policy.md"
+      ],
+      "category": "general_policy",
+      "expected_agent": "LOAN_AGENT",
+      "expected_data_source": "LOANS"
+    },
+    {
+      "case_id": "EVAL-0145",
+      "query_id": "Q145",
+      "query": "What were my expenses in July 2026?",
+      "customer_id": "CUST005",
+      "intent": "MONTHLY_SPENDING",
+      "expected_route": "TOOL",
+      "expected_tools": [
+        "get_transaction_summary"
+      ],
+      "expected_sources": [],
+      "category": "customer_specific",
+      "expected_agent": "BANKING_AGENT",
+      "expected_data_source": "TRANSACTIONS"
+    },
+    {
+      "case_id": "EVAL-0146",
+      "query_id": "Q146",
+      "query": "What are the rules for fixed deposits?",
+      "customer_id": "CUST008",
+      "intent": "BANKING_POLICY",
+      "expected_route": "RAG",
+      "expected_tools": [],
+      "expected_sources": [
+        "09_account_management_policy.md",
+        "12_general_banking_faq.md"
+      ],
+      "category": "general_policy",
+      "expected_agent": "PRODUCT_AGENT",
+      "expected_data_source": "PRODUCTS"
+    },
+    {
+      "case_id": "EVAL-0147",
+      "query_id": "Q147",
+      "query": "Give me my monthly spending summary.",
+      "customer_id": "CUST008",
+      "intent": "MONTHLY_SPENDING",
+      "expected_route": "TOOL",
+      "expected_tools": [
+        "get_transaction_summary"
+      ],
+      "expected_sources": [],
+      "category": "customer_specific",
+      "expected_agent": "BANKING_AGENT",
+      "expected_data_source": "TRANSACTIONS"
+    },
+    {
+      "case_id": "EVAL-0148",
+      "query_id": "Q148",
+      "query": "Show me my account details.",
+      "customer_id": "CUST001",
+      "intent": "ACCOUNT_DETAILS",
+      "expected_route": "TOOL",
+      "expected_tools": [
+        "get_accounts"
+      ],
+      "expected_sources": [],
+      "category": "customer_specific",
+      "expected_agent": "BANKING_AGENT",
+      "expected_data_source": "ACCOUNTS"
+    },
+    {
+      "case_id": "EVAL-0149",
+      "query_id": "Q149",
+      "query": "What is the interest rate on your savings accounts?",
+      "customer_id": "CUST005",
+      "intent": "SAVINGS_INFORMATION",
+      "expected_route": "RAG",
+      "expected_tools": [],
+      "expected_sources": [
+        "06_savings_account_policy.md"
+      ],
+      "category": "general_policy",
+      "expected_agent": "PRODUCT_AGENT",
+      "expected_data_source": "PRODUCTS"
+    },
+    {
+      "case_id": "EVAL-0150",
+      "query_id": "Q150",
+      "query": "Find my last payment to Flipkart.",
+      "customer_id": "CUST006",
+      "intent": "TRANSACTION_SEARCH",
+      "expected_route": "TOOL",
+      "expected_tools": [
+        "get_transactions"
+      ],
+      "expected_sources": [],
+      "category": "customer_specific",
+      "expected_agent": "BANKING_AGENT",
+      "expected_data_source": "TRANSACTIONS"
+    },
+    {
+      "case_id": "EVAL-0151",
+      "query_id": "Q151",
+      "query": "Check if I can get a two-wheeler loan.",
+      "customer_id": "CUST007",
+      "intent": "LOAN_ELIGIBILITY",
+      "expected_route": "BOTH",
+      "expected_tools": [
+        "check_loan_eligibility"
+      ],
+      "expected_sources": [
+        "01_home_loan_policy.md",
+        "02_personal_loan_policy.md",
+        "03_education_loan_policy.md",
+        "04_vehicle_loan_policy.md"
+      ],
+      "category": "customer_and_policy",
+      "expected_agent": "LOAN_AGENT",
+      "expected_data_source": "LOANS"
+    },
+    {
+      "case_id": "EVAL-0152",
+      "query_id": "Q152",
+      "query": "Can you book a flight for me?",
+      "customer_id": "CUST004",
+      "intent": "UNKNOWN_QUERY",
+      "expected_route": "UNSUPPORTED",
+      "expected_tools": [],
+      "expected_sources": [],
+      "category": "unsupported",
+      "expected_agent": "GENERAL_AGENT",
+      "expected_data_source": "NONE"
+    },
+    {
+      "case_id": "EVAL-0153",
+      "query_id": "Q153",
+      "query": "Please check how much balance I have.",
+      "customer_id": "CUST003",
+      "intent": "CHECK_BALANCE",
+      "expected_route": "TOOL",
+      "expected_tools": [
+        "get_balance"
+      ],
+      "expected_sources": [],
+      "category": "customer_specific",
+      "expected_agent": "BANKING_AGENT",
+      "expected_data_source": "ACCOUNTS"
+    },
+    {
+      "case_id": "EVAL-0154",
+      "query_id": "Q154",
+      "query": "What paperwork is required for a car loan?",
+      "customer_id": "CUST003",
+      "intent": "LOAN_DOCUMENTS",
+      "expected_route": "RAG",
+      "expected_tools": [],
+      "expected_sources": [
+        "04_vehicle_loan_policy.md"
+      ],
+      "category": "general_policy",
+      "expected_agent": "LOAN_AGENT",
+      "expected_data_source": "LOANS"
+    },
+    {
+      "case_id": "EVAL-0155",
+      "query_id": "Q155",
+      "query": "What is the minimum balance for a savings account?",
+      "customer_id": "CUST008",
+      "intent": "SAVINGS_INFORMATION",
+      "expected_route": "RAG",
+      "expected_tools": [],
+      "expected_sources": [
+        "06_savings_account_policy.md"
+      ],
+      "category": "general_policy",
+      "expected_agent": "PRODUCT_AGENT",
+      "expected_data_source": "PRODUCTS"
+    },
+    {
+      "case_id": "EVAL-0156",
+      "query_id": "Q156",
+      "query": "I want to see my recent bank transactions.",
+      "customer_id": "CUST004",
+      "intent": "TRANSACTION_HISTORY",
+      "expected_route": "TOOL",
+      "expected_tools": [
+        "get_transactions"
+      ],
+      "expected_sources": [],
+      "category": "customer_specific",
+      "expected_agent": "BANKING_AGENT",
+      "expected_data_source": "TRANSACTIONS"
+    },
+    {
+      "case_id": "EVAL-0157",
+      "query_id": "Q157",
+      "query": "How much money is in my account?",
+      "customer_id": "CUST006",
+      "intent": "CHECK_BALANCE",
+      "expected_route": "TOOL",
+      "expected_tools": [
+        "get_balance"
+      ],
+      "expected_sources": [],
+      "category": "customer_specific",
+      "expected_agent": "BANKING_AGENT",
+      "expected_data_source": "ACCOUNTS"
+    },
+    {
+      "case_id": "EVAL-0158",
+      "query_id": "Q158",
+      "query": "Tell me a joke.",
+      "customer_id": "CUST008",
+      "intent": "UNKNOWN_QUERY",
+      "expected_route": "UNSUPPORTED",
+      "expected_tools": [],
+      "expected_sources": [],
+      "category": "unsupported",
+      "expected_agent": "GENERAL_AGENT",
+      "expected_data_source": "NONE"
+    },
+    {
+      "case_id": "EVAL-0159",
+      "query_id": "Q159",
+      "query": "Can I apply for a car loan with my current salary?",
+      "customer_id": "CUST002",
+      "intent": "LOAN_ELIGIBILITY",
+      "expected_route": "BOTH",
+      "expected_tools": [
+        "check_loan_eligibility"
+      ],
+      "expected_sources": [
+        "04_vehicle_loan_policy.md"
+      ],
+      "category": "customer_and_policy",
+      "expected_agent": "LOAN_AGENT",
+      "expected_data_source": "LOANS"
+    },
+    {
+      "case_id": "EVAL-0160",
+      "query_id": "Q160",
+      "query": "I want to see my recent bank transactions.",
+      "customer_id": "CUST004",
+      "intent": "TRANSACTION_HISTORY",
+      "expected_route": "TOOL",
+      "expected_tools": [
+        "get_transactions"
+      ],
+      "expected_sources": [],
+      "category": "customer_specific",
+      "expected_agent": "BANKING_AGENT",
+      "expected_data_source": "TRANSACTIONS"
+    },
+    {
+      "case_id": "EVAL-0161",
+      "query_id": "Q161",
+      "query": "What is my total food delivery expenditure?",
+      "customer_id": "CUST007",
+      "intent": "CATEGORY_SPENDING",
+      "expected_route": "TOOL",
+      "expected_tools": [
+        "get_transaction_summary"
+      ],
+      "expected_sources": [],
+      "category": "customer_specific",
+      "expected_agent": "BANKING_AGENT",
+      "expected_data_source": "TRANSACTIONS"
+    },
+    {
+      "case_id": "EVAL-0162",
+      "query_id": "Q162",
+      "query": "Am I a premium customer?",
+      "customer_id": "CUST004",
+      "intent": "CUSTOMER_PROFILE",
+      "expected_route": "TOOL",
+      "expected_tools": [
+        "get_customer_details"
+      ],
+      "expected_sources": [],
+      "category": "customer_specific",
+      "expected_agent": "BANKING_AGENT",
+      "expected_data_source": "CUSTOMER_PROFILES"
+    },
+    {
+      "case_id": "EVAL-0163",
+      "query_id": "Q163",
+      "query": "Show all my transactions from this month.",
+      "customer_id": "CUST005",
+      "intent": "TRANSACTION_HISTORY",
+      "expected_route": "TOOL",
+      "expected_tools": [
+        "get_transactions"
+      ],
+      "expected_sources": [],
+      "category": "customer_specific",
+      "expected_agent": "BANKING_AGENT",
+      "expected_data_source": "TRANSACTIONS"
+    },
+    {
+      "case_id": "EVAL-0164",
+      "query_id": "Q164",
+      "query": "Give me all my account information.",
+      "customer_id": "CUST008",
+      "intent": "ACCOUNT_DETAILS",
+      "expected_route": "TOOL",
+      "expected_tools": [
+        "get_accounts"
+      ],
+      "expected_sources": [],
+      "category": "customer_specific",
+      "expected_agent": "BANKING_AGENT",
+      "expected_data_source": "ACCOUNTS"
+    },
+    {
+      "case_id": "EVAL-0165",
+      "query_id": "Q165",
+      "query": "What is the balance in my savings account?",
+      "customer_id": "CUST001",
+      "intent": "CHECK_BALANCE",
+      "expected_route": "TOOL",
+      "expected_tools": [
+        "get_balance"
+      ],
+      "expected_sources": [],
+      "category": "customer_specific",
+      "expected_agent": "BANKING_AGENT",
+      "expected_data_source": "ACCOUNTS"
+    },
+    {
+      "case_id": "EVAL-0166",
+      "query_id": "Q166",
+      "query": "Find my last payment to Flipkart.",
+      "customer_id": "CUST001",
+      "intent": "TRANSACTION_SEARCH",
+      "expected_route": "TOOL",
+      "expected_tools": [
+        "get_transactions"
+      ],
+      "expected_sources": [],
+      "category": "customer_specific",
+      "expected_agent": "BANKING_AGENT",
+      "expected_data_source": "TRANSACTIONS"
+    },
+    {
+      "case_id": "EVAL-0167",
+      "query_id": "Q167",
+      "query": "What rate do you offer for personal loans?",
+      "customer_id": "CUST004",
+      "intent": "LOAN_INTEREST_RATE",
+      "expected_route": "RAG",
+      "expected_tools": [],
+      "expected_sources": [
+        "02_personal_loan_policy.md"
+      ],
+      "category": "general_policy",
+      "expected_agent": "LOAN_AGENT",
+      "expected_data_source": "LOANS"
+    },
+    {
+      "case_id": "EVAL-0168",
+      "query_id": "Q168",
+      "query": "Tell me the document requirements for the instant personal loan.",
+      "customer_id": "CUST008",
+      "intent": "LOAN_DOCUMENTS",
+      "expected_route": "RAG",
+      "expected_tools": [],
+      "expected_sources": [
+        "02_personal_loan_policy.md"
+      ],
+      "category": "general_policy",
+      "expected_agent": "LOAN_AGENT",
+      "expected_data_source": "LOANS"
+    },
+    {
+      "case_id": "EVAL-0169",
+      "query_id": "Q169",
+      "query": "What is the current interest rate for education loans?",
+      "customer_id": "CUST009",
+      "intent": "LOAN_INTEREST_RATE",
+      "expected_route": "RAG",
+      "expected_tools": [],
+      "expected_sources": [
+        "03_education_loan_policy.md"
+      ],
+      "category": "general_policy",
+      "expected_agent": "LOAN_AGENT",
+      "expected_data_source": "LOANS"
+    },
+    {
+      "case_id": "EVAL-0170",
+      "query_id": "Q170",
+      "query": "Do you have a zero balance savings account?",
+      "customer_id": "CUST005",
+      "intent": "SAVINGS_INFORMATION",
+      "expected_route": "RAG",
+      "expected_tools": [],
+      "expected_sources": [
+        "06_savings_account_policy.md"
+      ],
+      "category": "general_policy",
+      "expected_agent": "PRODUCT_AGENT",
+      "expected_data_source": "PRODUCTS"
+    },
+    {
+      "case_id": "EVAL-0171",
+      "query_id": "Q171",
+      "query": "What details do you have about me?",
+      "customer_id": "CUST003",
+      "intent": "CUSTOMER_PROFILE",
+      "expected_route": "TOOL",
+      "expected_tools": [
+        "get_customer_details"
+      ],
+      "expected_sources": [],
+      "category": "customer_specific",
+      "expected_agent": "BANKING_AGENT",
+      "expected_data_source": "CUSTOMER_PROFILES"
+    },
+    {
+      "case_id": "EVAL-0172",
+      "query_id": "Q172",
+      "query": "Tell me my available balance.",
+      "customer_id": "CUST008",
+      "intent": "CHECK_BALANCE",
+      "expected_route": "TOOL",
+      "expected_tools": [
+        "get_balance"
+      ],
+      "expected_sources": [],
+      "category": "customer_specific",
+      "expected_agent": "BANKING_AGENT",
+      "expected_data_source": "ACCOUNTS"
+    },
+    {
+      "case_id": "EVAL-0173",
+      "query_id": "Q173",
+      "query": "What did I spend on BookMyShow?",
+      "customer_id": "CUST004",
+      "intent": "MERCHANT_SPENDING",
+      "expected_route": "TOOL",
+      "expected_tools": [
+        "get_transactions"
+      ],
+      "expected_sources": [],
+      "category": "customer_specific",
+      "expected_agent": "BANKING_AGENT",
+      "expected_data_source": "TRANSACTIONS"
+    },
+    {
+      "case_id": "EVAL-0174",
+      "query_id": "Q174",
+      "query": "Good morning, can I speak to someone?",
+      "customer_id": "CUST004",
+      "intent": "GENERAL_BANKING_QUERY",
+      "expected_route": "UNSUPPORTED",
+      "expected_tools": [],
+      "expected_sources": [
+        "12_general_banking_faq.md"
+      ],
+      "category": "general_or_unsupported",
+      "expected_agent": "GENERAL_AGENT",
+      "expected_data_source": "KNOWLEDGE_BASE"
+    },
+    {
+      "case_id": "EVAL-0175",
+      "query_id": "Q175",
+      "query": "How much have I spent at Apollo Pharmacy?",
+      "customer_id": "CUST005",
+      "intent": "MERCHANT_SPENDING",
+      "expected_route": "TOOL",
+      "expected_tools": [
+        "get_transactions"
+      ],
+      "expected_sources": [],
+      "category": "customer_specific",
+      "expected_agent": "BANKING_AGENT",
+      "expected_data_source": "TRANSACTIONS"
+    },
+    {
+      "case_id": "EVAL-0176",
+      "query_id": "Q176",
+      "query": "What are the charges for not maintaining minimum balance?",
+      "customer_id": "CUST006",
+      "intent": "BANKING_POLICY",
+      "expected_route": "RAG",
+      "expected_tools": [],
+      "expected_sources": [
+        "09_account_management_policy.md",
+        "12_general_banking_faq.md"
+      ],
+      "category": "general_policy",
+      "expected_agent": "PRODUCT_AGENT",
+      "expected_data_source": "PRODUCTS"
+    },
+    {
+      "case_id": "EVAL-0177",
+      "query_id": "Q177",
+      "query": "How much do I have in my savings account?",
+      "customer_id": "CUST007",
+      "intent": "CHECK_BALANCE",
+      "expected_route": "TOOL",
+      "expected_tools": [
+        "get_balance"
+      ],
+      "expected_sources": [],
+      "category": "customer_specific",
+      "expected_agent": "BANKING_AGENT",
+      "expected_data_source": "ACCOUNTS"
+    },
+    {
+      "case_id": "EVAL-0178",
+      "query_id": "Q178",
+      "query": "What rate do you offer for personal loans?",
+      "customer_id": "CUST010",
+      "intent": "LOAN_INTEREST_RATE",
+      "expected_route": "RAG",
+      "expected_tools": [],
+      "expected_sources": [
+        "02_personal_loan_policy.md"
+      ],
+      "category": "general_policy",
+      "expected_agent": "LOAN_AGENT",
+      "expected_data_source": "LOANS"
+    },
+    {
+      "case_id": "EVAL-0179",
+      "query_id": "Q179",
+      "query": "Search for a transaction of 5000 rupees.",
+      "customer_id": "CUST010",
+      "intent": "TRANSACTION_SEARCH",
+      "expected_route": "TOOL",
+      "expected_tools": [
+        "get_transactions"
+      ],
+      "expected_sources": [],
+      "category": "customer_specific",
+      "expected_agent": "BANKING_AGENT",
+      "expected_data_source": "TRANSACTIONS"
+    },
+    {
+      "case_id": "EVAL-0180",
+      "query_id": "Q180",
+      "query": "Show me month-wise spending for the last 3 months.",
+      "customer_id": "CUST001",
+      "intent": "MONTHLY_SPENDING",
+      "expected_route": "TOOL",
+      "expected_tools": [
+        "get_transaction_summary"
+      ],
+      "expected_sources": [],
+      "category": "customer_specific",
+      "expected_agent": "BANKING_AGENT",
+      "expected_data_source": "TRANSACTIONS"
+    },
+    {
+      "case_id": "EVAL-0181",
+      "query_id": "Q181",
+      "query": "Did I receive my salary this month?",
+      "customer_id": "CUST006",
+      "intent": "TRANSACTION_SEARCH",
+      "expected_route": "TOOL",
+      "expected_tools": [
+        "get_transactions"
+      ],
+      "expected_sources": [],
+      "category": "customer_specific",
+      "expected_agent": "BANKING_AGENT",
+      "expected_data_source": "TRANSACTIONS"
+    },
+    {
+      "case_id": "EVAL-0182",
+      "query_id": "Q182",
+      "query": "I need assistance with my account.",
+      "customer_id": "CUST001",
+      "intent": "GENERAL_BANKING_QUERY",
+      "expected_route": "UNSUPPORTED",
+      "expected_tools": [],
+      "expected_sources": [
+        "12_general_banking_faq.md"
+      ],
+      "category": "general_or_unsupported",
+      "expected_agent": "GENERAL_AGENT",
+      "expected_data_source": "KNOWLEDGE_BASE"
+    },
+    {
+      "case_id": "EVAL-0183",
+      "query_id": "Q183",
+      "query": "Tell me about your personal loans.",
+      "customer_id": "CUST006",
+      "intent": "LOAN_INFORMATION",
+      "expected_route": "RAG",
+      "expected_tools": [],
+      "expected_sources": [
+        "02_personal_loan_policy.md"
+      ],
+      "category": "general_policy",
+      "expected_agent": "LOAN_AGENT",
+      "expected_data_source": "LOANS"
+    },
+    {
+      "case_id": "EVAL-0184",
+      "query_id": "Q184",
+      "query": "How much interest will I pay on a personal loan of 5 lakhs?",
+      "customer_id": "CUST004",
+      "intent": "LOAN_INTEREST_RATE",
+      "expected_route": "RAG",
+      "expected_tools": [],
+      "expected_sources": [
+        "02_personal_loan_policy.md"
+      ],
+      "category": "general_policy",
+      "expected_agent": "LOAN_AGENT",
+      "expected_data_source": "LOANS"
+    },
+    {
+      "case_id": "EVAL-0185",
+      "query_id": "Q185",
+      "query": "Who won the cricket match?",
+      "customer_id": "CUST005",
+      "intent": "UNKNOWN_QUERY",
+      "expected_route": "UNSUPPORTED",
+      "expected_tools": [],
+      "expected_sources": [],
+      "category": "unsupported",
+      "expected_agent": "GENERAL_AGENT",
+      "expected_data_source": "NONE"
+    },
+    {
+      "case_id": "EVAL-0186",
+      "query_id": "Q186",
+      "query": "What are your customer care timings?",
+      "customer_id": "CUST001",
+      "intent": "GENERAL_BANKING_QUERY",
+      "expected_route": "UNSUPPORTED",
+      "expected_tools": [],
+      "expected_sources": [
+        "12_general_banking_faq.md"
+      ],
+      "category": "general_or_unsupported",
+      "expected_agent": "GENERAL_AGENT",
+      "expected_data_source": "KNOWLEDGE_BASE"
+    },
+    {
+      "case_id": "EVAL-0187",
+      "query_id": "Q187",
+      "query": "What is the NEFT transfer limit?",
+      "customer_id": "CUST008",
+      "intent": "BANKING_POLICY",
+      "expected_route": "RAG",
+      "expected_tools": [],
+      "expected_sources": [
+        "09_account_management_policy.md",
+        "12_general_banking_faq.md"
+      ],
+      "category": "general_policy",
+      "expected_agent": "PRODUCT_AGENT",
+      "expected_data_source": "PRODUCTS"
+    },
+    {
+      "case_id": "EVAL-0188",
+      "query_id": "Q188",
+      "query": "What did I spend on shopping this month?",
+      "customer_id": "CUST006",
+      "intent": "CATEGORY_SPENDING",
+      "expected_route": "TOOL",
+      "expected_tools": [
+        "get_transaction_summary"
+      ],
+      "expected_sources": [],
+      "category": "customer_specific",
+      "expected_agent": "BANKING_AGENT",
+      "expected_data_source": "TRANSACTIONS"
+    },
+    {
+      "case_id": "EVAL-0189",
+      "query_id": "Q189",
+      "query": "Tell me about my NovaBank accounts.",
+      "customer_id": "CUST004",
+      "intent": "ACCOUNT_DETAILS",
+      "expected_route": "TOOL",
+      "expected_tools": [
+        "get_accounts"
+      ],
+      "expected_sources": [],
+      "category": "customer_specific",
+      "expected_agent": "BANKING_AGENT",
+      "expected_data_source": "ACCOUNTS"
+    },
+    {
+      "case_id": "EVAL-0190",
+      "query_id": "Q190",
+      "query": "What is my account number and type?",
+      "customer_id": "CUST003",
+      "intent": "ACCOUNT_DETAILS",
+      "expected_route": "TOOL",
+      "expected_tools": [
+        "get_accounts"
+      ],
+      "expected_sources": [],
+      "category": "customer_specific",
+      "expected_agent": "BANKING_AGENT",
+      "expected_data_source": "ACCOUNTS"
+    },
+    {
+      "case_id": "EVAL-0191",
+      "query_id": "Q191",
+      "query": "Give me all my account information.",
+      "customer_id": "CUST009",
+      "intent": "ACCOUNT_DETAILS",
+      "expected_route": "TOOL",
+      "expected_tools": [
+        "get_accounts"
+      ],
+      "expected_sources": [],
+      "category": "customer_specific",
+      "expected_agent": "BANKING_AGENT",
+      "expected_data_source": "ACCOUNTS"
+    },
+    {
+      "case_id": "EVAL-0192",
+      "query_id": "Q192",
+      "query": "What is my total expenditure this month?",
+      "customer_id": "CUST004",
+      "intent": "SPENDING_ANALYSIS",
+      "expected_route": "TOOL",
+      "expected_tools": [
+        "get_transaction_summary"
+      ],
+      "expected_sources": [],
+      "category": "customer_specific",
+      "expected_agent": "BANKING_AGENT",
+      "expected_data_source": "TRANSACTIONS"
+    },
+    {
+      "case_id": "EVAL-0193",
+      "query_id": "Q193",
+      "query": "What was my total spending in August?",
+      "customer_id": "CUST009",
+      "intent": "MONTHLY_SPENDING",
+      "expected_route": "TOOL",
+      "expected_tools": [
+        "get_transaction_summary"
+      ],
+      "expected_sources": [],
+      "category": "customer_specific",
+      "expected_agent": "BANKING_AGENT",
+      "expected_data_source": "TRANSACTIONS"
+    },
+    {
+      "case_id": "EVAL-0194",
+      "query_id": "Q194",
+      "query": "What are the benefits of your credit cards?",
+      "customer_id": "CUST004",
+      "intent": "CREDIT_CARD_INFORMATION",
+      "expected_route": "RAG",
+      "expected_tools": [],
+      "expected_sources": [
+        "05_credit_card_policy.md"
+      ],
+      "category": "general_policy",
+      "expected_agent": "PRODUCT_AGENT",
+      "expected_data_source": "PRODUCTS"
+    },
+    {
+      "case_id": "EVAL-0195",
+      "query_id": "Q195",
+      "query": "What all do I need to submit for a vehicle loan?",
+      "customer_id": "CUST005",
+      "intent": "LOAN_DOCUMENTS",
+      "expected_route": "RAG",
+      "expected_tools": [],
+      "expected_sources": [
+        "04_vehicle_loan_policy.md"
+      ],
+      "category": "general_policy",
+      "expected_agent": "LOAN_AGENT",
+      "expected_data_source": "LOANS"
+    },
+    {
+      "case_id": "EVAL-0196",
+      "query_id": "Q196",
+      "query": "What is the maximum loan amount I can get?",
+      "customer_id": "CUST002",
+      "intent": "LOAN_ELIGIBILITY",
+      "expected_route": "BOTH",
+      "expected_tools": [
+        "check_loan_eligibility"
+      ],
+      "expected_sources": [
+        "01_home_loan_policy.md",
+        "02_personal_loan_policy.md",
+        "03_education_loan_policy.md",
+        "04_vehicle_loan_policy.md"
+      ],
+      "category": "customer_and_policy",
+      "expected_agent": "LOAN_AGENT",
+      "expected_data_source": "LOANS"
+    },
+    {
+      "case_id": "EVAL-0197",
+      "query_id": "Q197",
+      "query": "Show me my transaction history.",
+      "customer_id": "CUST004",
+      "intent": "TRANSACTION_HISTORY",
+      "expected_route": "TOOL",
+      "expected_tools": [
+        "get_transactions"
+      ],
+      "expected_sources": [],
+      "category": "customer_specific",
+      "expected_agent": "BANKING_AGENT",
+      "expected_data_source": "TRANSACTIONS"
+    },
+    {
+      "case_id": "EVAL-0198",
+      "query_id": "Q198",
+      "query": "Am I eligible for a personal loan?",
+      "customer_id": "CUST003",
+      "intent": "LOAN_ELIGIBILITY",
+      "expected_route": "BOTH",
+      "expected_tools": [
+        "check_loan_eligibility"
+      ],
+      "expected_sources": [
+        "02_personal_loan_policy.md"
+      ],
+      "category": "customer_and_policy",
+      "expected_agent": "LOAN_AGENT",
+      "expected_data_source": "LOANS"
+    },
+    {
+      "case_id": "EVAL-0199",
+      "query_id": "Q199",
+      "query": "Can you book a flight for me?",
+      "customer_id": "CUST001",
+      "intent": "UNKNOWN_QUERY",
+      "expected_route": "UNSUPPORTED",
+      "expected_tools": [],
+      "expected_sources": [],
+      "category": "unsupported",
+      "expected_agent": "GENERAL_AGENT",
+      "expected_data_source": "NONE"
+    },
+    {
+      "case_id": "EVAL-0200",
+      "query_id": "Q200",
+      "query": "What documents are required for a personal loan?",
+      "customer_id": "CUST003",
+      "intent": "LOAN_DOCUMENTS",
+      "expected_route": "RAG",
+      "expected_tools": [],
+      "expected_sources": [
+        "02_personal_loan_policy.md"
+      ],
+      "category": "general_policy",
+      "expected_agent": "LOAN_AGENT",
+      "expected_data_source": "LOANS"
+    }
+  ]
+}

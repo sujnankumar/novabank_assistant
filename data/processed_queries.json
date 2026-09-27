@@ -1,0 +1,3199 @@
+[
+  {
+    "query_id": "Q001",
+    "customer_id": "CUST002",
+    "timestamp": "2026-09-01 09:17:54",
+    "query": "What is the process for linking Aadhaar with my account?",
+    "tokens": [
+      "what",
+      "is",
+      "the",
+      "process",
+      "for",
+      "linking",
+      "aadhaar",
+      "with",
+      "my",
+      "account"
+    ],
+    "intent": "BANKING_POLICY"
+  },
+  {
+    "query_id": "Q002",
+    "customer_id": "CUST004",
+    "timestamp": "2026-09-01 09:39:57",
+    "query": "What is the interest rate on fixed deposits?",
+    "tokens": [
+      "what",
+      "is",
+      "the",
+      "interest",
+      "rate",
+      "on",
+      "fixed",
+      "deposits"
+    ],
+    "intent": "FD_INFORMATION"
+  },
+  {
+    "query_id": "Q003",
+    "customer_id": "CUST008",
+    "timestamp": "2026-09-01 11:07:41",
+    "query": "Can you recommend a good restaurant?",
+    "tokens": [
+      "can",
+      "you",
+      "recommend",
+      "a",
+      "good",
+      "restaurant"
+    ],
+    "intent": "UNKNOWN_QUERY"
+  },
+  {
+    "query_id": "Q004",
+    "customer_id": "CUST004",
+    "timestamp": "2026-09-01 12:20:20",
+    "query": "How much did I spend on food?",
+    "tokens": [
+      "how",
+      "much",
+      "did",
+      "i",
+      "spend",
+      "on",
+      "food"
+    ],
+    "intent": "CATEGORY_SPENDING"
+  },
+  {
+    "query_id": "Q005",
+    "customer_id": "CUST007",
+    "timestamp": "2026-09-02 06:01:32",
+    "query": "What paperwork is required for a car loan?",
+    "tokens": [
+      "what",
+      "paperwork",
+      "is",
+      "required",
+      "for",
+      "a",
+      "car",
+      "loan"
+    ],
+    "intent": "LOAN_DOCUMENTS"
+  },
+  {
+    "query_id": "Q006",
+    "customer_id": "CUST008",
+    "timestamp": "2026-09-02 06:11:20",
+    "query": "Can you analyze my spending patterns?",
+    "tokens": [
+      "can",
+      "you",
+      "analyze",
+      "my",
+      "spending",
+      "patterns"
+    ],
+    "intent": "SPENDING_ANALYSIS"
+  },
+  {
+    "query_id": "Q007",
+    "customer_id": "CUST004",
+    "timestamp": "2026-09-02 08:40:31",
+    "query": "Can you show me my account information?",
+    "tokens": [
+      "can",
+      "you",
+      "show",
+      "me",
+      "my",
+      "account",
+      "information"
+    ],
+    "intent": "ACCOUNT_DETAILS"
+  },
+  {
+    "query_id": "Q008",
+    "customer_id": "CUST007",
+    "timestamp": "2026-09-02 09:27:19",
+    "query": "Can you help me?",
+    "tokens": [
+      "can",
+      "you",
+      "help",
+      "me"
+    ],
+    "intent": "GENERAL_BANKING_QUERY"
+  },
+  {
+    "query_id": "Q009",
+    "customer_id": "CUST009",
+    "timestamp": "2026-09-02 11:00:19",
+    "query": "How does the flexi fixed deposit work?",
+    "tokens": [
+      "how",
+      "does",
+      "the",
+      "flexi",
+      "fixed",
+      "deposit",
+      "work"
+    ],
+    "intent": "FD_INFORMATION"
+  },
+  {
+    "query_id": "Q010",
+    "customer_id": "CUST009",
+    "timestamp": "2026-09-02 11:27:03",
+    "query": "What is the EMI for a 10 lakh home loan?",
+    "tokens": [
+      "what",
+      "is",
+      "the",
+      "emi",
+      "for",
+      "a",
+      "10",
+      "lakh",
+      "home",
+      "loan"
+    ],
+    "intent": "LOAN_INTEREST_RATE"
+  },
+  {
+    "query_id": "Q011",
+    "customer_id": "CUST005",
+    "timestamp": "2026-09-02 11:39:42",
+    "query": "Order food for me from Swiggy.",
+    "tokens": [
+      "order",
+      "food",
+      "for",
+      "me",
+      "from",
+      "swiggy"
+    ],
+    "intent": "UNKNOWN_QUERY"
+  },
+  {
+    "query_id": "Q012",
+    "customer_id": "CUST007",
+    "timestamp": "2026-09-02 12:48:40",
+    "query": "I want to know about your loan products.",
+    "tokens": [
+      "i",
+      "want",
+      "to",
+      "know",
+      "about",
+      "your",
+      "loan",
+      "products"
+    ],
+    "intent": "LOAN_INFORMATION"
+  },
+  {
+    "query_id": "Q013",
+    "customer_id": "CUST001",
+    "timestamp": "2026-09-02 16:28:41",
+    "query": "How much have I paid to Uber?",
+    "tokens": [
+      "how",
+      "much",
+      "have",
+      "i",
+      "paid",
+      "to",
+      "uber"
+    ],
+    "intent": "MERCHANT_SPENDING"
+  },
+  {
+    "query_id": "Q014",
+    "customer_id": "CUST004",
+    "timestamp": "2026-09-03 00:19:13",
+    "query": "What credit cards do you offer?",
+    "tokens": [
+      "what",
+      "credit",
+      "cards",
+      "do",
+      "you",
+      "offer"
+    ],
+    "intent": "CREDIT_CARD_INFORMATION"
+  },
+  {
+    "query_id": "Q015",
+    "customer_id": "CUST007",
+    "timestamp": "2026-09-03 03:14:31",
+    "query": "What is the minimum balance requirement?",
+    "tokens": [
+      "what",
+      "is",
+      "the",
+      "minimum",
+      "balance",
+      "requirement"
+    ],
+    "intent": "BANKING_POLICY"
+  },
+  {
+    "query_id": "Q016",
+    "customer_id": "CUST010",
+    "timestamp": "2026-09-03 04:00:56",
+    "query": "Give me details of all your loan products.",
+    "tokens": [
+      "give",
+      "me",
+      "details",
+      "of",
+      "all",
+      "your",
+      "loan",
+      "products"
+    ],
+    "intent": "LOAN_INFORMATION"
+  },
+  {
+    "query_id": "Q017",
+    "customer_id": "CUST010",
+    "timestamp": "2026-09-03 06:44:43",
+    "query": "Order food for me from Swiggy.",
+    "tokens": [
+      "order",
+      "food",
+      "for",
+      "me",
+      "from",
+      "swiggy"
+    ],
+    "intent": "UNKNOWN_QUERY"
+  },
+  {
+    "query_id": "Q018",
+    "customer_id": "CUST009",
+    "timestamp": "2026-09-03 06:51:33",
+    "query": "What savings account options do you have?",
+    "tokens": [
+      "what",
+      "savings",
+      "account",
+      "options",
+      "do",
+      "you",
+      "have"
+    ],
+    "intent": "SAVINGS_INFORMATION"
+  },
+  {
+    "query_id": "Q019",
+    "customer_id": "CUST001",
+    "timestamp": "2026-09-03 09:05:42",
+    "query": "What is the stock price of Reliance?",
+    "tokens": [
+      "what",
+      "is",
+      "the",
+      "stock",
+      "price",
+      "of",
+      "reliance"
+    ],
+    "intent": "UNKNOWN_QUERY"
+  },
+  {
+    "query_id": "Q020",
+    "customer_id": "CUST001",
+    "timestamp": "2026-09-03 15:38:54",
+    "query": "What are the ATM withdrawal limits?",
+    "tokens": [
+      "what",
+      "are",
+      "the",
+      "atm",
+      "withdrawal",
+      "limits"
+    ],
+    "intent": "BANKING_POLICY"
+  },
+  {
+    "query_id": "Q021",
+    "customer_id": "CUST008",
+    "timestamp": "2026-09-03 20:23:41",
+    "query": "Do you have a senior citizen FD scheme?",
+    "tokens": [
+      "do",
+      "you",
+      "have",
+      "a",
+      "senior",
+      "citizen",
+      "fd",
+      "scheme"
+    ],
+    "intent": "FD_INFORMATION"
+  },
+  {
+    "query_id": "Q022",
+    "customer_id": "CUST009",
+    "timestamp": "2026-09-03 22:00:46",
+    "query": "I am interested in a home loan. What are the options?",
+    "tokens": [
+      "i",
+      "am",
+      "interested",
+      "in",
+      "a",
+      "home",
+      "loan",
+      "what",
+      "are",
+      "the",
+      "options"
+    ],
+    "intent": "LOAN_INFORMATION"
+  },
+  {
+    "query_id": "Q023",
+    "customer_id": "CUST004",
+    "timestamp": "2026-09-03 22:43:41",
+    "query": "Tell me the vehicle loan interest rate.",
+    "tokens": [
+      "tell",
+      "me",
+      "the",
+      "vehicle",
+      "loan",
+      "interest",
+      "rate"
+    ],
+    "intent": "LOAN_INTEREST_RATE"
+  },
+  {
+    "query_id": "Q024",
+    "customer_id": "CUST009",
+    "timestamp": "2026-09-04 04:53:33",
+    "query": "Do I qualify for the instant personal loan?",
+    "tokens": [
+      "do",
+      "i",
+      "qualify",
+      "for",
+      "the",
+      "instant",
+      "personal",
+      "loan"
+    ],
+    "intent": "LOAN_ELIGIBILITY"
+  },
+  {
+    "query_id": "Q025",
+    "customer_id": "CUST002",
+    "timestamp": "2026-09-04 10:12:16",
+    "query": "Show me month-wise spending for the last 3 months.",
+    "tokens": [
+      "show",
+      "me",
+      "monthwise",
+      "spending",
+      "for",
+      "the",
+      "last",
+      "3",
+      "months"
+    ],
+    "intent": "MONTHLY_SPENDING"
+  },
+  {
+    "query_id": "Q026",
+    "customer_id": "CUST007",
+    "timestamp": "2026-09-04 11:13:02",
+    "query": "Tell me the document requirements for the instant personal loan.",
+    "tokens": [
+      "tell",
+      "me",
+      "the",
+      "document",
+      "requirements",
+      "for",
+      "the",
+      "instant",
+      "personal",
+      "loan"
+    ],
+    "intent": "LOAN_DOCUMENTS"
+  },
+  {
+    "query_id": "Q027",
+    "customer_id": "CUST008",
+    "timestamp": "2026-09-04 12:28:32",
+    "query": "Please check how much balance I have.",
+    "tokens": [
+      "please",
+      "check",
+      "how",
+      "much",
+      "balance",
+      "i",
+      "have"
+    ],
+    "intent": "CHECK_BALANCE"
+  },
+  {
+    "query_id": "Q028",
+    "customer_id": "CUST006",
+    "timestamp": "2026-09-04 20:07:17",
+    "query": "How long have I been with NovaBank?",
+    "tokens": [
+      "how",
+      "long",
+      "have",
+      "i",
+      "been",
+      "with",
+      "novabank"
+    ],
+    "intent": "CUSTOMER_PROFILE"
+  },
+  {
+    "query_id": "Q029",
+    "customer_id": "CUST003",
+    "timestamp": "2026-09-04 20:54:12",
+    "query": "Did I receive my salary this month?",
+    "tokens": [
+      "did",
+      "i",
+      "receive",
+      "my",
+      "salary",
+      "this",
+      "month"
+    ],
+    "intent": "TRANSACTION_SEARCH"
+  },
+  {
+    "query_id": "Q030",
+    "customer_id": "CUST004",
+    "timestamp": "2026-09-04 21:50:39",
+    "query": "How do I report a lost debit card?",
+    "tokens": [
+      "how",
+      "do",
+      "i",
+      "report",
+      "a",
+      "lost",
+      "debit",
+      "card"
+    ],
+    "intent": "BANKING_POLICY"
+  },
+  {
+    "query_id": "Q031",
+    "customer_id": "CUST007",
+    "timestamp": "2026-09-04 22:58:23",
+    "query": "Show me all my Flipkart purchases.",
+    "tokens": [
+      "show",
+      "me",
+      "all",
+      "my",
+      "flipkart",
+      "purchases"
+    ],
+    "intent": "MERCHANT_SPENDING"
+  },
+  {
+    "query_id": "Q032",
+    "customer_id": "CUST006",
+    "timestamp": "2026-09-05 01:03:37",
+    "query": "Tell me about the NovaBank Platinum Credit Card.",
+    "tokens": [
+      "tell",
+      "me",
+      "about",
+      "the",
+      "novabank",
+      "platinum",
+      "credit",
+      "card"
+    ],
+    "intent": "CREDIT_CARD_INFORMATION"
+  },
+  {
+    "query_id": "Q033",
+    "customer_id": "CUST003",
+    "timestamp": "2026-09-05 10:43:52",
+    "query": "What is the home loan interest rate?",
+    "tokens": [
+      "what",
+      "is",
+      "the",
+      "home",
+      "loan",
+      "interest",
+      "rate"
+    ],
+    "intent": "LOAN_INTEREST_RATE"
+  },
+  {
+    "query_id": "Q034",
+    "customer_id": "CUST004",
+    "timestamp": "2026-09-05 13:20:48",
+    "query": "Check my eligibility for a vehicle loan.",
+    "tokens": [
+      "check",
+      "my",
+      "eligibility",
+      "for",
+      "a",
+      "vehicle",
+      "loan"
+    ],
+    "intent": "LOAN_ELIGIBILITY"
+  },
+  {
+    "query_id": "Q035",
+    "customer_id": "CUST005",
+    "timestamp": "2026-09-05 13:32:05",
+    "query": "Show all my transactions from this month.",
+    "tokens": [
+      "show",
+      "all",
+      "my",
+      "transactions",
+      "from",
+      "this",
+      "month"
+    ],
+    "intent": "TRANSACTION_HISTORY"
+  },
+  {
+    "query_id": "Q036",
+    "customer_id": "CUST009",
+    "timestamp": "2026-09-05 17:24:24",
+    "query": "Show me a breakdown of my expenses.",
+    "tokens": [
+      "show",
+      "me",
+      "a",
+      "breakdown",
+      "of",
+      "my",
+      "expenses"
+    ],
+    "intent": "SPENDING_ANALYSIS"
+  },
+  {
+    "query_id": "Q037",
+    "customer_id": "CUST007",
+    "timestamp": "2026-09-06 05:34:47",
+    "query": "What FD options are available?",
+    "tokens": [
+      "what",
+      "fd",
+      "options",
+      "are",
+      "available"
+    ],
+    "intent": "FD_INFORMATION"
+  },
+  {
+    "query_id": "Q038",
+    "customer_id": "CUST001",
+    "timestamp": "2026-09-06 11:58:05",
+    "query": "Hello, I need some help.",
+    "tokens": [
+      "hello",
+      "i",
+      "need",
+      "some",
+      "help"
+    ],
+    "intent": "GENERAL_BANKING_QUERY"
+  },
+  {
+    "query_id": "Q039",
+    "customer_id": "CUST003",
+    "timestamp": "2026-09-06 12:05:02",
+    "query": "What are the features of your savings accounts?",
+    "tokens": [
+      "what",
+      "are",
+      "the",
+      "features",
+      "of",
+      "your",
+      "savings",
+      "accounts"
+    ],
+    "intent": "SAVINGS_INFORMATION"
+  },
+  {
+    "query_id": "Q040",
+    "customer_id": "CUST005",
+    "timestamp": "2026-09-06 17:31:44",
+    "query": "Can you help me?",
+    "tokens": [
+      "can",
+      "you",
+      "help",
+      "me"
+    ],
+    "intent": "GENERAL_BANKING_QUERY"
+  },
+  {
+    "query_id": "Q041",
+    "customer_id": "CUST001",
+    "timestamp": "2026-09-06 20:09:19",
+    "query": "Tell me something about banking.",
+    "tokens": [
+      "tell",
+      "me",
+      "something",
+      "about",
+      "banking"
+    ],
+    "intent": "GENERAL_BANKING_QUERY"
+  },
+  {
+    "query_id": "Q042",
+    "customer_id": "CUST004",
+    "timestamp": "2026-09-06 20:25:58",
+    "query": "What services does NovaBank provide?",
+    "tokens": [
+      "what",
+      "services",
+      "does",
+      "novabank",
+      "provide"
+    ],
+    "intent": "GENERAL_BANKING_QUERY"
+  },
+  {
+    "query_id": "Q043",
+    "customer_id": "CUST004",
+    "timestamp": "2026-09-06 20:28:18",
+    "query": "What are my utility bill payments this month?",
+    "tokens": [
+      "what",
+      "are",
+      "my",
+      "utility",
+      "bill",
+      "payments",
+      "this",
+      "month"
+    ],
+    "intent": "CATEGORY_SPENDING"
+  },
+  {
+    "query_id": "Q044",
+    "customer_id": "CUST005",
+    "timestamp": "2026-09-06 21:14:13",
+    "query": "What is my current account balance?",
+    "tokens": [
+      "what",
+      "is",
+      "my",
+      "current",
+      "account",
+      "balance"
+    ],
+    "intent": "CHECK_BALANCE"
+  },
+  {
+    "query_id": "Q045",
+    "customer_id": "CUST001",
+    "timestamp": "2026-09-07 00:20:03",
+    "query": "What home loans do you offer?",
+    "tokens": [
+      "what",
+      "home",
+      "loans",
+      "do",
+      "you",
+      "offer"
+    ],
+    "intent": "LOAN_INFORMATION"
+  },
+  {
+    "query_id": "Q046",
+    "customer_id": "CUST006",
+    "timestamp": "2026-09-07 04:57:23",
+    "query": "Did I make any payment to Amazon?",
+    "tokens": [
+      "did",
+      "i",
+      "make",
+      "any",
+      "payment",
+      "to",
+      "amazon"
+    ],
+    "intent": "TRANSACTION_SEARCH"
+  },
+  {
+    "query_id": "Q047",
+    "customer_id": "CUST001",
+    "timestamp": "2026-09-07 05:13:37",
+    "query": "What savings account options do you have?",
+    "tokens": [
+      "what",
+      "savings",
+      "account",
+      "options",
+      "do",
+      "you",
+      "have"
+    ],
+    "intent": "SAVINGS_INFORMATION"
+  },
+  {
+    "query_id": "Q048",
+    "customer_id": "CUST003",
+    "timestamp": "2026-09-07 05:23:20",
+    "query": "Show me my IRCTC transactions.",
+    "tokens": [
+      "show",
+      "me",
+      "my",
+      "irctc",
+      "transactions"
+    ],
+    "intent": "MERCHANT_SPENDING"
+  },
+  {
+    "query_id": "Q049",
+    "customer_id": "CUST002",
+    "timestamp": "2026-09-07 06:22:33",
+    "query": "Can I get a statement of my recent transactions?",
+    "tokens": [
+      "can",
+      "i",
+      "get",
+      "a",
+      "statement",
+      "of",
+      "my",
+      "recent",
+      "transactions"
+    ],
+    "intent": "TRANSACTION_HISTORY"
+  },
+  {
+    "query_id": "Q050",
+    "customer_id": "CUST005",
+    "timestamp": "2026-09-07 15:20:21",
+    "query": "What's my transaction history for this month?",
+    "tokens": [
+      "what",
+      "my",
+      "transaction",
+      "history",
+      "for",
+      "this",
+      "month"
+    ],
+    "intent": "TRANSACTION_HISTORY"
+  },
+  {
+    "query_id": "Q051",
+    "customer_id": "CUST001",
+    "timestamp": "2026-09-07 17:17:50",
+    "query": "What's my balance right now?",
+    "tokens": [
+      "what",
+      "my",
+      "balance",
+      "right",
+      "now"
+    ],
+    "intent": "CHECK_BALANCE"
+  },
+  {
+    "query_id": "Q052",
+    "customer_id": "CUST002",
+    "timestamp": "2026-09-07 17:49:09",
+    "query": "Can I get a home loan?",
+    "tokens": [
+      "can",
+      "i",
+      "get",
+      "a",
+      "home",
+      "loan"
+    ],
+    "intent": "LOAN_ELIGIBILITY"
+  },
+  {
+    "query_id": "Q053",
+    "customer_id": "CUST004",
+    "timestamp": "2026-09-07 22:21:18",
+    "query": "What did I spend at Swiggy last month?",
+    "tokens": [
+      "what",
+      "did",
+      "i",
+      "spend",
+      "at",
+      "swiggy",
+      "last",
+      "month"
+    ],
+    "intent": "MERCHANT_SPENDING"
+  },
+  {
+    "query_id": "Q054",
+    "customer_id": "CUST008",
+    "timestamp": "2026-09-07 22:40:58",
+    "query": "Update my communication preference to WhatsApp.",
+    "tokens": [
+      "update",
+      "my",
+      "communication",
+      "preference",
+      "to",
+      "whatsapp"
+    ],
+    "intent": "CUSTOMER_PROFILE"
+  },
+  {
+    "query_id": "Q055",
+    "customer_id": "CUST009",
+    "timestamp": "2026-09-08 00:08:20",
+    "query": "Tell me the document requirements for the instant personal loan.",
+    "tokens": [
+      "tell",
+      "me",
+      "the",
+      "document",
+      "requirements",
+      "for",
+      "the",
+      "instant",
+      "personal",
+      "loan"
+    ],
+    "intent": "LOAN_DOCUMENTS"
+  },
+  {
+    "query_id": "Q056",
+    "customer_id": "CUST008",
+    "timestamp": "2026-09-08 02:14:28",
+    "query": "How much did I pay to Netflix?",
+    "tokens": [
+      "how",
+      "much",
+      "did",
+      "i",
+      "pay",
+      "to",
+      "netflix"
+    ],
+    "intent": "MERCHANT_SPENDING"
+  },
+  {
+    "query_id": "Q057",
+    "customer_id": "CUST005",
+    "timestamp": "2026-09-08 02:15:52",
+    "query": "Tell me about the tax saver FD.",
+    "tokens": [
+      "tell",
+      "me",
+      "about",
+      "the",
+      "tax",
+      "saver",
+      "fd"
+    ],
+    "intent": "FD_INFORMATION"
+  },
+  {
+    "query_id": "Q058",
+    "customer_id": "CUST003",
+    "timestamp": "2026-09-08 05:58:37",
+    "query": "How much money do I currently have?",
+    "tokens": [
+      "how",
+      "much",
+      "money",
+      "do",
+      "i",
+      "currently",
+      "have"
+    ],
+    "intent": "CHECK_BALANCE"
+  },
+  {
+    "query_id": "Q059",
+    "customer_id": "CUST004",
+    "timestamp": "2026-09-08 07:18:34",
+    "query": "Which credit card is best for cashback?",
+    "tokens": [
+      "which",
+      "credit",
+      "card",
+      "is",
+      "best",
+      "for",
+      "cashback"
+    ],
+    "intent": "CREDIT_CARD_INFORMATION"
+  },
+  {
+    "query_id": "Q060",
+    "customer_id": "CUST004",
+    "timestamp": "2026-09-08 07:42:55",
+    "query": "What documents do I need for a home loan?",
+    "tokens": [
+      "what",
+      "documents",
+      "do",
+      "i",
+      "need",
+      "for",
+      "a",
+      "home",
+      "loan"
+    ],
+    "intent": "LOAN_DOCUMENTS"
+  },
+  {
+    "query_id": "Q061",
+    "customer_id": "CUST007",
+    "timestamp": "2026-09-08 12:27:38",
+    "query": "What is my total spending at Zomato?",
+    "tokens": [
+      "what",
+      "is",
+      "my",
+      "total",
+      "spending",
+      "at",
+      "zomato"
+    ],
+    "intent": "MERCHANT_SPENDING"
+  },
+  {
+    "query_id": "Q062",
+    "customer_id": "CUST007",
+    "timestamp": "2026-09-08 13:55:19",
+    "query": "I need my account details.",
+    "tokens": [
+      "i",
+      "need",
+      "my",
+      "account",
+      "details"
+    ],
+    "intent": "ACCOUNT_DETAILS"
+  },
+  {
+    "query_id": "Q063",
+    "customer_id": "CUST009",
+    "timestamp": "2026-09-08 15:08:54",
+    "query": "Can you analyze my spending patterns?",
+    "tokens": [
+      "can",
+      "you",
+      "analyze",
+      "my",
+      "spending",
+      "patterns"
+    ],
+    "intent": "SPENDING_ANALYSIS"
+  },
+  {
+    "query_id": "Q064",
+    "customer_id": "CUST007",
+    "timestamp": "2026-09-08 15:12:06",
+    "query": "Change my preferred language to Hindi.",
+    "tokens": [
+      "change",
+      "my",
+      "preferred",
+      "language",
+      "to",
+      "hindi"
+    ],
+    "intent": "CUSTOMER_PROFILE"
+  },
+  {
+    "query_id": "Q065",
+    "customer_id": "CUST007",
+    "timestamp": "2026-09-08 15:36:53",
+    "query": "Compare your Classic and Gold credit cards.",
+    "tokens": [
+      "compare",
+      "your",
+      "classic",
+      "and",
+      "gold",
+      "credit",
+      "cards"
+    ],
+    "intent": "CREDIT_CARD_INFORMATION"
+  },
+  {
+    "query_id": "Q066",
+    "customer_id": "CUST002",
+    "timestamp": "2026-09-08 19:27:45",
+    "query": "Would I qualify for an education loan?",
+    "tokens": [
+      "would",
+      "i",
+      "qualify",
+      "for",
+      "an",
+      "education",
+      "loan"
+    ],
+    "intent": "LOAN_ELIGIBILITY"
+  },
+  {
+    "query_id": "Q067",
+    "customer_id": "CUST008",
+    "timestamp": "2026-09-08 20:01:23",
+    "query": "What paperwork is required for a car loan?",
+    "tokens": [
+      "what",
+      "paperwork",
+      "is",
+      "required",
+      "for",
+      "a",
+      "car",
+      "loan"
+    ],
+    "intent": "LOAN_DOCUMENTS"
+  },
+  {
+    "query_id": "Q068",
+    "customer_id": "CUST006",
+    "timestamp": "2026-09-08 20:19:25",
+    "query": "What is the annual fee for the Gold Credit Card?",
+    "tokens": [
+      "what",
+      "is",
+      "the",
+      "annual",
+      "fee",
+      "for",
+      "the",
+      "gold",
+      "credit",
+      "card"
+    ],
+    "intent": "CREDIT_CARD_INFORMATION"
+  },
+  {
+    "query_id": "Q069",
+    "customer_id": "CUST010",
+    "timestamp": "2026-09-08 21:30:58",
+    "query": "How can I update my KYC details?",
+    "tokens": [
+      "how",
+      "can",
+      "i",
+      "update",
+      "my",
+      "kyc",
+      "details"
+    ],
+    "intent": "BANKING_POLICY"
+  },
+  {
+    "query_id": "Q070",
+    "customer_id": "CUST010",
+    "timestamp": "2026-09-09 03:17:02",
+    "query": "What is my current account balance?",
+    "tokens": [
+      "what",
+      "is",
+      "my",
+      "current",
+      "account",
+      "balance"
+    ],
+    "intent": "CHECK_BALANCE"
+  },
+  {
+    "query_id": "Q071",
+    "customer_id": "CUST005",
+    "timestamp": "2026-09-09 22:25:15",
+    "query": "What time is it?",
+    "tokens": [
+      "what",
+      "time",
+      "is",
+      "it"
+    ],
+    "intent": "UNKNOWN_QUERY"
+  },
+  {
+    "query_id": "Q072",
+    "customer_id": "CUST002",
+    "timestamp": "2026-09-10 01:37:01",
+    "query": "What is my total food delivery expenditure?",
+    "tokens": [
+      "what",
+      "is",
+      "my",
+      "total",
+      "food",
+      "delivery",
+      "expenditure"
+    ],
+    "intent": "CATEGORY_SPENDING"
+  },
+  {
+    "query_id": "Q073",
+    "customer_id": "CUST006",
+    "timestamp": "2026-09-10 05:18:57",
+    "query": "How much did I spend this month?",
+    "tokens": [
+      "how",
+      "much",
+      "did",
+      "i",
+      "spend",
+      "this",
+      "month"
+    ],
+    "intent": "SPENDING_ANALYSIS"
+  },
+  {
+    "query_id": "Q074",
+    "customer_id": "CUST001",
+    "timestamp": "2026-09-10 05:55:33",
+    "query": "How much went to bills this month?",
+    "tokens": [
+      "how",
+      "much",
+      "went",
+      "to",
+      "bills",
+      "this",
+      "month"
+    ],
+    "intent": "CATEGORY_SPENDING"
+  },
+  {
+    "query_id": "Q075",
+    "customer_id": "CUST009",
+    "timestamp": "2026-09-10 11:31:52",
+    "query": "Show me my healthcare expenses.",
+    "tokens": [
+      "show",
+      "me",
+      "my",
+      "healthcare",
+      "expenses"
+    ],
+    "intent": "CATEGORY_SPENDING"
+  },
+  {
+    "query_id": "Q076",
+    "customer_id": "CUST004",
+    "timestamp": "2026-09-10 11:36:48",
+    "query": "What is the interest rate on fixed deposits?",
+    "tokens": [
+      "what",
+      "is",
+      "the",
+      "interest",
+      "rate",
+      "on",
+      "fixed",
+      "deposits"
+    ],
+    "intent": "FD_INFORMATION"
+  },
+  {
+    "query_id": "Q077",
+    "customer_id": "CUST003",
+    "timestamp": "2026-09-11 04:21:04",
+    "query": "What's the weather today?",
+    "tokens": [
+      "what",
+      "the",
+      "weather",
+      "today"
+    ],
+    "intent": "UNKNOWN_QUERY"
+  },
+  {
+    "query_id": "Q078",
+    "customer_id": "CUST001",
+    "timestamp": "2026-09-11 05:23:53",
+    "query": "What is the minimum balance requirement?",
+    "tokens": [
+      "what",
+      "is",
+      "the",
+      "minimum",
+      "balance",
+      "requirement"
+    ],
+    "intent": "BANKING_POLICY"
+  },
+  {
+    "query_id": "Q079",
+    "customer_id": "CUST003",
+    "timestamp": "2026-09-11 06:00:06",
+    "query": "Could you tell me my balance?",
+    "tokens": [
+      "could",
+      "you",
+      "tell",
+      "me",
+      "my",
+      "balance"
+    ],
+    "intent": "CHECK_BALANCE"
+  },
+  {
+    "query_id": "Q080",
+    "customer_id": "CUST001",
+    "timestamp": "2026-09-11 08:12:48",
+    "query": "What is the cheapest loan rate you offer?",
+    "tokens": [
+      "what",
+      "is",
+      "the",
+      "cheapest",
+      "loan",
+      "rate",
+      "you",
+      "offer"
+    ],
+    "intent": "LOAN_INTEREST_RATE"
+  },
+  {
+    "query_id": "Q081",
+    "customer_id": "CUST002",
+    "timestamp": "2026-09-11 15:38:40",
+    "query": "What are the features of your savings accounts?",
+    "tokens": [
+      "what",
+      "are",
+      "the",
+      "features",
+      "of",
+      "your",
+      "savings",
+      "accounts"
+    ],
+    "intent": "SAVINGS_INFORMATION"
+  },
+  {
+    "query_id": "Q082",
+    "customer_id": "CUST010",
+    "timestamp": "2026-09-11 19:02:45",
+    "query": "Give me a summary of my spending.",
+    "tokens": [
+      "give",
+      "me",
+      "a",
+      "summary",
+      "of",
+      "my",
+      "spending"
+    ],
+    "intent": "SPENDING_ANALYSIS"
+  },
+  {
+    "query_id": "Q083",
+    "customer_id": "CUST006",
+    "timestamp": "2026-09-11 23:58:58",
+    "query": "Show me all UPI transactions.",
+    "tokens": [
+      "show",
+      "me",
+      "all",
+      "upi",
+      "transactions"
+    ],
+    "intent": "TRANSACTION_SEARCH"
+  },
+  {
+    "query_id": "Q084",
+    "customer_id": "CUST010",
+    "timestamp": "2026-09-12 03:53:52",
+    "query": "How much have I spent in the last 30 days?",
+    "tokens": [
+      "how",
+      "much",
+      "have",
+      "i",
+      "spent",
+      "in",
+      "the",
+      "last",
+      "30",
+      "days"
+    ],
+    "intent": "SPENDING_ANALYSIS"
+  },
+  {
+    "query_id": "Q085",
+    "customer_id": "CUST007",
+    "timestamp": "2026-09-12 13:49:13",
+    "query": "Was there a failed transaction on my account?",
+    "tokens": [
+      "was",
+      "there",
+      "a",
+      "failed",
+      "transaction",
+      "on",
+      "my",
+      "account"
+    ],
+    "intent": "TRANSACTION_SEARCH"
+  },
+  {
+    "query_id": "Q086",
+    "customer_id": "CUST004",
+    "timestamp": "2026-09-12 20:36:13",
+    "query": "What are your current FD interest rates?",
+    "tokens": [
+      "what",
+      "are",
+      "your",
+      "current",
+      "fd",
+      "interest",
+      "rates"
+    ],
+    "intent": "FD_INFORMATION"
+  },
+  {
+    "query_id": "Q087",
+    "customer_id": "CUST001",
+    "timestamp": "2026-09-12 23:13:59",
+    "query": "Show me all UPI transactions.",
+    "tokens": [
+      "show",
+      "me",
+      "all",
+      "upi",
+      "transactions"
+    ],
+    "intent": "TRANSACTION_SEARCH"
+  },
+  {
+    "query_id": "Q088",
+    "customer_id": "CUST004",
+    "timestamp": "2026-09-13 00:55:21",
+    "query": "What savings account options do you have?",
+    "tokens": [
+      "what",
+      "savings",
+      "account",
+      "options",
+      "do",
+      "you",
+      "have"
+    ],
+    "intent": "SAVINGS_INFORMATION"
+  },
+  {
+    "query_id": "Q089",
+    "customer_id": "CUST002",
+    "timestamp": "2026-09-13 05:48:14",
+    "query": "What is the current interest rate for education loans?",
+    "tokens": [
+      "what",
+      "is",
+      "the",
+      "current",
+      "interest",
+      "rate",
+      "for",
+      "education",
+      "loans"
+    ],
+    "intent": "LOAN_INTEREST_RATE"
+  },
+  {
+    "query_id": "Q090",
+    "customer_id": "CUST003",
+    "timestamp": "2026-09-13 07:57:29",
+    "query": "I have a question.",
+    "tokens": [
+      "i",
+      "have",
+      "a",
+      "question"
+    ],
+    "intent": "GENERAL_BANKING_QUERY"
+  },
+  {
+    "query_id": "Q091",
+    "customer_id": "CUST010",
+    "timestamp": "2026-09-13 11:33:04",
+    "query": "How much did I spend last month?",
+    "tokens": [
+      "how",
+      "much",
+      "did",
+      "i",
+      "spend",
+      "last",
+      "month"
+    ],
+    "intent": "MONTHLY_SPENDING"
+  },
+  {
+    "query_id": "Q092",
+    "customer_id": "CUST003",
+    "timestamp": "2026-09-13 16:53:21",
+    "query": "What accounts do I have with NovaBank?",
+    "tokens": [
+      "what",
+      "accounts",
+      "do",
+      "i",
+      "have",
+      "with",
+      "novabank"
+    ],
+    "intent": "ACCOUNT_DETAILS"
+  },
+  {
+    "query_id": "Q093",
+    "customer_id": "CUST003",
+    "timestamp": "2026-09-13 18:55:20",
+    "query": "How much have I spent on travel?",
+    "tokens": [
+      "how",
+      "much",
+      "have",
+      "i",
+      "spent",
+      "on",
+      "travel"
+    ],
+    "intent": "CATEGORY_SPENDING"
+  },
+  {
+    "query_id": "Q094",
+    "customer_id": "CUST010",
+    "timestamp": "2026-09-13 19:20:17",
+    "query": "Is there a branch near my location?",
+    "tokens": [
+      "is",
+      "there",
+      "a",
+      "branch",
+      "near",
+      "my",
+      "location"
+    ],
+    "intent": "GENERAL_BANKING_QUERY"
+  },
+  {
+    "query_id": "Q095",
+    "customer_id": "CUST001",
+    "timestamp": "2026-09-13 20:32:59",
+    "query": "Update my communication preference to WhatsApp.",
+    "tokens": [
+      "update",
+      "my",
+      "communication",
+      "preference",
+      "to",
+      "whatsapp"
+    ],
+    "intent": "CUSTOMER_PROFILE"
+  },
+  {
+    "query_id": "Q096",
+    "customer_id": "CUST004",
+    "timestamp": "2026-09-13 22:41:45",
+    "query": "What were my expenses in July 2026?",
+    "tokens": [
+      "what",
+      "were",
+      "my",
+      "expenses",
+      "in",
+      "july",
+      "2026"
+    ],
+    "intent": "MONTHLY_SPENDING"
+  },
+  {
+    "query_id": "Q097",
+    "customer_id": "CUST009",
+    "timestamp": "2026-09-14 00:17:14",
+    "query": "What type of accounts do I have?",
+    "tokens": [
+      "what",
+      "type",
+      "of",
+      "accounts",
+      "do",
+      "i",
+      "have"
+    ],
+    "intent": "ACCOUNT_DETAILS"
+  },
+  {
+    "query_id": "Q098",
+    "customer_id": "CUST002",
+    "timestamp": "2026-09-14 03:44:45",
+    "query": "Play some music.",
+    "tokens": [
+      "play",
+      "some",
+      "music"
+    ],
+    "intent": "UNKNOWN_QUERY"
+  },
+  {
+    "query_id": "Q099",
+    "customer_id": "CUST001",
+    "timestamp": "2026-09-14 04:22:17",
+    "query": "What are the eligibility criteria for your credit cards?",
+    "tokens": [
+      "what",
+      "are",
+      "the",
+      "eligibility",
+      "criteria",
+      "for",
+      "your",
+      "credit",
+      "cards"
+    ],
+    "intent": "CREDIT_CARD_INFORMATION"
+  },
+  {
+    "query_id": "Q100",
+    "customer_id": "CUST009",
+    "timestamp": "2026-09-14 05:31:15",
+    "query": "Show me my education-related spending.",
+    "tokens": [
+      "show",
+      "me",
+      "my",
+      "educationrelated",
+      "spending"
+    ],
+    "intent": "CATEGORY_SPENDING"
+  },
+  {
+    "query_id": "Q101",
+    "customer_id": "CUST001",
+    "timestamp": "2026-09-14 06:00:20",
+    "query": "What vehicle loan schemes do you have?",
+    "tokens": [
+      "what",
+      "vehicle",
+      "loan",
+      "schemes",
+      "do",
+      "you",
+      "have"
+    ],
+    "intent": "LOAN_INFORMATION"
+  },
+  {
+    "query_id": "Q102",
+    "customer_id": "CUST010",
+    "timestamp": "2026-09-14 08:40:50",
+    "query": "What are the timings for RTGS transfers?",
+    "tokens": [
+      "what",
+      "are",
+      "the",
+      "timings",
+      "for",
+      "rtgs",
+      "transfers"
+    ],
+    "intent": "BANKING_POLICY"
+  },
+  {
+    "query_id": "Q103",
+    "customer_id": "CUST008",
+    "timestamp": "2026-09-14 13:00:09",
+    "query": "What transactions happened recently?",
+    "tokens": [
+      "what",
+      "transactions",
+      "happened",
+      "recently"
+    ],
+    "intent": "TRANSACTION_HISTORY"
+  },
+  {
+    "query_id": "Q104",
+    "customer_id": "CUST001",
+    "timestamp": "2026-09-14 22:41:16",
+    "query": "How much did I spend on Amazon?",
+    "tokens": [
+      "how",
+      "much",
+      "did",
+      "i",
+      "spend",
+      "on",
+      "amazon"
+    ],
+    "intent": "MERCHANT_SPENDING"
+  },
+  {
+    "query_id": "Q105",
+    "customer_id": "CUST010",
+    "timestamp": "2026-09-14 23:09:53",
+    "query": "Tell me about the tax saver FD.",
+    "tokens": [
+      "tell",
+      "me",
+      "about",
+      "the",
+      "tax",
+      "saver",
+      "fd"
+    ],
+    "intent": "FD_INFORMATION"
+  },
+  {
+    "query_id": "Q106",
+    "customer_id": "CUST010",
+    "timestamp": "2026-09-15 00:54:21",
+    "query": "What credit cards do you offer?",
+    "tokens": [
+      "what",
+      "credit",
+      "cards",
+      "do",
+      "you",
+      "offer"
+    ],
+    "intent": "CREDIT_CARD_INFORMATION"
+  },
+  {
+    "query_id": "Q107",
+    "customer_id": "CUST004",
+    "timestamp": "2026-09-15 04:21:23",
+    "query": "What is the minimum amount for a fixed deposit?",
+    "tokens": [
+      "what",
+      "is",
+      "the",
+      "minimum",
+      "amount",
+      "for",
+      "a",
+      "fixed",
+      "deposit"
+    ],
+    "intent": "FD_INFORMATION"
+  },
+  {
+    "query_id": "Q108",
+    "customer_id": "CUST001",
+    "timestamp": "2026-09-15 04:26:28",
+    "query": "What is my customer segment?",
+    "tokens": [
+      "what",
+      "is",
+      "my",
+      "customer",
+      "segment"
+    ],
+    "intent": "CUSTOMER_PROFILE"
+  },
+  {
+    "query_id": "Q109",
+    "customer_id": "CUST004",
+    "timestamp": "2026-09-15 04:48:27",
+    "query": "What are the eligibility criteria for your credit cards?",
+    "tokens": [
+      "what",
+      "are",
+      "the",
+      "eligibility",
+      "criteria",
+      "for",
+      "your",
+      "credit",
+      "cards"
+    ],
+    "intent": "CREDIT_CARD_INFORMATION"
+  },
+  {
+    "query_id": "Q110",
+    "customer_id": "CUST001",
+    "timestamp": "2026-09-15 09:25:40",
+    "query": "List my last 10 transactions.",
+    "tokens": [
+      "list",
+      "my",
+      "last",
+      "10",
+      "transactions"
+    ],
+    "intent": "TRANSACTION_HISTORY"
+  },
+  {
+    "query_id": "Q111",
+    "customer_id": "CUST008",
+    "timestamp": "2026-09-15 16:04:06",
+    "query": "Show me my transactions with Myntra.",
+    "tokens": [
+      "show",
+      "me",
+      "my",
+      "transactions",
+      "with",
+      "myntra"
+    ],
+    "intent": "MERCHANT_SPENDING"
+  },
+  {
+    "query_id": "Q112",
+    "customer_id": "CUST008",
+    "timestamp": "2026-09-15 16:09:38",
+    "query": "How much did I spend on entertainment?",
+    "tokens": [
+      "how",
+      "much",
+      "did",
+      "i",
+      "spend",
+      "on",
+      "entertainment"
+    ],
+    "intent": "CATEGORY_SPENDING"
+  },
+  {
+    "query_id": "Q113",
+    "customer_id": "CUST003",
+    "timestamp": "2026-09-15 17:21:53",
+    "query": "What loan options are available?",
+    "tokens": [
+      "what",
+      "loan",
+      "options",
+      "are",
+      "available"
+    ],
+    "intent": "LOAN_INFORMATION"
+  },
+  {
+    "query_id": "Q114",
+    "customer_id": "CUST008",
+    "timestamp": "2026-09-15 22:07:22",
+    "query": "What is the minimum balance requirement?",
+    "tokens": [
+      "what",
+      "is",
+      "the",
+      "minimum",
+      "balance",
+      "requirement"
+    ],
+    "intent": "BANKING_POLICY"
+  },
+  {
+    "query_id": "Q115",
+    "customer_id": "CUST003",
+    "timestamp": "2026-09-16 00:19:05",
+    "query": "What are my top spending categories?",
+    "tokens": [
+      "what",
+      "are",
+      "my",
+      "top",
+      "spending",
+      "categories"
+    ],
+    "intent": "SPENDING_ANALYSIS"
+  },
+  {
+    "query_id": "Q116",
+    "customer_id": "CUST003",
+    "timestamp": "2026-09-16 00:31:50",
+    "query": "Where am I spending most of my money?",
+    "tokens": [
+      "where",
+      "am",
+      "i",
+      "spending",
+      "most",
+      "of",
+      "my",
+      "money"
+    ],
+    "intent": "SPENDING_ANALYSIS"
+  },
+  {
+    "query_id": "Q117",
+    "customer_id": "CUST002",
+    "timestamp": "2026-09-16 02:06:45",
+    "query": "Can I see my last five transactions?",
+    "tokens": [
+      "can",
+      "i",
+      "see",
+      "my",
+      "last",
+      "five",
+      "transactions"
+    ],
+    "intent": "TRANSACTION_HISTORY"
+  },
+  {
+    "query_id": "Q118",
+    "customer_id": "CUST007",
+    "timestamp": "2026-09-16 02:46:25",
+    "query": "What types of loans does NovaBank offer?",
+    "tokens": [
+      "what",
+      "types",
+      "of",
+      "loans",
+      "does",
+      "novabank",
+      "offer"
+    ],
+    "intent": "LOAN_INFORMATION"
+  },
+  {
+    "query_id": "Q119",
+    "customer_id": "CUST008",
+    "timestamp": "2026-09-16 03:17:59",
+    "query": "Can you check my current balance?",
+    "tokens": [
+      "can",
+      "you",
+      "check",
+      "my",
+      "current",
+      "balance"
+    ],
+    "intent": "CHECK_BALANCE"
+  },
+  {
+    "query_id": "Q120",
+    "customer_id": "CUST003",
+    "timestamp": "2026-09-16 05:44:39",
+    "query": "Can you tell me about education loans?",
+    "tokens": [
+      "can",
+      "you",
+      "tell",
+      "me",
+      "about",
+      "education",
+      "loans"
+    ],
+    "intent": "LOAN_INFORMATION"
+  },
+  {
+    "query_id": "Q121",
+    "customer_id": "CUST004",
+    "timestamp": "2026-09-16 06:14:57",
+    "query": "Tell me about your premium savings account.",
+    "tokens": [
+      "tell",
+      "me",
+      "about",
+      "your",
+      "premium",
+      "savings",
+      "account"
+    ],
+    "intent": "SAVINGS_INFORMATION"
+  },
+  {
+    "query_id": "Q122",
+    "customer_id": "CUST005",
+    "timestamp": "2026-09-16 10:59:27",
+    "query": "What was my total spending in August?",
+    "tokens": [
+      "what",
+      "was",
+      "my",
+      "total",
+      "spending",
+      "in",
+      "august"
+    ],
+    "intent": "MONTHLY_SPENDING"
+  },
+  {
+    "query_id": "Q123",
+    "customer_id": "CUST003",
+    "timestamp": "2026-09-16 13:44:13",
+    "query": "What is the policy for closing an account?",
+    "tokens": [
+      "what",
+      "is",
+      "the",
+      "policy",
+      "for",
+      "closing",
+      "an",
+      "account"
+    ],
+    "intent": "BANKING_POLICY"
+  },
+  {
+    "query_id": "Q124",
+    "customer_id": "CUST004",
+    "timestamp": "2026-09-16 14:47:31",
+    "query": "I have a question.",
+    "tokens": [
+      "i",
+      "have",
+      "a",
+      "question"
+    ],
+    "intent": "GENERAL_BANKING_QUERY"
+  },
+  {
+    "query_id": "Q125",
+    "customer_id": "CUST003",
+    "timestamp": "2026-09-16 18:49:40",
+    "query": "What were my recent debit transactions?",
+    "tokens": [
+      "what",
+      "were",
+      "my",
+      "recent",
+      "debit",
+      "transactions"
+    ],
+    "intent": "TRANSACTION_HISTORY"
+  },
+  {
+    "query_id": "Q126",
+    "customer_id": "CUST005",
+    "timestamp": "2026-09-16 21:11:36",
+    "query": "Find any transactions above 10000 rupees.",
+    "tokens": [
+      "find",
+      "any",
+      "transactions",
+      "above",
+      "10000",
+      "rupees"
+    ],
+    "intent": "TRANSACTION_SEARCH"
+  },
+  {
+    "query_id": "Q127",
+    "customer_id": "CUST005",
+    "timestamp": "2026-09-16 21:34:46",
+    "query": "What's my transaction history for this month?",
+    "tokens": [
+      "what",
+      "my",
+      "transaction",
+      "history",
+      "for",
+      "this",
+      "month"
+    ],
+    "intent": "TRANSACTION_HISTORY"
+  },
+  {
+    "query_id": "Q128",
+    "customer_id": "CUST001",
+    "timestamp": "2026-09-17 00:08:32",
+    "query": "I have a question.",
+    "tokens": [
+      "i",
+      "have",
+      "a",
+      "question"
+    ],
+    "intent": "GENERAL_BANKING_QUERY"
+  },
+  {
+    "query_id": "Q129",
+    "customer_id": "CUST007",
+    "timestamp": "2026-09-17 08:26:43",
+    "query": "Tell me something about banking.",
+    "tokens": [
+      "tell",
+      "me",
+      "something",
+      "about",
+      "banking"
+    ],
+    "intent": "GENERAL_BANKING_QUERY"
+  },
+  {
+    "query_id": "Q130",
+    "customer_id": "CUST010",
+    "timestamp": "2026-09-17 08:31:47",
+    "query": "What is the annual fee for the Gold Credit Card?",
+    "tokens": [
+      "what",
+      "is",
+      "the",
+      "annual",
+      "fee",
+      "for",
+      "the",
+      "gold",
+      "credit",
+      "card"
+    ],
+    "intent": "CREDIT_CARD_INFORMATION"
+  },
+  {
+    "query_id": "Q131",
+    "customer_id": "CUST001",
+    "timestamp": "2026-09-17 10:58:06",
+    "query": "Show my recent transactions.",
+    "tokens": [
+      "show",
+      "my",
+      "recent",
+      "transactions"
+    ],
+    "intent": "TRANSACTION_HISTORY"
+  },
+  {
+    "query_id": "Q132",
+    "customer_id": "CUST006",
+    "timestamp": "2026-09-17 15:01:21",
+    "query": "Am I eligible for the NovaBank Home Loan Premium?",
+    "tokens": [
+      "am",
+      "i",
+      "eligible",
+      "for",
+      "the",
+      "novabank",
+      "home",
+      "loan",
+      "premium"
+    ],
+    "intent": "LOAN_ELIGIBILITY"
+  },
+  {
+    "query_id": "Q133",
+    "customer_id": "CUST007",
+    "timestamp": "2026-09-17 15:30:42",
+    "query": "What FD options are available?",
+    "tokens": [
+      "what",
+      "fd",
+      "options",
+      "are",
+      "available"
+    ],
+    "intent": "FD_INFORMATION"
+  },
+  {
+    "query_id": "Q134",
+    "customer_id": "CUST007",
+    "timestamp": "2026-09-17 18:34:27",
+    "query": "What is the process for linking Aadhaar with my account?",
+    "tokens": [
+      "what",
+      "is",
+      "the",
+      "process",
+      "for",
+      "linking",
+      "aadhaar",
+      "with",
+      "my",
+      "account"
+    ],
+    "intent": "BANKING_POLICY"
+  },
+  {
+    "query_id": "Q135",
+    "customer_id": "CUST003",
+    "timestamp": "2026-09-17 22:20:54",
+    "query": "Compare my spending this month versus last month.",
+    "tokens": [
+      "compare",
+      "my",
+      "spending",
+      "this",
+      "month",
+      "versus",
+      "last",
+      "month"
+    ],
+    "intent": "MONTHLY_SPENDING"
+  },
+  {
+    "query_id": "Q136",
+    "customer_id": "CUST005",
+    "timestamp": "2026-09-17 22:37:05",
+    "query": "How much did I spend on Amazon?",
+    "tokens": [
+      "how",
+      "much",
+      "did",
+      "i",
+      "spend",
+      "on",
+      "amazon"
+    ],
+    "intent": "MERCHANT_SPENDING"
+  },
+  {
+    "query_id": "Q137",
+    "customer_id": "CUST001",
+    "timestamp": "2026-09-18 03:00:13",
+    "query": "What details do you have about me?",
+    "tokens": [
+      "what",
+      "details",
+      "do",
+      "you",
+      "have",
+      "about",
+      "me"
+    ],
+    "intent": "CUSTOMER_PROFILE"
+  },
+  {
+    "query_id": "Q138",
+    "customer_id": "CUST009",
+    "timestamp": "2026-09-18 09:50:32",
+    "query": "I want to apply for a credit card. What options do I have?",
+    "tokens": [
+      "i",
+      "want",
+      "to",
+      "apply",
+      "for",
+      "a",
+      "credit",
+      "card",
+      "what",
+      "options",
+      "do",
+      "i",
+      "have"
+    ],
+    "intent": "CREDIT_CARD_INFORMATION"
+  },
+  {
+    "query_id": "Q139",
+    "customer_id": "CUST007",
+    "timestamp": "2026-09-18 13:14:01",
+    "query": "I want to change my password.",
+    "tokens": [
+      "i",
+      "want",
+      "to",
+      "change",
+      "my",
+      "password"
+    ],
+    "intent": "UNKNOWN_QUERY"
+  },
+  {
+    "query_id": "Q140",
+    "customer_id": "CUST008",
+    "timestamp": "2026-09-18 15:53:47",
+    "query": "What did I spend at Swiggy last month?",
+    "tokens": [
+      "what",
+      "did",
+      "i",
+      "spend",
+      "at",
+      "swiggy",
+      "last",
+      "month"
+    ],
+    "intent": "MERCHANT_SPENDING"
+  },
+  {
+    "query_id": "Q141",
+    "customer_id": "CUST006",
+    "timestamp": "2026-09-18 17:39:55",
+    "query": "I want to know my account balance.",
+    "tokens": [
+      "i",
+      "want",
+      "to",
+      "know",
+      "my",
+      "account",
+      "balance"
+    ],
+    "intent": "CHECK_BALANCE"
+  },
+  {
+    "query_id": "Q142",
+    "customer_id": "CUST008",
+    "timestamp": "2026-09-18 20:09:48",
+    "query": "Tell me my available balance.",
+    "tokens": [
+      "tell",
+      "me",
+      "my",
+      "available",
+      "balance"
+    ],
+    "intent": "CHECK_BALANCE"
+  },
+  {
+    "query_id": "Q143",
+    "customer_id": "CUST003",
+    "timestamp": "2026-09-18 22:08:26",
+    "query": "Show me my account balance.",
+    "tokens": [
+      "show",
+      "me",
+      "my",
+      "account",
+      "balance"
+    ],
+    "intent": "CHECK_BALANCE"
+  },
+  {
+    "query_id": "Q144",
+    "customer_id": "CUST006",
+    "timestamp": "2026-09-19 00:16:48",
+    "query": "List the documents needed for an education loan.",
+    "tokens": [
+      "list",
+      "the",
+      "documents",
+      "needed",
+      "for",
+      "an",
+      "education",
+      "loan"
+    ],
+    "intent": "LOAN_DOCUMENTS"
+  },
+  {
+    "query_id": "Q145",
+    "customer_id": "CUST005",
+    "timestamp": "2026-09-19 00:59:51",
+    "query": "What were my expenses in July 2026?",
+    "tokens": [
+      "what",
+      "were",
+      "my",
+      "expenses",
+      "in",
+      "july",
+      "2026"
+    ],
+    "intent": "MONTHLY_SPENDING"
+  },
+  {
+    "query_id": "Q146",
+    "customer_id": "CUST008",
+    "timestamp": "2026-09-19 01:25:46",
+    "query": "What are the rules for fixed deposits?",
+    "tokens": [
+      "what",
+      "are",
+      "the",
+      "rules",
+      "for",
+      "fixed",
+      "deposits"
+    ],
+    "intent": "BANKING_POLICY"
+  },
+  {
+    "query_id": "Q147",
+    "customer_id": "CUST008",
+    "timestamp": "2026-09-19 02:31:49",
+    "query": "Give me my monthly spending summary.",
+    "tokens": [
+      "give",
+      "me",
+      "my",
+      "monthly",
+      "spending",
+      "summary"
+    ],
+    "intent": "MONTHLY_SPENDING"
+  },
+  {
+    "query_id": "Q148",
+    "customer_id": "CUST001",
+    "timestamp": "2026-09-19 04:23:30",
+    "query": "Show me my account details.",
+    "tokens": [
+      "show",
+      "me",
+      "my",
+      "account",
+      "details"
+    ],
+    "intent": "ACCOUNT_DETAILS"
+  },
+  {
+    "query_id": "Q149",
+    "customer_id": "CUST005",
+    "timestamp": "2026-09-19 05:51:07",
+    "query": "What is the interest rate on your savings accounts?",
+    "tokens": [
+      "what",
+      "is",
+      "the",
+      "interest",
+      "rate",
+      "on",
+      "your",
+      "savings",
+      "accounts"
+    ],
+    "intent": "SAVINGS_INFORMATION"
+  },
+  {
+    "query_id": "Q150",
+    "customer_id": "CUST006",
+    "timestamp": "2026-09-19 08:24:33",
+    "query": "Find my last payment to Flipkart.",
+    "tokens": [
+      "find",
+      "my",
+      "last",
+      "payment",
+      "to",
+      "flipkart"
+    ],
+    "intent": "TRANSACTION_SEARCH"
+  },
+  {
+    "query_id": "Q151",
+    "customer_id": "CUST007",
+    "timestamp": "2026-09-19 09:31:44",
+    "query": "Check if I can get a two-wheeler loan.",
+    "tokens": [
+      "check",
+      "if",
+      "i",
+      "can",
+      "get",
+      "a",
+      "twowheeler",
+      "loan"
+    ],
+    "intent": "LOAN_ELIGIBILITY"
+  },
+  {
+    "query_id": "Q152",
+    "customer_id": "CUST004",
+    "timestamp": "2026-09-19 09:55:05",
+    "query": "Can you book a flight for me?",
+    "tokens": [
+      "can",
+      "you",
+      "book",
+      "a",
+      "flight",
+      "for",
+      "me"
+    ],
+    "intent": "UNKNOWN_QUERY"
+  },
+  {
+    "query_id": "Q153",
+    "customer_id": "CUST003",
+    "timestamp": "2026-09-19 13:16:23",
+    "query": "Please check how much balance I have.",
+    "tokens": [
+      "please",
+      "check",
+      "how",
+      "much",
+      "balance",
+      "i",
+      "have"
+    ],
+    "intent": "CHECK_BALANCE"
+  },
+  {
+    "query_id": "Q154",
+    "customer_id": "CUST003",
+    "timestamp": "2026-09-19 15:51:23",
+    "query": "What paperwork is required for a car loan?",
+    "tokens": [
+      "what",
+      "paperwork",
+      "is",
+      "required",
+      "for",
+      "a",
+      "car",
+      "loan"
+    ],
+    "intent": "LOAN_DOCUMENTS"
+  },
+  {
+    "query_id": "Q155",
+    "customer_id": "CUST008",
+    "timestamp": "2026-09-19 20:07:13",
+    "query": "What is the minimum balance for a savings account?",
+    "tokens": [
+      "what",
+      "is",
+      "the",
+      "minimum",
+      "balance",
+      "for",
+      "a",
+      "savings",
+      "account"
+    ],
+    "intent": "SAVINGS_INFORMATION"
+  },
+  {
+    "query_id": "Q156",
+    "customer_id": "CUST004",
+    "timestamp": "2026-09-19 20:35:19",
+    "query": "I want to see my recent bank transactions.",
+    "tokens": [
+      "i",
+      "want",
+      "to",
+      "see",
+      "my",
+      "recent",
+      "bank",
+      "transactions"
+    ],
+    "intent": "TRANSACTION_HISTORY"
+  },
+  {
+    "query_id": "Q157",
+    "customer_id": "CUST006",
+    "timestamp": "2026-09-20 00:32:29",
+    "query": "How much money is in my account?",
+    "tokens": [
+      "how",
+      "much",
+      "money",
+      "is",
+      "in",
+      "my",
+      "account"
+    ],
+    "intent": "CHECK_BALANCE"
+  },
+  {
+    "query_id": "Q158",
+    "customer_id": "CUST008",
+    "timestamp": "2026-09-20 03:28:11",
+    "query": "Tell me a joke.",
+    "tokens": [
+      "tell",
+      "me",
+      "a",
+      "joke"
+    ],
+    "intent": "UNKNOWN_QUERY"
+  },
+  {
+    "query_id": "Q159",
+    "customer_id": "CUST002",
+    "timestamp": "2026-09-20 03:42:21",
+    "query": "Can I apply for a car loan with my current salary?",
+    "tokens": [
+      "can",
+      "i",
+      "apply",
+      "for",
+      "a",
+      "car",
+      "loan",
+      "with",
+      "my",
+      "current",
+      "salary"
+    ],
+    "intent": "LOAN_ELIGIBILITY"
+  },
+  {
+    "query_id": "Q160",
+    "customer_id": "CUST004",
+    "timestamp": "2026-09-20 07:45:31",
+    "query": "I want to see my recent bank transactions.",
+    "tokens": [
+      "i",
+      "want",
+      "to",
+      "see",
+      "my",
+      "recent",
+      "bank",
+      "transactions"
+    ],
+    "intent": "TRANSACTION_HISTORY"
+  },
+  {
+    "query_id": "Q161",
+    "customer_id": "CUST007",
+    "timestamp": "2026-09-20 15:01:44",
+    "query": "What is my total food delivery expenditure?",
+    "tokens": [
+      "what",
+      "is",
+      "my",
+      "total",
+      "food",
+      "delivery",
+      "expenditure"
+    ],
+    "intent": "CATEGORY_SPENDING"
+  },
+  {
+    "query_id": "Q162",
+    "customer_id": "CUST004",
+    "timestamp": "2026-09-20 15:12:47",
+    "query": "Am I a premium customer?",
+    "tokens": [
+      "am",
+      "i",
+      "a",
+      "premium",
+      "customer"
+    ],
+    "intent": "CUSTOMER_PROFILE"
+  },
+  {
+    "query_id": "Q163",
+    "customer_id": "CUST005",
+    "timestamp": "2026-09-20 21:34:39",
+    "query": "Show all my transactions from this month.",
+    "tokens": [
+      "show",
+      "all",
+      "my",
+      "transactions",
+      "from",
+      "this",
+      "month"
+    ],
+    "intent": "TRANSACTION_HISTORY"
+  },
+  {
+    "query_id": "Q164",
+    "customer_id": "CUST008",
+    "timestamp": "2026-09-21 01:47:27",
+    "query": "Give me all my account information.",
+    "tokens": [
+      "give",
+      "me",
+      "all",
+      "my",
+      "account",
+      "information"
+    ],
+    "intent": "ACCOUNT_DETAILS"
+  },
+  {
+    "query_id": "Q165",
+    "customer_id": "CUST001",
+    "timestamp": "2026-09-21 03:27:50",
+    "query": "What is the balance in my savings account?",
+    "tokens": [
+      "what",
+      "is",
+      "the",
+      "balance",
+      "in",
+      "my",
+      "savings",
+      "account"
+    ],
+    "intent": "CHECK_BALANCE"
+  },
+  {
+    "query_id": "Q166",
+    "customer_id": "CUST001",
+    "timestamp": "2026-09-21 17:19:23",
+    "query": "Find my last payment to Flipkart.",
+    "tokens": [
+      "find",
+      "my",
+      "last",
+      "payment",
+      "to",
+      "flipkart"
+    ],
+    "intent": "TRANSACTION_SEARCH"
+  },
+  {
+    "query_id": "Q167",
+    "customer_id": "CUST004",
+    "timestamp": "2026-09-21 18:52:10",
+    "query": "What rate do you offer for personal loans?",
+    "tokens": [
+      "what",
+      "rate",
+      "do",
+      "you",
+      "offer",
+      "for",
+      "personal",
+      "loans"
+    ],
+    "intent": "LOAN_INTEREST_RATE"
+  },
+  {
+    "query_id": "Q168",
+    "customer_id": "CUST008",
+    "timestamp": "2026-09-21 21:21:48",
+    "query": "Tell me the document requirements for the instant personal loan.",
+    "tokens": [
+      "tell",
+      "me",
+      "the",
+      "document",
+      "requirements",
+      "for",
+      "the",
+      "instant",
+      "personal",
+      "loan"
+    ],
+    "intent": "LOAN_DOCUMENTS"
+  },
+  {
+    "query_id": "Q169",
+    "customer_id": "CUST009",
+    "timestamp": "2026-09-21 21:49:13",
+    "query": "What is the current interest rate for education loans?",
+    "tokens": [
+      "what",
+      "is",
+      "the",
+      "current",
+      "interest",
+      "rate",
+      "for",
+      "education",
+      "loans"
+    ],
+    "intent": "LOAN_INTEREST_RATE"
+  },
+  {
+    "query_id": "Q170",
+    "customer_id": "CUST005",
+    "timestamp": "2026-09-21 22:19:01",
+    "query": "Do you have a zero balance savings account?",
+    "tokens": [
+      "do",
+      "you",
+      "have",
+      "a",
+      "zero",
+      "balance",
+      "savings",
+      "account"
+    ],
+    "intent": "SAVINGS_INFORMATION"
+  },
+  {
+    "query_id": "Q171",
+    "customer_id": "CUST003",
+    "timestamp": "2026-09-21 22:24:18",
+    "query": "What details do you have about me?",
+    "tokens": [
+      "what",
+      "details",
+      "do",
+      "you",
+      "have",
+      "about",
+      "me"
+    ],
+    "intent": "CUSTOMER_PROFILE"
+  },
+  {
+    "query_id": "Q172",
+    "customer_id": "CUST008",
+    "timestamp": "2026-09-21 22:53:09",
+    "query": "Tell me my available balance.",
+    "tokens": [
+      "tell",
+      "me",
+      "my",
+      "available",
+      "balance"
+    ],
+    "intent": "CHECK_BALANCE"
+  },
+  {
+    "query_id": "Q173",
+    "customer_id": "CUST004",
+    "timestamp": "2026-09-22 00:09:18",
+    "query": "What did I spend on BookMyShow?",
+    "tokens": [
+      "what",
+      "did",
+      "i",
+      "spend",
+      "on",
+      "bookmyshow"
+    ],
+    "intent": "MERCHANT_SPENDING"
+  },
+  {
+    "query_id": "Q174",
+    "customer_id": "CUST004",
+    "timestamp": "2026-09-22 02:14:55",
+    "query": "Good morning, can I speak to someone?",
+    "tokens": [
+      "good",
+      "morning",
+      "can",
+      "i",
+      "speak",
+      "to",
+      "someone"
+    ],
+    "intent": "GENERAL_BANKING_QUERY"
+  },
+  {
+    "query_id": "Q175",
+    "customer_id": "CUST005",
+    "timestamp": "2026-09-22 03:00:17",
+    "query": "How much have I spent at Apollo Pharmacy?",
+    "tokens": [
+      "how",
+      "much",
+      "have",
+      "i",
+      "spent",
+      "at",
+      "apollo",
+      "pharmacy"
+    ],
+    "intent": "MERCHANT_SPENDING"
+  },
+  {
+    "query_id": "Q176",
+    "customer_id": "CUST006",
+    "timestamp": "2026-09-22 05:07:25",
+    "query": "What are the charges for not maintaining minimum balance?",
+    "tokens": [
+      "what",
+      "are",
+      "the",
+      "charges",
+      "for",
+      "not",
+      "maintaining",
+      "minimum",
+      "balance"
+    ],
+    "intent": "BANKING_POLICY"
+  },
+  {
+    "query_id": "Q177",
+    "customer_id": "CUST007",
+    "timestamp": "2026-09-22 11:24:55",
+    "query": "How much do I have in my savings account?",
+    "tokens": [
+      "how",
+      "much",
+      "do",
+      "i",
+      "have",
+      "in",
+      "my",
+      "savings",
+      "account"
+    ],
+    "intent": "CHECK_BALANCE"
+  },
+  {
+    "query_id": "Q178",
+    "customer_id": "CUST010",
+    "timestamp": "2026-09-22 17:34:02",
+    "query": "What rate do you offer for personal loans?",
+    "tokens": [
+      "what",
+      "rate",
+      "do",
+      "you",
+      "offer",
+      "for",
+      "personal",
+      "loans"
+    ],
+    "intent": "LOAN_INTEREST_RATE"
+  },
+  {
+    "query_id": "Q179",
+    "customer_id": "CUST010",
+    "timestamp": "2026-09-22 22:12:04",
+    "query": "Search for a transaction of 5000 rupees.",
+    "tokens": [
+      "search",
+      "for",
+      "a",
+      "transaction",
+      "of",
+      "5000",
+      "rupees"
+    ],
+    "intent": "TRANSACTION_SEARCH"
+  },
+  {
+    "query_id": "Q180",
+    "customer_id": "CUST001",
+    "timestamp": "2026-09-22 22:27:15",
+    "query": "Show me month-wise spending for the last 3 months.",
+    "tokens": [
+      "show",
+      "me",
+      "monthwise",
+      "spending",
+      "for",
+      "the",
+      "last",
+      "3",
+      "months"
+    ],
+    "intent": "MONTHLY_SPENDING"
+  },
+  {
+    "query_id": "Q181",
+    "customer_id": "CUST006",
+    "timestamp": "2026-09-23 01:07:50",
+    "query": "Did I receive my salary this month?",
+    "tokens": [
+      "did",
+      "i",
+      "receive",
+      "my",
+      "salary",
+      "this",
+      "month"
+    ],
+    "intent": "TRANSACTION_SEARCH"
+  },
+  {
+    "query_id": "Q182",
+    "customer_id": "CUST001",
+    "timestamp": "2026-09-23 01:28:11",
+    "query": "I need assistance with my account.",
+    "tokens": [
+      "i",
+      "need",
+      "assistance",
+      "with",
+      "my",
+      "account"
+    ],
+    "intent": "GENERAL_BANKING_QUERY"
+  },
+  {
+    "query_id": "Q183",
+    "customer_id": "CUST006",
+    "timestamp": "2026-09-23 02:07:23",
+    "query": "Tell me about your personal loans.",
+    "tokens": [
+      "tell",
+      "me",
+      "about",
+      "your",
+      "personal",
+      "loans"
+    ],
+    "intent": "LOAN_INFORMATION"
+  },
+  {
+    "query_id": "Q184",
+    "customer_id": "CUST004",
+    "timestamp": "2026-09-23 03:51:02",
+    "query": "How much interest will I pay on a personal loan of 5 lakhs?",
+    "tokens": [
+      "how",
+      "much",
+      "interest",
+      "will",
+      "i",
+      "pay",
+      "on",
+      "a",
+      "personal",
+      "loan",
+      "of",
+      "5",
+      "lakhs"
+    ],
+    "intent": "LOAN_INTEREST_RATE"
+  },
+  {
+    "query_id": "Q185",
+    "customer_id": "CUST005",
+    "timestamp": "2026-09-23 04:22:12",
+    "query": "Who won the cricket match?",
+    "tokens": [
+      "who",
+      "won",
+      "the",
+      "cricket",
+      "match"
+    ],
+    "intent": "UNKNOWN_QUERY"
+  },
+  {
+    "query_id": "Q186",
+    "customer_id": "CUST001",
+    "timestamp": "2026-09-23 04:59:04",
+    "query": "What are your customer care timings?",
+    "tokens": [
+      "what",
+      "are",
+      "your",
+      "customer",
+      "care",
+      "timings"
+    ],
+    "intent": "GENERAL_BANKING_QUERY"
+  },
+  {
+    "query_id": "Q187",
+    "customer_id": "CUST008",
+    "timestamp": "2026-09-23 05:28:35",
+    "query": "What is the NEFT transfer limit?",
+    "tokens": [
+      "what",
+      "is",
+      "the",
+      "neft",
+      "transfer",
+      "limit"
+    ],
+    "intent": "BANKING_POLICY"
+  },
+  {
+    "query_id": "Q188",
+    "customer_id": "CUST006",
+    "timestamp": "2026-09-23 08:04:35",
+    "query": "What did I spend on shopping this month?",
+    "tokens": [
+      "what",
+      "did",
+      "i",
+      "spend",
+      "on",
+      "shopping",
+      "this",
+      "month"
+    ],
+    "intent": "CATEGORY_SPENDING"
+  },
+  {
+    "query_id": "Q189",
+    "customer_id": "CUST004",
+    "timestamp": "2026-09-23 12:25:38",
+    "query": "Tell me about my NovaBank accounts.",
+    "tokens": [
+      "tell",
+      "me",
+      "about",
+      "my",
+      "novabank",
+      "accounts"
+    ],
+    "intent": "ACCOUNT_DETAILS"
+  },
+  {
+    "query_id": "Q190",
+    "customer_id": "CUST003",
+    "timestamp": "2026-09-23 13:18:42",
+    "query": "What is my account number and type?",
+    "tokens": [
+      "what",
+      "is",
+      "my",
+      "account",
+      "number",
+      "and",
+      "type"
+    ],
+    "intent": "ACCOUNT_DETAILS"
+  },
+  {
+    "query_id": "Q191",
+    "customer_id": "CUST009",
+    "timestamp": "2026-09-23 14:36:50",
+    "query": "Give me all my account information.",
+    "tokens": [
+      "give",
+      "me",
+      "all",
+      "my",
+      "account",
+      "information"
+    ],
+    "intent": "ACCOUNT_DETAILS"
+  },
+  {
+    "query_id": "Q192",
+    "customer_id": "CUST004",
+    "timestamp": "2026-09-23 14:40:36",
+    "query": "What is my total expenditure this month?",
+    "tokens": [
+      "what",
+      "is",
+      "my",
+      "total",
+      "expenditure",
+      "this",
+      "month"
+    ],
+    "intent": "SPENDING_ANALYSIS"
+  },
+  {
+    "query_id": "Q193",
+    "customer_id": "CUST009",
+    "timestamp": "2026-09-23 17:14:29",
+    "query": "What was my total spending in August?",
+    "tokens": [
+      "what",
+      "was",
+      "my",
+      "total",
+      "spending",
+      "in",
+      "august"
+    ],
+    "intent": "MONTHLY_SPENDING"
+  },
+  {
+    "query_id": "Q194",
+    "customer_id": "CUST004",
+    "timestamp": "2026-09-23 17:48:00",
+    "query": "What are the benefits of your credit cards?",
+    "tokens": [
+      "what",
+      "are",
+      "the",
+      "benefits",
+      "of",
+      "your",
+      "credit",
+      "cards"
+    ],
+    "intent": "CREDIT_CARD_INFORMATION"
+  },
+  {
+    "query_id": "Q195",
+    "customer_id": "CUST005",
+    "timestamp": "2026-09-23 18:38:01",
+    "query": "What all do I need to submit for a vehicle loan?",
+    "tokens": [
+      "what",
+      "all",
+      "do",
+      "i",
+      "need",
+      "to",
+      "submit",
+      "for",
+      "a",
+      "vehicle",
+      "loan"
+    ],
+    "intent": "LOAN_DOCUMENTS"
+  },
+  {
+    "query_id": "Q196",
+    "customer_id": "CUST002",
+    "timestamp": "2026-09-23 18:53:25",
+    "query": "What is the maximum loan amount I can get?",
+    "tokens": [
+      "what",
+      "is",
+      "the",
+      "maximum",
+      "loan",
+      "amount",
+      "i",
+      "can",
+      "get"
+    ],
+    "intent": "LOAN_ELIGIBILITY"
+  },
+  {
+    "query_id": "Q197",
+    "customer_id": "CUST004",
+    "timestamp": "2026-09-23 20:49:51",
+    "query": "Show me my transaction history.",
+    "tokens": [
+      "show",
+      "me",
+      "my",
+      "transaction",
+      "history"
+    ],
+    "intent": "TRANSACTION_HISTORY"
+  },
+  {
+    "query_id": "Q198",
+    "customer_id": "CUST003",
+    "timestamp": "2026-09-23 23:30:04",
+    "query": "Am I eligible for a personal loan?",
+    "tokens": [
+      "am",
+      "i",
+      "eligible",
+      "for",
+      "a",
+      "personal",
+      "loan"
+    ],
+    "intent": "LOAN_ELIGIBILITY"
+  },
+  {
+    "query_id": "Q199",
+    "customer_id": "CUST001",
+    "timestamp": "2026-09-24 00:19:27",
+    "query": "Can you book a flight for me?",
+    "tokens": [
+      "can",
+      "you",
+      "book",
+      "a",
+      "flight",
+      "for",
+      "me"
+    ],
+    "intent": "UNKNOWN_QUERY"
+  },
+  {
+    "query_id": "Q200",
+    "customer_id": "CUST003",
+    "timestamp": "2026-09-24 03:46:20",
+    "query": "What documents are required for a personal loan?",
+    "tokens": [
+      "what",
+      "documents",
+      "are",
+      "required",
+      "for",
+      "a",
+      "personal",
+      "loan"
+    ],
+    "intent": "LOAN_DOCUMENTS"
+  }
+]
