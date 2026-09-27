@@ -111,7 +111,7 @@ class RuleBasedLLMClient(BaseLLMClient):
             "where do i live", "my job", "what is my job", "tell me about me",
             "tell me about myself", "who is logged in", "logged in user", "who am i logged in as"
         ]
-        is_customer_specific = any(s in q_lower for s in customer_specific_signals)
+        is_customer_specific = any(s in q_lower for s in customer_specific_signals) or "transaction" in q_lower or "statement" in q_lower
 
         # General policy signals (RAG)
         policy_signals = [
@@ -202,11 +202,22 @@ class RuleBasedLLMClient(BaseLLMClient):
             tools.append({"name": "get_balance", "args": {"customer_id": customer_id}})
 
         # Transactions
-        if "transaction" in q_lower:
-            if "summary" in q_lower:
+        if "transaction" in q_lower or "statement" in q_lower:
+            if "summary" in q_lower or "spent on" in q_lower:
                 tools.append({"name": "get_transaction_summary", "args": {"customer_id": customer_id}})
             else:
-                tools.append({"name": "get_transactions", "args": {"customer_id": customer_id, "limit": 5}})
+                from app.agents.transaction_query_parser import parse_transaction_query
+                parsed = parse_transaction_query(q_lower, customer_id=customer_id)
+                txn_args: Dict[str, Any] = {"customer_id": customer_id, "limit": parsed["limit"]}
+                if parsed.get("category"):
+                    txn_args["category"] = parsed["category"]
+                if parsed.get("start_date"):
+                    txn_args["start_date"] = parsed["start_date"]
+                if parsed.get("end_date"):
+                    txn_args["end_date"] = parsed["end_date"]
+                if parsed.get("account_id"):
+                    txn_args["account_id"] = parsed["account_id"]
+                tools.append({"name": "get_transactions", "args": txn_args})
 
         # Accounts list
         if "account" in q_lower and "balance" not in q_lower:
@@ -489,19 +500,44 @@ class RuleBasedLLMClient(BaseLLMClient):
             elif tool_name in ["get_transactions", "get_transaction_summary"]:
                 if tool_name == "get_transactions":
                     txs = data.get("transactions", [])
+                    from app.agents.transaction_query_parser import parse_transaction_query
+                    # Identify specific sub-query text if decomposed
+                    target_query = query
+                    if sub_queries:
+                        for sq in sub_queries:
+                            if sq.get("tool") == "get_transactions":
+                                target_query = sq.get("query", query)
+                                break
+                    parsed_txn = parse_transaction_query(target_query, customer_id=customer_id)
+
                     if txs:
                         rows = [
-                            f"| {t.get('date', 'N/A')} | {t.get('description', 'Transaction')} | {t.get('transaction_type', 'N/A')} | INR {t.get('amount', 0):,.2f} | {t.get('status', 'Completed')} |"
-                            for t in txs[:5]
+                            f"| {t.get('date', 'N/A')} | {t.get('merchant') or t.get('description', 'Transaction')} | {t.get('category', 'N/A')} | INR {t.get('amount', 0):,.2f} | {t.get('type') or t.get('transaction_type', 'N/A')} |"
+                            for t in txs
                         ]
                         table = (
-                            "| Date | Description | Type | Amount | Status |\n"
+                            "| Date | Description | Category | Amount | Type |\n"
                             "|---|---|---|---|---|\n"
                             + "\n".join(rows)
                         )
-                        tool_sections.append(f"Here are your latest transactions:\n\n{table}")
+                        cap_note = ""
+                        if parsed_txn.get("was_capped"):
+                            cap_note = f" *(Note: Requested {parsed_txn['original_limit']:,} transactions capped to maximum safety limit of {parsed_txn['limit']})*"
+
+                        cat_desc = f"{parsed_txn['category']} " if parsed_txn.get("category") else ""
+                        date_desc = f" from {parsed_txn['date_label']}" if parsed_txn.get("date_label") else ""
+                        header = f"Showing your {len(txs)} most recent {cat_desc}transactions{date_desc}:{cap_note}"
+                        tool_sections.append(f"{header}\n\n{table}")
                     else:
-                        tool_sections.append("No recent transactions found.")
+                        filter_desc = f"{parsed_txn['category']} transactions" if parsed_txn.get("category") else "transactions"
+                        if parsed_txn.get("date_label"):
+                            tool_sections.append(f"No {filter_desc} were found for {parsed_txn['date_label']}.")
+                        elif parsed_txn.get("start_date") or parsed_txn.get("end_date"):
+                            tool_sections.append(f"No {filter_desc} were found between {parsed_txn.get('start_date')} and {parsed_txn.get('end_date')}.")
+                        elif parsed_txn.get("category"):
+                            tool_sections.append(f"No {filter_desc} were found.")
+                        else:
+                            tool_sections.append("No recent transactions found.")
                 else:
                     total_spent = data.get("total_debits", 0.0)
                     total_credited = data.get("total_credits", 0.0)

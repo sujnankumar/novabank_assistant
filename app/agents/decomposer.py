@@ -37,7 +37,7 @@ BANKING_PRODUCTS: List[Tuple[str, str]] = [
 # Tool signal patterns and tool names
 TOOL_PATTERNS: List[Tuple[str, List[str]]] = [
     ("get_balance", ["balance", "account balance", "how much money", "funds available", "current balance"]),
-    ("get_transactions", ["recent transactions", "transaction history", "statement", "latest transactions", "past transactions"]),
+    ("get_transactions", ["recent transactions", "transaction history", "statement", "latest transactions", "past transactions", "transaction", "transactions"]),
     ("get_transaction_summary", ["spending summary", "spent on", "spending analysis", "monthly spending", "expenses", "expense summary"]),
     ("get_account_info", ["account details", "my accounts", "account number", "account type"]),
     ("get_customer_profile", ["my profile", "customer profile", "who am i", "my details", "registered details"]),
@@ -164,11 +164,36 @@ class QueryDecomposer:
                 "tool_calls": [{"name": "get_balance", "args": {"customer_id": customer_id} if customer_id else {}}],
             })
         if has_transactions and not has_summary:
+            from app.agents.transaction_query_parser import parse_transaction_query
+            # Split clauses by punctuation or coordinating conjunctions to isolate transaction query
+            clauses = re.split(r"[,;]|\s+(?:and|also|as well as)\s+", query, flags=re.IGNORECASE)
+            matching_clause = next(
+                (c.strip() for c in clauses if "transaction" in c.lower() or "statement" in c.lower()),
+                "",
+            )
+            target_txn_text = matching_clause if matching_clause else query
+
+            parsed = parse_transaction_query(target_txn_text, customer_id=customer_id)
+            txn_args: Dict[str, Any] = {"customer_id": customer_id, "limit": parsed["limit"]}
+            if parsed.get("category"):
+                txn_args["category"] = parsed["category"]
+            if parsed.get("start_date"):
+                txn_args["start_date"] = parsed["start_date"]
+            if parsed.get("end_date"):
+                txn_args["end_date"] = parsed["end_date"]
+            if parsed.get("account_id"):
+                txn_args["account_id"] = parsed["account_id"]
+
+            sub_q_text = matching_clause if matching_clause else "What are my recent transactions?"
+            if not sub_q_text.endswith("?"):
+                sub_q_text = sub_q_text[0].upper() + sub_q_text[1:]
+
             sub_queries.append({
-                "query": "What are my recent transactions?",
+                "query": sub_q_text,
                 "route": "TOOL",
                 "tool": "get_transactions",
-                "tool_calls": [{"name": "get_transactions", "args": {"customer_id": customer_id} if customer_id else {}}],
+                "parameters": txn_args,
+                "tool_calls": [{"name": "get_transactions", "args": txn_args}],
             })
         if has_summary:
             sub_queries.append({
@@ -280,13 +305,28 @@ class QueryDecomposer:
                 if not q_text:
                     continue
                 tc = []
+                params: Dict[str, Any] = {}
                 if route == "TOOL" and tool_name:
                     args = {"customer_id": customer_id} if customer_id else {}
+                    if tool_name == "get_transactions":
+                        from app.agents.transaction_query_parser import parse_transaction_query
+                        parsed = parse_transaction_query(q_text, customer_id=customer_id)
+                        args["limit"] = parsed["limit"]
+                        if parsed.get("category"):
+                            args["category"] = parsed["category"]
+                        if parsed.get("start_date"):
+                            args["start_date"] = parsed["start_date"]
+                        if parsed.get("end_date"):
+                            args["end_date"] = parsed["end_date"]
+                        if parsed.get("account_id"):
+                            args["account_id"] = parsed["account_id"]
+                    params = args
                     tc = [{"name": tool_name, "args": args}]
                 sub_queries.append({
                     "query": q_text,
                     "route": route,
                     "tool": tool_name,
+                    "parameters": params,
                     "tool_calls": tc,
                 })
             if len(sub_queries) > 1:

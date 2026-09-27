@@ -59,13 +59,15 @@ class TransactionsInput(BaseModel):
     """Input for get_transactions."""
 
     customer_id: str = Field(..., description="Unique customer ID (e.g. CUST001)")
-    limit: int = Field(default=50, ge=1, le=100, description="Max transactions to return")
+    limit: int = Field(default=5, ge=1, le=100, description="Max transactions to return (default: 5)")
     offset: int = Field(default=0, ge=0, description="Pagination offset")
     transaction_type: Optional[str] = Field(default=None, description="Filter by DEBIT or CREDIT")
     category: Optional[str] = Field(default=None, description="Filter by spending category")
     merchant: Optional[str] = Field(default=None, description="Filter by merchant name")
     start_date: Optional[str] = Field(default=None, description="Filter on or after YYYY-MM-DD")
     end_date: Optional[str] = Field(default=None, description="Filter on or before YYYY-MM-DD")
+    account_id: Optional[str] = Field(default=None, description="Filter by account ID")
+    sort: str = Field(default="desc", description="Sort order ('desc' or 'asc')")
 
 
 class TransactionSummaryInput(BaseModel):

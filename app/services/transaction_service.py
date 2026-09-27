@@ -54,10 +54,12 @@ class TransactionService:
         start_date: Optional[str] = None,
         end_date: Optional[str] = None,
         status_filter: Optional[str] = None,
+        account_id: Optional[str] = None,
+        sort: str = "desc",
     ) -> TransactionListResponse:
         """
         Retrieve filtered transactions for customer_id with strict data isolation.
-        Newest transactions are returned first.
+        Newest transactions are returned first by default (sort="desc").
         """
         if not self.repo.customer_exists(customer_id):
             raise HTTPException(
@@ -73,6 +75,8 @@ class TransactionService:
         # Apply filters
         filtered: List[Dict] = []
         for t in raw_txns:
+            if account_id and t.get("account_id", "").upper() != account_id.upper():
+                continue
             if transaction_type and t.get("type", "").upper() != transaction_type.upper():
                 continue
             if category and t.get("category", "").lower() != category.lower():
@@ -87,8 +91,9 @@ class TransactionService:
                 continue
             filtered.append(t)
 
-        # Order by date descending (newest first), then transaction_id descending
-        filtered.sort(key=lambda x: (x.get("date", ""), x.get("transaction_id", "")), reverse=True)
+        # Order by date, then transaction_id
+        reverse_sort = (sort.lower() != "asc")
+        filtered.sort(key=lambda x: (x.get("date", ""), x.get("transaction_id", "")), reverse=reverse_sort)
 
         total_matching = len(filtered)
         paged_txns = filtered[offset : offset + limit]

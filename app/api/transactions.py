@@ -51,7 +51,7 @@ def get_transactions_summary(
 )
 def get_transactions(
     customer_id: str = Path(..., description="Unique customer ID (e.g., CUST001)"),
-    limit: int = Query(50, ge=1, le=100, description="Max transactions to return (1-100)"),
+    limit: int = Query(5, ge=1, le=100, description="Max transactions to return (1-100, default: 5)"),
     offset: int = Query(0, ge=0, description="Pagination offset"),
     transaction_type: Optional[str] = Query(None, description="Filter by type (CREDIT or DEBIT)"),
     category: Optional[str] = Query(None, description="Filter by category"),
@@ -59,6 +59,8 @@ def get_transactions(
     start_date: Optional[str] = Query(None, description="Start date (YYYY-MM-DD)"),
     end_date: Optional[str] = Query(None, description="End date (YYYY-MM-DD)"),
     status_filter: Optional[str] = Query(None, alias="status", description="Filter by status (SUCCESS, PENDING, FAILED)"),
+    account_id: Optional[str] = Query(None, description="Filter by account ID"),
+    sort: str = Query("desc", description="Sort order ('desc' or 'asc')"),
 ) -> TransactionListResponse:
     """Return customer transactions."""
     return transaction_service.get_transactions(
@@ -71,4 +73,6 @@ def get_transactions(
         start_date=start_date,
         end_date=end_date,
         status_filter=status_filter,
+        account_id=account_id,
+        sort=sort,
     )

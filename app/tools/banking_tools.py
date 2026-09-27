@@ -10,6 +10,9 @@ from typing import Any, Callable, Dict, List, Optional
 from datetime import datetime
 from fastapi.testclient import TestClient
 
+DEFAULT_TRANSACTION_LIMIT: int = 5
+MAX_TRANSACTION_LIMIT: int = 100
+
 
 class BankingApiClient:
     """
@@ -228,26 +231,30 @@ def get_balance(customer_id: str) -> Dict[str, Any]:
 
 def get_transactions(
     customer_id: str,
-    limit: int = 50,
+    limit: int = DEFAULT_TRANSACTION_LIMIT,
     offset: int = 0,
     transaction_type: Optional[str] = None,
     category: Optional[str] = None,
     merchant: Optional[str] = None,
     start_date: Optional[str] = None,
     end_date: Optional[str] = None,
+    account_id: Optional[str] = None,
+    sort: str = "desc",
 ) -> Dict[str, Any]:
     """
     Retrieve paginated customer transaction history with supported filtering.
 
     Parameters:
         customer_id (str): Unique customer ID (e.g. 'CUST001')
-        limit (int): Max transactions to return (default: 50, 1-100)
+        limit (int): Max transactions to return (default: 5, max: 100)
         offset (int): Pagination offset (default: 0)
         transaction_type (str, optional): Filter by type ('CREDIT' or 'DEBIT')
         category (str, optional): Filter by category (e.g. 'Food', 'Shopping')
         merchant (str, optional): Filter by merchant name
         start_date (str, optional): Transactions on or after YYYY-MM-DD
         end_date (str, optional): Transactions on or before YYYY-MM-DD
+        account_id (str, optional): Filter by specific account ID
+        sort (str, optional): Sort direction ('desc' or 'asc', default 'desc')
 
     Returns:
         dict: Structured tool result containing transactions list and count.
@@ -265,6 +272,9 @@ def get_transactions(
                 "status_code": 400,
             },
         }
+
+    # Enforce server-side safety maximum limit cap
+    effective_limit = min(limit, MAX_TRANSACTION_LIMIT) if limit is not None else DEFAULT_TRANSACTION_LIMIT
 
     if offset is not None and (not isinstance(offset, int) or offset < 0):
         return {
@@ -287,13 +297,15 @@ def get_transactions(
         }
 
     params = {
-        "limit": limit,
+        "limit": effective_limit,
         "offset": offset,
         "transaction_type": transaction_type,
         "category": category,
         "merchant": merchant,
         "start_date": start_date,
         "end_date": end_date,
+        "account_id": account_id,
+        "sort": sort,
     }
 
     return _api_client.request(
@@ -562,7 +574,7 @@ TOOL_METADATA: Dict[str, Dict[str, Any]] = {
             "limit": {
                 "type": "integer",
                 "required": False,
-                "description": "Maximum number of transactions to return (default 50)",
+                "description": "Maximum number of transactions to return (default 5, max 100)",
             },
             "offset": {
                 "type": "integer",
@@ -593,6 +605,16 @@ TOOL_METADATA: Dict[str, Dict[str, Any]] = {
                 "type": "string",
                 "required": False,
                 "description": "Filter on or before YYYY-MM-DD",
+            },
+            "account_id": {
+                "type": "string",
+                "required": False,
+                "description": "Filter by specific account ID",
+            },
+            "sort": {
+                "type": "string",
+                "required": False,
+                "description": "Sort order ('desc' or 'asc', default: desc)",
             },
         },
         "return_structure": {
