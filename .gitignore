@@ -70,7 +70,9 @@ coverage.xml
 *.lock
 conversations.db
 data/conversations.db
-qdrant_storage/
+!qdrant_storage/
+!qdrant_storage/**
+qdrant_storage/.lock
 
 # Temporary / Scratch files and OS artifacts
 .DS_Store
