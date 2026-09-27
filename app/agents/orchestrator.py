@@ -11,6 +11,7 @@ from langgraph.graph import END, START, StateGraph
 
 from app.agents.config import MAX_STEPS, MAX_TOOL_CALLS
 from app.agents.context_validator import ContextValidator
+from app.agents.decomposer import QueryDecomposer
 from app.agents.llm import BaseLLMClient, get_llm_client
 from app.agents.rag_executor import RAGExecutor
 from app.agents.response_generator import ResponseGenerator
@@ -32,11 +33,15 @@ class BankingOrchestrator:
         rag_executor: Optional[RAGExecutor] = None,
         context_validator: Optional[ContextValidator] = None,
         response_generator: Optional[ResponseGenerator] = None,
+        decomposer: Optional[QueryDecomposer] = None,
+        enable_decomposition: bool = True,
     ):
         self.llm_client = llm_client or get_llm_client()
         self.max_steps = max_steps
         self.max_tool_calls = max_tool_calls
+        self.enable_decomposition = enable_decomposition
 
+        self.decomposer = decomposer or QueryDecomposer(llm_client=self.llm_client)
         self.router = router or QueryRouter(llm_client=self.llm_client)
         self.tools_executor = tools_executor or ToolsExecutor(max_tool_calls=self.max_tool_calls)
         self.rag_executor = rag_executor or RAGExecutor()
@@ -107,28 +112,52 @@ class BankingOrchestrator:
     # ==================== Graph Node Implementations ====================
 
     def _node_analyze_query(self, state: AgentState) -> Dict[str, Any]:
-        """Validates query format and initializes execution counters."""
+        """Validates query format, initializes execution counters, and detects multi-intent sub-queries."""
         step = state.get("step_count", 0) + 1
         query = state.get("query", "").strip()
         query_snippet = f"'{query[:50]}...'" if len(query) > 50 else f"'{query}'"
 
-        thought_step = {
-            "node": "analyze_query",
-            "title": "Analyzing inquiry",
-            "description": f"Parsing natural language banking request: {query_snippet}",
-            "type": "analysis",
-        }
-
         if not query:
+            thought_step = {
+                "node": "analyze_query",
+                "title": "Analyzing inquiry",
+                "description": "Query is empty.",
+                "type": "analysis",
+            }
             return {
                 "route": "UNSUPPORTED",
                 "status": "unsupported",
                 "response": "Query cannot be empty.",
                 "step_count": step,
                 "thought_steps": [thought_step],
+                "sub_queries": [],
             }
 
-        return {"step_count": step, "thought_steps": [thought_step]}
+        # Check for multi-intent decomposition
+        customer_id = state.get("customer_id")
+        sub_queries = self.decomposer.decompose(query=query, customer_id=customer_id) if self.enable_decomposition else []
+
+        if sub_queries:
+            sub_q_summary = "; ".join([f"[{sq.get('route')}] {sq.get('query')}" for sq in sub_queries])
+            thought_step = {
+                "node": "analyze_query",
+                "title": f"Multi-intent analysis ({len(sub_queries)} sub-intents detected)",
+                "description": f"Decomposed query into independent banking tasks: {sub_q_summary}",
+                "type": "analysis",
+            }
+        else:
+            thought_step = {
+                "node": "analyze_query",
+                "title": "Analyzing inquiry",
+                "description": f"Parsing natural language banking request: {query_snippet}",
+                "type": "analysis",
+            }
+
+        return {
+            "step_count": step,
+            "thought_steps": [thought_step],
+            "sub_queries": sub_queries,
+        }
 
     def _node_route_query(self, state: AgentState) -> Dict[str, Any]:
         """Classifies query intent into TOOL, RAG, BOTH, CLARIFICATION, or UNSUPPORTED."""
@@ -143,9 +172,71 @@ class BankingOrchestrator:
                 "step_count": step,
             }
 
+        sub_queries = state.get("sub_queries", [])
+        customer_id = state.get("customer_id")
+
+        if sub_queries:
+            # Multi-intent routing: route each sub-query independently
+            updated_sub_queries = []
+            aggregated_tool_calls = []
+            seen_calls = set()
+            routes_seen = set()
+
+            for sq in sub_queries:
+                sq_copy = dict(sq)
+                sq_query = sq_copy.get("query", "")
+                if sq_copy.get("route") == "TOOL" and sq_copy.get("tool_calls"):
+                    routes_seen.add("TOOL")
+                else:
+                    route_info = self.router.route_query(query=sq_query, customer_id=customer_id)
+                    sq_copy["route"] = route_info.get("route", "UNSUPPORTED")
+                    sq_copy["tool_calls"] = route_info.get("tool_calls", [])
+                    routes_seen.add(sq_copy["route"])
+
+                for tc in sq_copy.get("tool_calls", []):
+                    ckey = (tc.get("name"), tuple(sorted((tc.get("args") or {}).items())))
+                    if ckey not in seen_calls:
+                        seen_calls.add(ckey)
+                        aggregated_tool_calls.append(tc)
+
+                updated_sub_queries.append(sq_copy)
+
+            if "CLARIFICATION" in routes_seen and not customer_id:
+                overall_route = "CLARIFICATION"
+            elif ("TOOL" in routes_seen or any(sq.get("route") == "TOOL" for sq in updated_sub_queries)) and ("RAG" in routes_seen or any(sq.get("route") == "RAG" for sq in updated_sub_queries)):
+                overall_route = "BOTH"
+            elif "TOOL" in routes_seen or any(sq.get("route") == "TOOL" for sq in updated_sub_queries):
+                overall_route = "TOOL"
+            elif "RAG" in routes_seen or any(sq.get("route") == "RAG" for sq in updated_sub_queries):
+                overall_route = "RAG"
+            else:
+                overall_route = "UNSUPPORTED"
+
+            tool_names = [t.get("name") for t in aggregated_tool_calls]
+            desc = f"Multi-intent routing ({overall_route}): {len(updated_sub_queries)} independent sub-queries plan."
+            thought_step = {
+                "node": "route_query",
+                "title": f"Routing query: {overall_route} (Multi-Intent)",
+                "description": desc,
+                "type": "routing",
+                "route": overall_route,
+                "tools": tool_names,
+                "sub_queries": [sq.get("query") for sq in updated_sub_queries],
+            }
+
+            return {
+                "route": overall_route,
+                "tool_calls": aggregated_tool_calls,
+                "selected_tools": tool_names,
+                "sub_queries": updated_sub_queries,
+                "step_count": step,
+                "thought_steps": [thought_step],
+            }
+
+        # Single-intent path (standard execution)
         route_info = self.router.route_query(
             query=state.get("query", ""),
-            customer_id=state.get("customer_id"),
+            customer_id=customer_id,
         )
 
         tool_calls = route_info.get("tool_calls", [])
@@ -213,14 +304,34 @@ class BankingOrchestrator:
         }
 
     def _node_retrieve_rag(self, state: AgentState) -> Dict[str, Any]:
-        """Executes Phase 5 Qdrant RAG retrieval."""
+        """Executes Phase 5 Qdrant RAG retrieval independently for each RAG sub-query."""
         step = state.get("step_count", 0) + 1
 
         if step > self.max_steps:
             return {"step_count": step}
 
-        query = state.get("query", "")
-        rag_results = self.rag_executor.retrieve(query=query)
+        sub_queries = state.get("sub_queries", [])
+        rag_sub_queries = [
+            sq for sq in sub_queries
+            if sq.get("route") in ("RAG", "BOTH")
+        ]
+
+        if rag_sub_queries:
+            rag_results = []
+            seen_chunk_keys = set()
+            for sq in rag_sub_queries:
+                sq_text = sq.get("query", "")
+                sq_results = self.rag_executor.retrieve(query=sq_text)
+                for r in sq_results:
+                    ckey = (r.get("source"), r.get("chunk_id"))
+                    if ckey not in seen_chunk_keys:
+                        seen_chunk_keys.add(ckey)
+                        r_tagged = dict(r)
+                        r_tagged["sub_query"] = sq_text
+                        rag_results.append(r_tagged)
+        else:
+            query = state.get("query", "")
+            rag_results = self.rag_executor.retrieve(query=query)
 
         seen_sources = set()
         sources_found = []
@@ -230,9 +341,10 @@ class BankingOrchestrator:
                 seen_sources.add(src)
                 sources_found.append(src)
 
+        sub_count = len(rag_sub_queries) if len(rag_sub_queries) > 1 else 1
         thought_step = {
             "node": "retrieve_rag",
-            "title": f"Knowledge base search ({len(rag_results)} chunks found)",
+            "title": f"Knowledge base search ({len(rag_results)} chunks found across {sub_count} sub-query topic(s))",
             "description": f"Retrieved policy guidelines from: {', '.join(sources_found)}" if sources_found else "Queried NovaBank vector store",
             "type": "rag",
             "sources": sources_found,
@@ -306,6 +418,7 @@ class BankingOrchestrator:
             route=state.get("route", "UNSUPPORTED"),
             status=state.get("status", "success"),
             customer_id=state.get("customer_id"),
+            sub_queries=state.get("sub_queries", []),
         )
 
         return {
@@ -340,6 +453,7 @@ class BankingOrchestrator:
             "query": query,
             "customer_id": customer_id,
             "route": None,
+            "sub_queries": [],
             "selected_tools": [],
             "tool_calls": [],
             "tool_results": [],

@@ -22,6 +22,7 @@ class ResponseGenerator:
         route: str,
         status: str,
         customer_id: Optional[str] = None,
+        sub_queries: Optional[List[Dict[str, Any]]] = None,
     ) -> str:
         """
         Synthesizes the final natural-language response.
@@ -35,4 +36,5 @@ class ResponseGenerator:
             route=route,
             status=status,
             customer_id=customer_id,
+            sub_queries=sub_queries,
         )

@@ -19,8 +19,9 @@ class AgentState(TypedDict, total=False):
     query: str
     customer_id: Optional[str]
 
-    # Routing
+    # Routing & multi-intent decomposition
     route: Optional[str]  # "TOOL" | "RAG" | "BOTH" | "CLARIFICATION" | "UNSUPPORTED"
+    sub_queries: List[Dict[str, Any]]
 
     # Tool invocation
     selected_tools: List[str]

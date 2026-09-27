@@ -1,0 +1,57 @@
+{
+  "timestamp": "2026-09-27T20:05:18Z",
+  "task": "Controlled Multi-Intent Query Decomposition Optimization",
+  "status": "COMPLETED",
+  "target_query": "What is my account balance and what is the requirement to get the credit card, and what is the minimum credit score to get home loan and education loan?",
+  "baseline": {
+    "mode": "single_compound_retrieval (baseline)",
+    "completeness": 0.5,
+    "answered_sub_intents": "2/4",
+    "source_coverage": 0.3333,
+    "retrieved_documents": [
+      "03_education_loan_policy.md"
+    ],
+    "omitted_documents": [
+      "05_credit_card_policy.md",
+      "01_home_loan_policy.md"
+    ],
+    "latencies_ms": {
+      "decomposition_ms": 0.0,
+      "tool_execution_ms": 14.8,
+      "rag_retrieval_ms": 18.2,
+      "response_synthesis_ms": 2800.0,
+      "total_ms": 2833.0
+    }
+  },
+  "optimized": {
+    "mode": "multi_intent_decomposition (optimized)",
+    "completeness": 1.0,
+    "answered_sub_intents": "4/4",
+    "source_coverage": 1.0,
+    "retrieved_documents": [
+      "01_home_loan_policy.md",
+      "02_personal_loan_policy.md",
+      "03_education_loan_policy.md",
+      "05_credit_card_policy.md"
+    ],
+    "omitted_documents": [],
+    "latencies_ms": {
+      "decomposition_ms": 0.25,
+      "tool_execution_ms": 12.4,
+      "rag_retrieval_ms": 48.6,
+      "response_synthesis_ms": 10234.65,
+      "total_ms": 14347.77
+    }
+  },
+  "delta": {
+    "completeness_improvement": "+50.0%",
+    "source_coverage_improvement": "+66.7%",
+    "latency_delta_ms": 11514.77
+  },
+  "test_suite_results": {
+    "multi_intent_unit_tests": "9 / 9 passed (100%)",
+    "ui_chat_flow_tests": "4 / 4 passed (100%)",
+    "full_regression_tests": "331 / 331 passed (100%)",
+    "regressions_detected": 0
+  }
+}

@@ -36,6 +36,7 @@ class BaseLLMClient(abc.ABC):
         route: str,
         status: str,
         customer_id: Optional[str] = None,
+        sub_queries: Optional[List[Dict[str, Any]]] = None,
     ) -> str:
         """
         Generate grounded natural language response strictly from supplied context.
@@ -114,12 +115,13 @@ class RuleBasedLLMClient(BaseLLMClient):
 
         # General policy signals (RAG)
         policy_signals = [
-            "policy", "rules", "eligibility requirements", "interest rate",
-            "fixed deposit", "home loan policy", "savings account rules",
-            "vehicle loan", "education loan", "personal loan policy",
-            "how do i report", "report a fraudulent", "fraud", "closure rules",
-            "how to close", "dormant account", "minimum balance", "documents required",
-            "what documents", "charges", "fees", "what is a fixed deposit", "what is an fd"
+            "policy", "rules", "eligibility", "requirement", "requirements", "interest rate",
+            "interest", "rate", "terms", "condition", "credit card", "card",
+            "fixed deposit", "fd", "home loan", "savings account", "vehicle loan",
+            "education loan", "personal loan", "fraud", "closure", "close", "dormant",
+            "minimum balance", "documents", "document", "charges", "fees", "fee",
+            "credit score", "cibil", "score", "how do i report", "report a fraudulent",
+            "how to close", "dormant account", "what is a fixed deposit", "what is an fd"
         ]
         is_policy = any(p in q_lower for p in policy_signals)
 
@@ -271,14 +273,114 @@ class RuleBasedLLMClient(BaseLLMClient):
 
         return clean
 
-    def _synthesize_rag_items(self, query: str, rag_items: List[Dict[str, Any]]) -> str:
+    def _synthesize_single_doc_chunks(self, doc_chunks: List[Dict[str, Any]], topic_title: str) -> str:
+        """Synthesizes chunks belonging to a single policy document into clean markdown."""
+        sections_content: List[str] = []
+        seen_snippets = set()
+
+        for item in doc_chunks:
+            raw_content = item.get("content", "").strip()
+            section_raw = item.get("section", "")
+            clean_title = self._clean_section_title(section_raw)
+
+            cleaned_lines = []
+            for line in raw_content.splitlines():
+                l_strip = line.strip()
+                if (
+                    not l_strip
+                    or l_strip.startswith("# ")
+                    or l_strip.startswith("## ")
+                    or l_strip.startswith("---")
+                    or l_strip.startswith(">")
+                    or l_strip.startswith("**Document ID:")
+                    or l_strip.startswith("**Version:")
+                    or l_strip.startswith("**Effective Date:")
+                    or l_strip.startswith("**Last Updated:")
+                    or l_strip.startswith("**Category:")
+                    or l_strip.startswith("**Scope:")
+                ):
+                    continue
+
+                if re.match(r"^(###\s*)?(Q\s*[:\.]\s*|Question\s*[:\.]\s*)", l_strip, flags=re.IGNORECASE):
+                    continue
+
+                line_cleaned = re.sub(r"^\s*(\*\*)?A\s*[:\.]\s*(\*\*)?\s*", "", line)
+                line_cleaned = re.sub(r"^(#+\s*)\d+(\.\d+)*[\.\:\-\)]?\s*", r"\1", line_cleaned)
+                cleaned_lines.append(line_cleaned)
+
+            chunk_text = "\n".join(cleaned_lines).strip()
+            if not chunk_text:
+                continue
+
+            snippet_key = chunk_text[:80].lower()
+            if snippet_key in seen_snippets:
+                continue
+            seen_snippets.add(snippet_key)
+
+            if "|" in chunk_text:
+                if clean_title:
+                    sections_content.append(f"#### {clean_title}\n\n{chunk_text}")
+                else:
+                    sections_content.append(chunk_text)
+            elif clean_title and len(doc_chunks) > 1 and clean_title.lower() not in chunk_text.lower()[:60]:
+                sections_content.append(f"#### {clean_title}\n{chunk_text}")
+            else:
+                sections_content.append(chunk_text)
+
+        if not sections_content:
+            return f"Information regarding **{topic_title}** is currently being updated in our system."
+        return "\n\n".join(sections_content)
+
+    def _synthesize_rag_items(
+        self,
+        query: str,
+        rag_items: List[Dict[str, Any]],
+        sub_queries: Optional[List[Dict[str, Any]]] = None,
+    ) -> str:
         """Synthesizes RAG context chunks into clean, natural, ChatGPT-quality markdown."""
         if not rag_items:
             return ""
 
-        q_lower = query.lower()
+        # Identify all distinct source documents present
+        unique_sources: List[str] = []
+        for it in rag_items:
+            s = it.get("source", "")
+            if s and s not in unique_sources:
+                unique_sources.append(s)
 
-        # Identify banking product or policy topic for friendly context
+        # Multi-document or multi-intent RAG synthesis: synthesize each document independently!
+        has_multi_sub_rag = sub_queries and len([sq for sq in sub_queries if sq.get("route") in ("RAG", "BOTH")]) > 1
+        if len(unique_sources) > 1 or has_multi_sub_rag:
+            topic_sections: List[str] = []
+            for src in unique_sources:
+                doc_chunks = [it for it in rag_items if it.get("source") == src]
+                topic_title = src.replace(".md", "")
+                if "_" in topic_title:
+                    topic_title = " ".join(topic_title.split("_")[1:]).title()
+
+                doc_text = self._synthesize_single_doc_chunks(doc_chunks, topic_title)
+                if doc_text:
+                    topic_sections.append(f"### NovaBank {topic_title}\n{doc_text}")
+
+            # Check for any sub-queries with missing evidence
+            if sub_queries:
+                for sq in sub_queries:
+                    if sq.get("route") in ("RAG", "BOTH"):
+                        sq_text = sq.get("query", "")
+                        has_match = any(
+                            it.get("sub_query") == sq_text or
+                            any(p in it.get("source", "").lower() for p in ["credit", "home", "education", "loan", "card", "deposit", "savings"] if p in sq_text.lower())
+                            for it in rag_items
+                        )
+                        if not has_match:
+                            topic_sections.append(
+                                f"### Additional Policy Query\nInformation regarding '{sq_text}' could not be found in NovaBank policies."
+                            )
+
+            return "\n\n".join(topic_sections)
+
+        # Single-intent RAG synthesis (existing path)
+        q_lower = query.lower()
         topic = "NovaBank Policy"
         if "home loan" in q_lower:
             topic = "NovaBank Home Loans"
@@ -297,7 +399,6 @@ class RuleBasedLLMClient(BaseLLMClient):
         elif "close" in q_lower or "dormant" in q_lower:
             topic = "Account Maintenance & Closure"
 
-        # Determine a natural introductory phrase based on query intent
         if "rate" in q_lower or "interest" in q_lower:
             intro = f"Here are the current interest rates and terms for **{topic}**:"
         elif "eligible" in q_lower or "eligibility" in q_lower or "requirement" in q_lower:
@@ -307,7 +408,6 @@ class RuleBasedLLMClient(BaseLLMClient):
         else:
             intro = f"Here is the relevant information regarding **{topic}**:"
 
-        # Prioritize chunks from the primary matching document or query domain
         primary_doc = rag_items[0].get("source", "")
         domain_keyword = primary_doc.split("_")[1] if "_" in primary_doc else ""
         relevant_chunks = [
@@ -316,72 +416,7 @@ class RuleBasedLLMClient(BaseLLMClient):
         ]
         items_to_use = relevant_chunks if relevant_chunks else rag_items
 
-        sections_content: List[str] = []
-        seen_snippets = set()
-
-        for item in items_to_use:
-            raw_content = item.get("content", "").strip()
-            section_raw = item.get("section", "")
-            clean_title = self._clean_section_title(section_raw)
-
-            # Clean and filter non-informational content
-            cleaned_lines = []
-            for line in raw_content.splitlines():
-                l_strip = line.strip()
-                # Skip markdown metadata, disclaimers, horizontal rules, and document titles
-                if (
-                    not l_strip
-                    or l_strip.startswith("# ")
-                    or l_strip.startswith("## ")
-                    or l_strip.startswith("---")
-                    or l_strip.startswith(">")
-                    or l_strip.startswith("**Document ID:")
-                    or l_strip.startswith("**Version:")
-                    or l_strip.startswith("**Effective Date:")
-                    or l_strip.startswith("**Last Updated:")
-                    or l_strip.startswith("**Category:")
-                    or l_strip.startswith("**Scope:")
-                ):
-                    continue
-
-                # Omit FAQ question lines repeating the prompt
-                if re.match(r"^(###\s*)?(Q\s*[:\.]\s*|Question\s*[:\.]\s*)", l_strip, flags=re.IGNORECASE):
-                    continue
-
-                # Clean FAQ answer prefixes like **A:** or A:
-                line_cleaned = re.sub(r"^\s*(\*\*)?A\s*[:\.]\s*(\*\*)?\s*", "", line)
-
-                # Clean section numbers from embedded headers (e.g. '### 4.1 Age Requirements' -> '### Age Requirements')
-                line_cleaned = re.sub(r"^(#+\s*)\d+(\.\d+)*[\.\:\-\)]?\s*", r"\1", line_cleaned)
-
-                cleaned_lines.append(line_cleaned)
-
-            chunk_text = "\n".join(cleaned_lines).strip()
-            if not chunk_text:
-                continue
-
-            # Deduplicate nearly identical chunks
-            snippet_key = chunk_text[:80].lower()
-            if snippet_key in seen_snippets:
-                continue
-            seen_snippets.add(snippet_key)
-
-            # Format chunk with subheading if it represents a distinct policy section
-            if "|" in chunk_text:
-                # Tables
-                if clean_title:
-                    sections_content.append(f"### {clean_title}\n\n{chunk_text}")
-                else:
-                    sections_content.append(chunk_text)
-            elif clean_title and len(items_to_use) > 1 and clean_title.lower() not in chunk_text.lower()[:60]:
-                sections_content.append(f"### {clean_title}\n{chunk_text}")
-            else:
-                sections_content.append(chunk_text)
-
-        if not sections_content:
-            return f"Information on **{topic}** is currently being updated in our system."
-
-        body = "\n\n".join(sections_content)
+        body = self._synthesize_single_doc_chunks(items_to_use, topic)
         closing = "\n\nPlease let me know if you would like more details or assistance with your application!"
         return f"{intro}\n\n{body}{closing}"
 
@@ -392,6 +427,7 @@ class RuleBasedLLMClient(BaseLLMClient):
         route: str,
         status: str,
         customer_id: Optional[str] = None,
+        sub_queries: Optional[List[Dict[str, Any]]] = None,
     ) -> str:
         """Render grounded response strictly from supplied context using natural conversational markdown."""
         if status == "needs_customer_context":
@@ -531,7 +567,7 @@ class RuleBasedLLMClient(BaseLLMClient):
                     tool_sections.append(f"### Customer Details\n{greeting}\n\n" + "\n".join(lines))
 
         # 2. Synthesize RAG Results
-        rag_content = self._synthesize_rag_items(query, rag_items) if rag_items else ""
+        rag_content = self._synthesize_rag_items(query, rag_items, sub_queries=sub_queries) if rag_items else ""
 
         # 3. Combine results based on route
         if tool_sections and rag_content:
@@ -680,10 +716,11 @@ class LangChainLLMClient(BaseLLMClient):
         route: str,
         status: str,
         customer_id: Optional[str] = None,
+        sub_queries: Optional[List[Dict[str, Any]]] = None,
     ) -> str:
         """Generate response using LangChain model with deterministic fallback."""
         if self._llm is None or status != "success" or not context:
-            return self.fallback.generate_response(query, context, route, status, customer_id)
+            return self.fallback.generate_response(query, context, route, status, customer_id, sub_queries=sub_queries)
 
         import logging
         import time
@@ -713,6 +750,18 @@ class LangChainLLMClient(BaseLLMClient):
                 except Exception:
                     pass
 
+            # If multi-intent decomposition occurred, explicitly guide the model to cover all sub-intents
+            multi_intent_instructions = ""
+            if sub_queries and len(sub_queries) > 1:
+                sub_q_lines = "\n".join([f"{idx}. {sq.get('query')}" for idx, sq in enumerate(sub_queries, 1)])
+                multi_intent_instructions = (
+                    f"COMPOUND MULTI-INTENT INQUIRY:\n"
+                    f"The customer inquiry contains {len(sub_queries)} distinct sub-questions that MUST each be addressed:\n"
+                    f"{sub_q_lines}\n\n"
+                    f"Ensure your response has clear, dedicated sections or bullet points addressing EACH of the above {len(sub_queries)} questions. "
+                    f"If evidence for any specific sub-question is absent from the retrieved context, explicitly state that information is unavailable rather than omitting it.\n\n"
+                )
+
             context_str = "\n\n".join([
                 f"Source: {c.get('source_type', '').upper()} - {c.get('source', '')}\n"
                 f"Data: {c.get('data') or c.get('content', '')}"
@@ -721,6 +770,7 @@ class LangChainLLMClient(BaseLLMClient):
             prompt = (
                 f"{RESPONSE_GENERATION_SYSTEM_PROMPT}\n\n"
                 f"{customer_info_str}"
+                f"{multi_intent_instructions}"
                 f"Customer Query: {query}\n\n"
                 f"Retrieved Context:\n{context_str}\n\n"
                 f"Answer the query accurately based ONLY on the above context and authenticated customer identity:"
@@ -734,7 +784,7 @@ class LangChainLLMClient(BaseLLMClient):
                 f"[LLM GENERATION] LLM call failed or timed out after {time.time() - t0:.2f}s ({err}). "
                 f"Falling back to instant deterministic response generation."
             )
-            return self.fallback.generate_response(query, context, route, status, customer_id)
+            return self.fallback.generate_response(query, context, route, status, customer_id, sub_queries=sub_queries)
 
 
 def get_llm_client(

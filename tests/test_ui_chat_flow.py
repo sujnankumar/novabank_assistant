@@ -162,3 +162,51 @@ def test_ui_banking_tool_query(client: TestClient):
     assert data["route"] == "TOOL"
     assert "192,203.99" in data["message"]
     assert any(s.get("type") == "tool" for s in data.get("sources", []))
+
+
+def test_ui_compound_multi_intent_query(client: TestClient):
+    """
+    Simulates browser UI submission of the exact 4-intent compound query:
+    'What is my account balance and what is the requirement to get the credit card,
+    and what is the minimum credit score to get home loan and education loan?'
+    Verifies that all 4 topics are synthesized and all sources are attributed.
+    """
+    conv_res = client.post("/api/conversations", json={"customer_id": "CUST001"})
+    assert conv_res.status_code == 201
+    conv_id = conv_res.json()["conversation_id"]
+
+    query = (
+        "What is my account balance and what is the requirement to get the credit card, "
+        "and what is the minimum credit score to get home loan and education loan?"
+    )
+
+    chat_res = client.post(
+        "/api/chat",
+        json={
+            "conversation_id": conv_id,
+            "customer_id": "CUST001",
+            "message": query,
+        },
+    )
+    assert chat_res.status_code == 200
+    data = chat_res.json()
+    assert data["route"] == "BOTH"
+
+    msg = data["message"].lower()
+    # 1. Account balance verified
+    assert "192,203.99" in msg or "balance" in msg
+    # 2. Credit card requirements verified
+    assert "credit card" in msg
+    # 3. Home loan credit score verified
+    assert "home loan" in msg
+    # 4. Education loan credit score verified
+    assert "education loan" in msg
+
+    # Provenance sources verified
+    sources = data.get("sources", [])
+    assert len(sources) > 0
+    # Must have both tool and RAG sources
+    source_types = set(s.get("type") for s in sources)
+    assert "tool" in source_types
+    assert "rag" in source_types
+
